@@ -56,6 +56,9 @@ export default function RootLayout({
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
+        {/* Preload critical images */}
+        <link rel="preload" as="image" href="/images/horizontal.jpg" media="(min-width: 768px)" />
+        <link rel="preload" as="image" href="/images/vertical.png" media="(max-width: 767px)" />
       </head>
       <body className="antialiased">
         {children}

@@ -26,6 +26,37 @@ export default function HeroSection() {
     // Timestamp único para toda la sesión
     const timestamp = new Date().getTime();
     
+    // Precargar ambas imágenes inmediatamente
+    const preloadImages = () => {
+      const mobileImg = new Image();
+      const desktopImg = new Image();
+      
+      mobileImg.src = `${imageConfig.hero.vertical}`;
+      desktopImg.src = `${imageConfig.hero.horizontal}`;
+      
+      // Cuando cargue la imagen apropiada, mostrar
+      const checkLoad = () => {
+        const mobile = window.innerWidth < 768;
+        const imgToCheck = mobile ? mobileImg : desktopImg;
+        
+        if (imgToCheck.complete) {
+          setIsMobile(mobile);
+          setHeroImage(imgToCheck.src);
+          setIsLoaded(true);
+          setShowLoader(false);
+        } else {
+          imgToCheck.onload = () => {
+            setIsMobile(mobile);
+            setHeroImage(imgToCheck.src);
+            setIsLoaded(true);
+            setShowLoader(false);
+          };
+        }
+      };
+      
+      checkLoad();
+    };
+    
     const checkMobile = () => {
       const mobile = window.innerWidth < 768;
       const wasMobile = isMobile;
@@ -37,15 +68,15 @@ export default function HeroSection() {
         
         // Cambiar imagen con transición suave
         const baseImage = mobile ? imageConfig.hero.vertical : imageConfig.hero.horizontal;
-        setHeroImage(`${baseImage}?v=${timestamp}`);
+        setHeroImage(`${baseImage}`);
         
         // Terminar transición
         setTimeout(() => setIsTransitioning(false), 300);
       }
     };
     
-    // Ejecutar inmediatamente sin esperar
-    checkMobile();
+    // Precargar imágenes primero
+    preloadImages();
     
     // Debounce del resize event (esperar 150ms después de que termine de redimensionar)
     const handleResize = () => {
@@ -57,32 +88,36 @@ export default function HeroSection() {
     
     window.addEventListener('resize', handleResize);
 
-    // Ocultar loader después de 1.2 segundos
-    const loaderTimer = setTimeout(() => {
-      setShowLoader(false);
-      setTimeout(() => setIsLoaded(true), 100);
-    }, 1200);
+    // Fallback: ocultar loader después de 3 segundos si la imagen no carga
+    const fallbackTimer = setTimeout(() => {
+      if (showLoader) {
+        setShowLoader(false);
+        setIsLoaded(true);
+      }
+    }, 3000);
 
-    // Confetti al cargar (reducido en mobile)
-    const timer = setTimeout(() => {
-      confetti({
-        particleCount: isMobile ? 30 : 60,
-        spread: isMobile ? 40 : 60,
-        origin: { y: 0.6 },
-        colors: ['#D4AF37', '#C4B5A0', '#FFFFFF', '#F5F1E8'],
-        ticks: 150,
-      });
-    }, 800);
+    // Confetti al cargar (cuando la imagen esté lista)
+    const confettiTimer = setTimeout(() => {
+      if (isLoaded) {
+        confetti({
+          particleCount: isMobile ? 30 : 60,
+          spread: isMobile ? 40 : 60,
+          origin: { y: 0.6 },
+          colors: ['#D4AF37', '#C4B5A0', '#FFFFFF', '#F5F1E8'],
+          ticks: 150,
+        });
+      }
+    }, 1000);
 
     return () => {
-      clearTimeout(timer);
-      clearTimeout(loaderTimer);
+      clearTimeout(confettiTimer);
+      clearTimeout(fallbackTimer);
       if (resizeTimerRef.current) {
         clearTimeout(resizeTimerRef.current);
       }
       window.removeEventListener('resize', handleResize);
     };
-  }, [isMobile]);
+  }, [isMobile, isLoaded, showLoader]);
 
   return (
     <>
