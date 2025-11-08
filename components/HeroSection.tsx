@@ -249,7 +249,7 @@ export default function HeroSection() {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className={isMobile ? 'my-3' : ''}
+                className={isMobile ? 'my-0' : ''}
               >
                 <Heart className="text-white fill-white/40 inline-block" size={isMobile ? 32 : 40} />
               </motion.span>
