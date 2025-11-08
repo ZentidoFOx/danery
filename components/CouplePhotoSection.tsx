@@ -71,7 +71,7 @@ export default function CouplePhotoSection() {
           <motion.div variants={itemVariants} className="max-w-2xl mx-auto text-center">
             {/* Initials */}
             <h2 className="font-script text-7xl sm:text-8xl md:text-9xl text-[#6B8E6F] mb-4">
-              D & J
+              S & D
             </h2>
 
             {/* Date */}
@@ -96,7 +96,7 @@ export default function CouplePhotoSection() {
           <img
             key={currentImageIndex}
             src={galleryImages[currentImageIndex]}
-            alt={`D & J - Photo ${currentImageIndex + 1}`}
+            alt={`S & D - Photo ${currentImageIndex + 1}`}
             className="w-full h-full object-cover transition-opacity duration-500"
             loading="lazy"
           />

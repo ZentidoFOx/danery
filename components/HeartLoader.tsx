@@ -64,7 +64,7 @@ export default function HeartLoader({ isLoading, onComplete }: HeartLoaderProps)
             transition={{ delay: 0.3, duration: 0.5 }}
           >
             <p className="font-elegant text-wedding-sage text-lg tracking-widest">
-              Daniela y Josué
+              Salvador y Danery
             </p>
           </motion.div>
 

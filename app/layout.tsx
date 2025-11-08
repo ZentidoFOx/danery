@@ -23,9 +23,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Daniela y Josué - Invitación de Boda",
+  title: "Salvador y Danery - Invitación de Boda",
   description: "Te invitamos a celebrar nuestra boda - 18 de Noviembre del 2023",
-  keywords: ["boda", "invitación", "Daniela", "Josué", "Oaxaca"],
+  keywords: ["boda", "invitación", "Salvador", "Danery", "Oaxaca"],
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Daniela y Josué',
+    title: 'Salvador y Danery',
   },
 };
 

@@ -110,7 +110,7 @@ export default function GiftSuggestionSection() {
 
           <div className="space-y-2 font-elegant text-white text-xs sm:text-sm">
             <p>
-              <span className="font-semibold">Nombre:</span> Daniela García Bautista
+              <span className="font-semibold">Nombre:</span> Danery García Bautista
             </p>
             <p>
               <span className="font-semibold">Cuenta clave:</span> 002632701533321248
