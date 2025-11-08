@@ -6,6 +6,8 @@
 export const imageConfig = {
   hero: {
     background: '/images/hero-section.jpeg',
+    vertical: '/images/vertical.png',
+    horizontal: '/images/horizontal.jpg',
     placeholder: '/images/hero-bg-placeholder.svg',
     alt: 'Fondo Hero - Pareja en boda',
   },

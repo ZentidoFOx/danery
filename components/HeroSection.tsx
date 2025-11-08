@@ -5,9 +5,13 @@ import { Heart } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import confetti from "canvas-confetti";
 import { imageConfig, getImageUrl } from "@/lib/imageConfig";
+import HeartLoader from "./HeartLoader";
 
 export default function HeroSection() {
   const [isMobile, setIsMobile] = useState(false);
+  const [heroImage, setHeroImage] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
   
@@ -18,11 +22,23 @@ export default function HeroSection() {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      // Cambiar imagen según el tamaño de pantalla (sin cache)
+      const timestamp = new Date().getTime();
+      const baseImage = mobile ? imageConfig.hero.vertical : imageConfig.hero.horizontal;
+      setHeroImage(`${baseImage}?v=${timestamp}`);
     };
     
+    // Ejecutar inmediatamente sin esperar
     checkMobile();
     window.addEventListener('resize', checkMobile);
+
+    // Ocultar loader después de 1.2 segundos
+    const loaderTimer = setTimeout(() => {
+      setShowLoader(false);
+      setTimeout(() => setIsLoaded(true), 100);
+    }, 1200);
 
     // Confetti al cargar (reducido en mobile)
     const timer = setTimeout(() => {
@@ -37,24 +53,30 @@ export default function HeroSection() {
 
     return () => {
       clearTimeout(timer);
+      clearTimeout(loaderTimer);
       window.removeEventListener('resize', checkMobile);
     };
   }, [isMobile]);
 
   return (
-    <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
+    <>
+      {/* Loader con Corazón */}
+      <HeartLoader isLoading={showLoader} />
+      
+      <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
       {/* Background Image with Sepia Overlay */}
       <div 
         className="absolute inset-0 overflow-hidden"
       >
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 transition-opacity duration-500"
           style={{
-            backgroundImage: `url('${getImageUrl(imageConfig.hero.background, imageConfig.fallback.hero)}')`,
+            backgroundImage: heroImage ? `url('${heroImage}')` : 'none',
             backgroundPosition: 'center center',
             backgroundSize: 'cover',
             backgroundAttachment: 'scroll',
             backgroundRepeat: 'no-repeat',
+            opacity: isLoaded && heroImage ? 1 : 0,
           }}
         />
         {/* Sepia/Vintage Overlay */}
@@ -65,14 +87,17 @@ export default function HeroSection() {
       {/* Content Container */}
       <motion.div 
         className="relative z-10 flex flex-col items-center justify-center h-full w-full px-4 py-8 text-center overflow-visible"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoaded ? 1 : 0 }}
+        transition={{ duration: 0.5 }}
         style={{ opacity }}
       >
         {/* Decorative Top Border */}
         <motion.div 
           className="mb-3 sm:mb-4 md:mb-6"
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div className="flex items-center gap-3 sm:gap-4">
             <motion.div 
@@ -107,8 +132,8 @@ export default function HeroSection() {
         <motion.div 
           className="mb-3 sm:mb-4 md:mb-6"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : -20 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           <motion.h2 
             className="font-elegant text-white text-sm sm:text-base md:text-lg tracking-[0.2em] uppercase font-light drop-shadow-lg"
@@ -128,13 +153,12 @@ export default function HeroSection() {
         {/* Names - Elegant Script Font */}
         <motion.div 
           className="mb-4 sm:mb-6 md:mb-8"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
           transition={{ 
-            duration: 1, 
-            delay: 0.6,
-            type: "spring",
-            stiffness: 100
+            duration: 0.6, 
+            delay: 0.3,
+            ease: "easeOut"
           }}
         >
           <motion.h1 
@@ -174,8 +198,8 @@ export default function HeroSection() {
         <motion.div 
           className="mb-2 sm:mb-3 md:mb-4"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0.8 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         >
           <motion.div 
             className="backdrop-blur-sm bg-white/10 rounded-full px-4 sm:px-6 md:px-8 py-1.5 sm:py-2 md:py-3 border border-white/30 mx-4"
@@ -203,8 +227,8 @@ export default function HeroSection() {
         <motion.div 
           className="mb-4 sm:mb-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
           <motion.p 
             className="font-elegant text-white text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light drop-shadow-lg px-4"
@@ -218,8 +242,8 @@ export default function HeroSection() {
         <motion.div 
           className="mt-6 sm:mt-8 md:mt-10"
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
+          animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
           <div className="flex items-center gap-4 sm:gap-6">
             <motion.div 
@@ -264,5 +288,6 @@ export default function HeroSection() {
         }}
       />
     </section>
+    </>
   );
 }
