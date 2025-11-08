@@ -1,0 +1,41 @@
+{
+  "name": "invitacion-boda-danery",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "node scripts/clean.js",
+    "clean:dev": "npm run clean && npm run dev"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "canvas-confetti": "^1.9.4",
+    "framer-motion": "^12.23.24",
+    "gsap": "^3.13.0",
+    "lottie-react": "^2.4.1",
+    "lucide-react": "^0.445.0",
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-countdown-circle-timer": "^3.2.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^5.5.0",
+    "react-intersection-observer": "^10.0.0",
+    "react-parallax-tilt": "^1.7.312",
+    "swiper": "^12.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.15",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.18",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5.5.4"
+  }
+}
