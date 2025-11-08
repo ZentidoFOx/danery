@@ -1,0 +1,37 @@
+{
+  "name": "Daniela y Josué - Invitación de Boda",
+  "short_name": "D & J Boda",
+  "description": "Te invitamos a celebrar nuestra boda - 18 de Noviembre del 2023",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F1E8",
+  "theme_color": "#6B8E6F",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["lifestyle", "events"],
+  "screenshots": [
+    {
+      "src": "/images/hero-section.jpeg",
+      "sizes": "540x720",
+      "type": "image/jpeg"
+    }
+  ]
+}
