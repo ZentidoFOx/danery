@@ -1,5 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#F5F1E8"/>
-  <path d="M16 6 L20 12 L16 18 L12 12 Z" fill="#6B8E6F"/>
-  <circle cx="16" cy="24" r="2" fill="#6B8E6F"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <!-- Background -->
+  <rect width="192" height="192" fill="#F5F1E8"/>
+  
+  <!-- Heart shape -->
+  <path d="M96 160 C96 160, 40 120, 40 80 C40 60, 55 48, 70 48 C80 48, 90 54, 96 64 C102 54, 112 48, 122 48 C137 48, 152 60, 152 80 C152 120, 96 160, 96 160 Z" fill="#D4AF37" opacity="0.9"/>
+  
+  <!-- Heart outline -->
+  <path d="M96 160 C96 160, 40 120, 40 80 C40 60, 55 48, 70 48 C80 48, 90 54, 96 64 C102 54, 112 48, 122 48 C137 48, 152 60, 152 80 C152 120, 96 160, 96 160 Z" fill="none" stroke="#6B8E6F" stroke-width="2"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="70" cy="70" r="3" fill="#C4B5A0"/>
+  <circle cx="122" cy="70" r="3" fill="#C4B5A0"/>
 </svg>
