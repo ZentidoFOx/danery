@@ -11,13 +11,6 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <HeroSection />
-      <CountdownSectionImproved />
-      <CelebrationTimelineFixed />
-      <DressCodeSection />
-      <RecommendationsSection />
-      <RSVPSection />
-      <CouplePhotoSection />
-      <GiftSuggestionSection />
     </main>
   );
 }
