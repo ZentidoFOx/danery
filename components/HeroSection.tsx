@@ -12,7 +12,9 @@ export default function HeroSection() {
   const [heroImage, setHeroImage] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
+  const resizeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const { scrollY } = useScroll();
   
   // Parallax effects - deshabilitado en mobile
@@ -21,18 +23,39 @@ export default function HeroSection() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   useEffect(() => {
+    // Timestamp único para toda la sesión
+    const timestamp = new Date().getTime();
+    
     const checkMobile = () => {
       const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      // Cambiar imagen según el tamaño de pantalla (sin cache)
-      const timestamp = new Date().getTime();
-      const baseImage = mobile ? imageConfig.hero.vertical : imageConfig.hero.horizontal;
-      setHeroImage(`${baseImage}?v=${timestamp}`);
+      const wasMobile = isMobile;
+      
+      // Solo cambiar si realmente cambia el estado mobile/desktop
+      if (mobile !== wasMobile) {
+        setIsTransitioning(true);
+        setIsMobile(mobile);
+        
+        // Cambiar imagen con transición suave
+        const baseImage = mobile ? imageConfig.hero.vertical : imageConfig.hero.horizontal;
+        setHeroImage(`${baseImage}?v=${timestamp}`);
+        
+        // Terminar transición
+        setTimeout(() => setIsTransitioning(false), 300);
+      }
     };
     
     // Ejecutar inmediatamente sin esperar
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    
+    // Debounce del resize event (esperar 150ms después de que termine de redimensionar)
+    const handleResize = () => {
+      if (resizeTimerRef.current) {
+        clearTimeout(resizeTimerRef.current);
+      }
+      resizeTimerRef.current = setTimeout(checkMobile, 150);
+    };
+    
+    window.addEventListener('resize', handleResize);
 
     // Ocultar loader después de 1.2 segundos
     const loaderTimer = setTimeout(() => {
@@ -54,7 +77,10 @@ export default function HeroSection() {
     return () => {
       clearTimeout(timer);
       clearTimeout(loaderTimer);
-      window.removeEventListener('resize', checkMobile);
+      if (resizeTimerRef.current) {
+        clearTimeout(resizeTimerRef.current);
+      }
+      window.removeEventListener('resize', handleResize);
     };
   }, [isMobile]);
 
@@ -69,7 +95,7 @@ export default function HeroSection() {
         className="absolute inset-0 overflow-hidden"
       >
         <div 
-          className="absolute inset-0 transition-opacity duration-500"
+          className="absolute inset-0"
           style={{
             backgroundImage: heroImage ? `url('${heroImage}')` : 'none',
             backgroundPosition: 'center center',
@@ -77,6 +103,7 @@ export default function HeroSection() {
             backgroundAttachment: 'scroll',
             backgroundRepeat: 'no-repeat',
             opacity: isLoaded && heroImage ? 1 : 0,
+            transition: 'opacity 0.5s ease-in-out',
           }}
         />
         {/* Sepia/Vintage Overlay */}
