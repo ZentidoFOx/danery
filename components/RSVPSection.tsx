@@ -1,32 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 
 export default function RSVPSection() {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-
   const [formData, setFormData] = useState({
-    guestName: "",
-    attendance: "",
-    companionName: "",
+    name: "",
+    attending: "",
+    companions: "",
     vanService: "",
-    dietaryRestriction: "",
+    dietary: "",
     phone: "",
   });
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
+        duration: 0.8,
         staggerChildren: 0.1,
-        delayChildren: 0.1,
       },
     },
   };
@@ -36,131 +30,130 @@ export default function RSVPSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.5 },
     },
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulario enviado:", formData);
+    console.log(formData);
+    // Aquí puedes agregar la lógica para enviar el formulario
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
-    <section
-      ref={ref}
-      className="relative min-h-screen bg-amber-50 py-16 sm:py-20 md:py-24 px-4"
-    >
+    <section className="bg-[#F4F1EB] py-16 md:py-20 px-4">
       <motion.div
-        className="max-w-2xl mx-auto"
-        variants={containerVariants}
+        className="max-w-lg mx-auto"
         initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
       >
-        {/* Header */}
-        <motion.div variants={itemVariants} className="text-center mb-16">
-          <p className="font-elegant text-gray-700 text-base sm:text-lg tracking-wide mb-2">
-            ¡Queremos compartir este momento
+        {/* Mensaje de bienvenida */}
+        <motion.div variants={itemVariants} className="text-center mb-8">
+          <p className="text-[#1F2A38] text-base sm:text-lg font-light leading-relaxed mb-2">
+            ¡Queremos compartir este momento tan esperado contigo!
           </p>
-          <p className="font-elegant text-gray-700 text-base sm:text-lg tracking-wide mb-6">
-            tan esperado contigo!
+          <p className="text-[#1F2A38] text-base sm:text-lg font-semibold">
+            Por favor ayúdanos confirmando tu asistencia.
           </p>
-          <p className="font-serif text-gray-800 text-lg sm:text-xl font-semibold mb-1">
-            Por favor ayúdanos confirmando tu
-          </p>
-          <p className="font-serif text-gray-800 text-lg sm:text-xl font-semibold mb-8">
-            asistencia.
-          </p>
-          
-          {/* Decorative Line */}
-          <div className="flex justify-center mb-8">
-            <div className="w-12 h-px bg-gray-400" />
-          </div>
         </motion.div>
 
-        {/* Form */}
-        <motion.form
-          variants={itemVariants}
-          onSubmit={handleSubmit}
-          className="bg-white bg-opacity-90 p-8 sm:p-10 space-y-5"
-        >
-          {/* Guest Name */}
+        {/* Línea decorativa */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <div className="h-px w-20 mx-auto bg-[#C7B299]/50" />
+        </motion.div>
+
+        {/* Formulario */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Nombre del invitado */}
           <motion.div variants={itemVariants}>
             <input
               type="text"
-              name="guestName"
+              name="name"
               placeholder="Nombre y Apellidos del Invitado"
-              value={formData.guestName}
+              value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 text-gray-700 placeholder-gray-500 focus:outline-none focus:bg-gray-50 transition-colors text-sm"
               required
+              className="w-full px-4 py-3 bg-white text-[#1F2A38] placeholder-[#8C8C8C] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none"
             />
           </motion.div>
 
-          {/* Attendance Dropdown */}
-          <motion.div variants={itemVariants} className="relative">
+          {/* ¿Asistirás? */}
+          <motion.div variants={itemVariants}>
             <select
-              name="attendance"
-              value={formData.attendance}
+              name="attending"
+              value={formData.attending}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 text-gray-700 focus:outline-none focus:bg-gray-50 transition-colors appearance-none cursor-pointer text-sm"
               required
+              className="w-full px-4 py-3 bg-white text-[#1F2A38] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none appearance-none cursor-pointer"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.5rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "1.5em 1.5em",
+                paddingRight: "2.5rem",
+              }}
             >
-              <option value="">- ¿Asistirá? -</option>
+              <option value="">- ¿Asistirás? -</option>
               <option value="si">Sí, asistiré</option>
               <option value="no">No podré asistir</option>
-              <option value="quizas">Quizás</option>
             </select>
-            <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 pointer-events-none" size={18} />
           </motion.div>
 
-          {/* Companion Name */}
+          {/* Acompañantes */}
           <motion.div variants={itemVariants}>
             <input
               type="text"
-              name="companionName"
+              name="companions"
               placeholder="Nombre(s) y Apellidos de Acompañante(s)"
-              value={formData.companionName}
+              value={formData.companions}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 text-gray-700 placeholder-gray-500 focus:outline-none focus:bg-gray-50 transition-colors text-sm"
+              className="w-full px-4 py-3 bg-white text-[#1F2A38] placeholder-[#8C8C8C] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none"
             />
           </motion.div>
 
-          {/* Van Service Dropdown */}
-          <motion.div variants={itemVariants} className="relative">
+          {/* Servicio de van */}
+          <motion.div variants={itemVariants}>
             <select
               name="vanService"
               value={formData.vanService}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 text-gray-700 focus:outline-none focus:bg-gray-50 transition-colors appearance-none cursor-pointer text-sm"
+              className="w-full px-4 py-3 bg-white text-[#1F2A38] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none appearance-none cursor-pointer"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                backgroundPosition: "right 0.5rem center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "1.5em 1.5em",
+                paddingRight: "2.5rem",
+              }}
             >
-              <option value="">- ¿Requeriás el servicio de van para tu ll -</option>
-              <option value="si">Sí, requiero van</option>
-              <option value="no">No requiero van</option>
+              <option value="">- ¿Requerirás el servicio de van para tu llegada? -</option>
+              <option value="si">Sí, lo requiero</option>
+              <option value="no">No, gracias</option>
             </select>
-            <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 pointer-events-none" size={18} />
           </motion.div>
 
-          {/* Dietary Restriction */}
+          {/* Restricciones alimentarias */}
           <motion.div variants={itemVariants}>
             <input
               type="text"
-              name="dietaryRestriction"
+              name="dietary"
               placeholder="Indicar restricción alimentaria (opcional)"
-              value={formData.dietaryRestriction}
+              value={formData.dietary}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 text-gray-700 placeholder-gray-500 focus:outline-none focus:bg-gray-50 transition-colors text-sm"
+              className="w-full px-4 py-3 bg-white text-[#1F2A38] placeholder-[#8C8C8C] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none"
             />
           </motion.div>
 
-          {/* Phone Number */}
+          {/* Número telefónico */}
           <motion.div variants={itemVariants}>
             <input
               type="tel"
@@ -168,24 +161,21 @@ export default function RSVPSection() {
               placeholder="Número Telefónico"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-100 text-gray-700 placeholder-gray-500 focus:outline-none focus:bg-gray-50 transition-colors text-sm"
               required
+              className="w-full px-4 py-3 bg-white text-[#1F2A38] placeholder-[#8C8C8C] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none"
             />
           </motion.div>
 
-          {/* Submit Button */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center pt-4"
-          >
+          {/* Botón de envío */}
+          <motion.div variants={itemVariants} className="pt-4">
             <button
               type="submit"
-              className="px-16 py-3 bg-[#6B8E6F] hover:bg-[#5A7A5E] text-white font-elegant text-sm tracking-widest uppercase transition-colors duration-300"
+              className="w-full bg-[#6B7C5E] hover:bg-[#5A6A4F] text-white text-sm tracking-[0.2em] uppercase py-4 transition-all duration-300"
             >
-              CONFIRMAR ASISTENCIA
+              Confirmar Asistencia
             </button>
           </motion.div>
-        </motion.form>
+        </form>
       </motion.div>
     </section>
   );
