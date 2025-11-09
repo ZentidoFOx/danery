@@ -92,8 +92,28 @@ export default function HeroSection() {
     };
   }, []);
 
+  // Confeti al cargar la página
+  useEffect(() => {
+    if (isLoaded) {
+      const timer = setTimeout(() => {
+        confetti({
+          particleCount: isMobile ? 50 : 100,
+          spread: isMobile ? 60 : 100,
+          origin: { y: 0.6 },
+          colors: ['#8C5A38', '#C7B299', '#F4F1EB', '#3A4E6A'],
+        });
+      }, 800);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLoaded, isMobile]);
+
   return (
-    <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
+    <section 
+      ref={heroRef} 
+      className="relative h-screen w-full overflow-hidden cursor-pointer"
+      onClick={handleConfetti}
+    >
       {/* Background Image */}
       <div className="absolute inset-0">
         <div
