@@ -1,22 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Leaf } from "lucide-react";
 
 export default function DressCodeSection() {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
+        duration: 0.8,
         staggerChildren: 0.2,
-        delayChildren: 0.1,
       },
     },
   };
@@ -31,57 +25,47 @@ export default function DressCodeSection() {
   };
 
   return (
-    <section
-      ref={ref}
-      className="relative min-h-screen bg-white py-16 sm:py-20 md:py-24 px-4"
-    >
+    <section className="bg-white py-16 md:py-20 px-4">
       <motion.div
-        className="max-w-4xl mx-auto"
-        variants={containerVariants}
+        className="max-w-xl mx-auto text-center"
         initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
       >
-        {/* Decorative Line Top */}
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center mb-12"
-        >
-          <div className="w-full max-w-md h-px bg-gray-300" />
+        {/* Línea decorativa superior */}
+        <motion.div variants={itemVariants} className="mb-10">
+          <div className="h-px w-full bg-[#C7B299]/40" />
         </motion.div>
 
-        {/* Header */}
-        <motion.div variants={itemVariants} className="mb-12 flex items-center justify-center gap-4">
-          {/* Hojas decorativas */}
-          <Leaf className="text-[#8B9D83] flex-shrink-0" size={40} strokeWidth={1.2} />
-          
-          <div className="text-center">
-            <h2 className="font-elegant text-gray-500 text-lg sm:text-xl tracking-wide">
-              VESTIMENTA
-            </h2>
-            <h2 className="font-script text-5xl sm:text-6xl md:text-7xl text-gray-800 -mt-2">
-              formal
-            </h2>
-          </div>
-
-          <Leaf className="text-[#8B9D83] flex-shrink-0" size={40} strokeWidth={1.2} />
-        </motion.div>
-
-        {/* Subtitle */}
-        <motion.div variants={itemVariants} className="text-center mb-12">
-          <p className="font-elegant text-gray-500 text-lg sm:text-xl tracking-wide">
-            RESPETUOSAMENTE
-          </p>
-          <p className="font-script text-4xl sm:text-5xl md:text-6xl text-gray-800 -mt-2">
-            No niños
+        {/* Vestimenta */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <h3 className="text-[#C7B299] text-sm sm:text-base tracking-[0.3em] uppercase font-light mb-2">
+            Vestimenta
+          </h3>
+          <p className="font-script text-[#1F2A38] text-4xl sm:text-5xl md:text-6xl">
+            formal
           </p>
         </motion.div>
 
-        {/* Decorative Line Bottom */}
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center"
-        >
-          <div className="w-full max-w-md h-px bg-gray-300" />
+        {/* Separador vertical */}
+        <motion.div variants={itemVariants} className="flex justify-center my-8">
+          <div className="w-px h-12 bg-[#C7B299]/40" />
+        </motion.div>
+
+        {/* Respetuosamente no niños */}
+        <motion.div variants={itemVariants} className="mb-10">
+          <h3 className="text-[#C7B299] text-sm sm:text-base tracking-[0.3em] uppercase font-light mb-2">
+            Respetuosamente
+          </h3>
+          <p className="font-script text-[#1F2A38] text-4xl sm:text-5xl md:text-6xl">
+            no niños
+          </p>
+        </motion.div>
+
+        {/* Línea decorativa inferior */}
+        <motion.div variants={itemVariants} className="mt-10">
+          <div className="h-px w-full bg-[#C7B299]/40" />
         </motion.div>
       </motion.div>
     </section>
