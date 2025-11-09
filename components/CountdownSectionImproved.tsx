@@ -40,9 +40,9 @@ export default function CountdownSectionImproved() {
   if (!mounted) return null;
 
   return (
-    <section className="bg-white py-16 md:py-10 px-4 relative overflow-hidden">
-      {/* Decoraciones sutiles de fondo */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section className="bg-white py-12 md:py-10 px-4 relative overflow-hidden">
+      {/* Decoraciones sutiles de fondo - ocultas en móvil */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         <div className="absolute top-10 left-10 w-32 h-32 border border-[#C7B299]/20 rounded-full" />
         <div className="absolute top-20 right-20 w-24 h-24 border border-[#8C5A38]/10 rounded-full" />
         <div className="absolute bottom-10 left-1/4 w-40 h-40 border border-[#C7B299]/15 rounded-full" />
@@ -55,8 +55,8 @@ export default function CountdownSectionImproved() {
         transition={{ duration: 0.8 }}
       >
         {/* Decoración de hoja de oliva */}
-        <div className="mb-10 flex justify-center">
-          <div className="relative w-32 h-20 md:w-40 md:h-24">
+        <div className="mb-6 md:mb-10 flex justify-center">
+          <div className="relative w-24 h-16 md:w-40 md:h-24">
             <Image
               src="/images/hojaoliva.webp"
               alt="Hoja de oliva decorativa"
@@ -67,11 +67,11 @@ export default function CountdownSectionImproved() {
           </div>
         </div>
 
-        <h3 className="text-[#3A4E6A] text-sm md:text-base tracking-[0.4em] uppercase font-light mb-12">
+        <h3 className="text-[#3A4E6A] text-xs md:text-base tracking-[0.3em] md:tracking-[0.4em] uppercase font-light mb-8 md:mb-12">
           Nuestro Gran Día
         </h3>
 
-        <div className="flex justify-center gap-4 md:gap-8 mb-12">
+        <div className="flex justify-center gap-3 md:gap-8 mb-8 md:mb-12">
           {[
             { value: timeLeft.days, label: "Días" },
             { value: timeLeft.hours, label: "Horas" },
@@ -84,25 +84,25 @@ export default function CountdownSectionImproved() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-[#C7B299] flex items-center justify-center mb-3 bg-gradient-to-br from-[#F4F1EB]/30 to-white shadow-sm">
-                <span className="text-3xl md:text-5xl font-light text-[#1F2A38]">
+              <div className="w-16 h-16 md:w-28 md:h-28 rounded-full border-2 border-[#C7B299] flex items-center justify-center mb-2 md:mb-3 bg-gradient-to-br from-[#F4F1EB]/30 to-white shadow-sm">
+                <span className="text-2xl md:text-5xl font-light text-[#1F2A38]">
                   {String(item.value).padStart(2, "0")}
                 </span>
               </div>
-              <p className="text-xs md:text-sm text-[#8C5A38] uppercase tracking-widest">
+              <p className="text-[10px] md:text-sm text-[#8C5A38] uppercase tracking-wider md:tracking-widest">
                 {item.label}
               </p>
             </motion.div>
           ))}
         </div>
 
-        <p className="text-[#3A4E6A] text-sm md:text-base tracking-[0.2em] uppercase font-light mb-8">
+        <p className="text-[#3A4E6A] text-xs md:text-base tracking-[0.15em] md:tracking-[0.2em] uppercase font-light mb-6 md:mb-8">
           7 de Diciembre, 2025
         </p>
 
         {/* Texto de invitación */}
         <div className="max-w-2xl mx-auto px-4">
-          <p className="text-[#8C5A38] text-sm md:text-base leading-relaxed text-center font-light">
+          <p className="text-[#8C5A38] text-xs md:text-base leading-relaxed text-center font-light">
             Con la bendición de Dios y en compañía de nuestros padres, queremos invitarlos a que compartan con nosotros el momento más importante de nuestras vidas.
           </p>
         </div>
