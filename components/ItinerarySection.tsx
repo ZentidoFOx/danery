@@ -30,19 +30,19 @@ export default function ItinerarySection() {
     {
       time: "7:00 PM",
       title: "Comida",
-      description: "",
+      description: "Iglesia Tricities, 221 S Benton St, Kennewick",
       icon: UtensilsCrossed,
     },
     {
       time: "8:00 PM",
       title: "Baile de novios",
-      description: "",
+      description: "Iglesia Tricities, 221 S Benton St, Kennewick",
       icon: Users,
     },
     {
       time: "9:00 PM",
       title: "Send off",
-      description: "",
+      description: "Iglesia Tricities, 221 S Benton St, Kennewick",
       icon: Sparkles,
     },
   ];
@@ -104,14 +104,12 @@ export default function ItinerarySection() {
 
                   {/* Contenido */}
                   <div className="flex-1">
-                    <h3 className="text-[#1F2A38] text-base sm:text-lg md:text-2xl font-light">
+                    <h3 className="text-[#1F2A38] text-base sm:text-lg md:text-2xl font-light mb-1 md:mb-2">
                       {event.title}
                     </h3>
-                    {event.description && (
-                      <p className="text-[#8C8C8C] text-xs sm:text-sm md:text-base font-light leading-relaxed mt-1 md:mt-2">
-                        {event.description}
-                      </p>
-                    )}
+                    <p className="text-[#8C8C8C] text-xs sm:text-sm md:text-base font-light leading-relaxed">
+                      {event.description}
+                    </p>
                   </div>
                 </motion.div>
               );
