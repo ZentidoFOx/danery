@@ -34,8 +34,32 @@ export default function HeroSection() {
       }
     };
 
+    // Confetti automático cada 15 segundos
+    const confettiInterval = setInterval(() => {
+      confetti({
+        particleCount: mobile ? 30 : 60,
+        spread: mobile ? 60 : 100,
+        origin: { y: 0.6 },
+        colors: CONFETTI_COLORS,
+      });
+    }, 15000);
+
+    // Confetti inicial después de 2 segundos
+    const initialConfetti = setTimeout(() => {
+      confetti({
+        particleCount: mobile ? 50 : 100,
+        spread: mobile ? 70 : 120,
+        origin: { y: 0.6 },
+        colors: CONFETTI_COLORS,
+      });
+    }, 2000);
+
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearInterval(confettiInterval);
+      clearTimeout(initialConfetti);
+    };
   }, [isMobile]);
 
   return (
