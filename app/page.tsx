@@ -13,13 +13,14 @@ export default function Home() {
     <main className="min-h-screen">
       <HeroSection />
       <CountdownSectionImproved />
-     {/* <ParentsSection /> 
+      <ParentsSection />
       <ReceptionSection />
       <ItinerarySection />
       <DressCodeSection />
-      <RSVPSection />
+      {/* <RSVPSection />
       <GallerySection />
-      <RegistrySection />*/}
+      <RegistrySection /> */}
+    
     </main>
   );
 }

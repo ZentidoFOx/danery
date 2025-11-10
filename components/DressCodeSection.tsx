@@ -1,8 +1,73 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
-export default function DressCodeSection() {
+export default function DressCodeSectionAlt4() {
+  // Refs para GSAP
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const formalRef = useRef<HTMLParagraphElement>(null);
+  const noKidsRef = useRef<HTMLParagraphElement>(null);
+  const heartRef = useRef<SVGSVGElement>(null);
+
+  // GSAP Animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Pulso en el título
+      if (titleRef.current) {
+        gsap.to(titleRef.current, {
+          scale: 1.03,
+          textShadow: "0 0 20px rgba(212, 181, 160, 0.4)",
+          duration: 2.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+
+      // Efecto de brillo en "Formal"
+      if (formalRef.current) {
+        gsap.to(formalRef.current, {
+          scale: 1.05,
+          textShadow: "0 0 15px rgba(44, 44, 44, 0.3)",
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+
+      // Efecto de brillo en "No Niños"
+      if (noKidsRef.current) {
+        gsap.to(noKidsRef.current, {
+          scale: 1.05,
+          textShadow: "0 0 15px rgba(44, 44, 44, 0.3)",
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 1,
+        });
+      }
+
+      // Pulso en el corazón
+      if (heartRef.current) {
+        gsap.to(heartRef.current, {
+          scale: 1.2,
+          rotation: 10,
+          duration: 1.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -16,57 +81,90 @@ export default function DressCodeSection() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: { duration: 0.6 },
+    },
+  };
+
+  const scaleVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.7 },
     },
   };
 
   return (
     <section className="bg-white py-16 md:py-20 px-4">
       <motion.div
-        className="max-w-xl mx-auto text-center"
+        className="max-w-5xl mx-auto"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        {/* Línea decorativa superior */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <div className="h-px w-full bg-[#C7B299]/40" />
-        </motion.div>
-
-        {/* Vestimenta */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <h3 className="text-[#C7B299] text-sm sm:text-base tracking-[0.3em] uppercase font-light mb-2">
-            Vestimenta
-          </h3>
-          <p className="font-script text-[#1F2A38] text-4xl sm:text-5xl md:text-6xl">
-            formal
+        {/* Header */}
+        <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
+          <p className="text-[#D4B5A0] text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+            DRESS CODE
           </p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-black">
+            Código de Vestimenta
+          </h2>
         </motion.div>
 
-        {/* Separador vertical */}
-        <motion.div variants={itemVariants} className="flex justify-center my-8">
-          <div className="w-px h-12 bg-[#C7B299]/40" />
-        </motion.div>
+        {/* Horizontal layout con divider central */}
+        <div className="flex flex-row items-center justify-center gap-4 md:gap-16">
+          {/* Vestimenta */}
+          <motion.div
+            variants={itemVariants}
+            className="flex-1 text-center md:text-right max-w-[180px] md:max-w-sm"
+          >
+            <div className="inline-block">
+              <h3 className="text-[#D4B5A0] text-xs md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase font-light mb-2 md:mb-4">
+                Vestimenta
+              </h3>
+              <p className="font-script text-[#2C2C2C] text-3xl md:text-6xl lg:text-7xl mb-2 md:mb-4">
+                Formal
+              </p>
+              <div className="w-16 md:w-24 h-px bg-[#D4B5A0]/30 ml-auto"></div>
+            </div>
+          </motion.div>
 
-        {/* Respetuosamente no niños */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <h3 className="text-[#C7B299] text-sm sm:text-base tracking-[0.3em] uppercase font-light mb-2">
-            Respetuosamente
-          </h3>
-          <p className="font-script text-[#1F2A38] text-4xl sm:text-5xl md:text-6xl">
-            no niños
-          </p>
-        </motion.div>
+          {/* Divider vertical con decoración */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col items-center justify-center gap-2 md:gap-3"
+          >
+            <div className="w-px h-12 md:h-20 bg-[#D4B5A0]/30"></div>
+            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-[#D4B5A0]/30 flex items-center justify-center flex-shrink-0">
+              <svg className="w-4 h-4 md:w-6 md:h-6 text-[#D4B5A0]/60 fill-current" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <div className="w-px h-12 md:h-20 bg-[#D4B5A0]/30"></div>
+          </motion.div>
 
-        {/* Línea decorativa inferior */}
-        <motion.div variants={itemVariants} className="mt-10">
-          <div className="h-px w-full bg-[#C7B299]/40" />
-        </motion.div>
+          {/* No Niños */}
+          <motion.div
+            variants={itemVariants}
+            className="flex-1 text-center md:text-left max-w-[180px] md:max-w-sm"
+          >
+            <div className="inline-block">
+              <h3 className="text-[#D4B5A0] text-xs md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase font-light mb-2 md:mb-4">
+                Respetuosamente
+              </h3>
+              <p className="font-script text-[#2C2C2C] text-3xl md:text-6xl lg:text-7xl mb-2 md:mb-4">
+                No Niños
+              </p>
+              <div className="w-16 md:w-24 h-px bg-[#D4B5A0]/30 mr-auto"></div>
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
