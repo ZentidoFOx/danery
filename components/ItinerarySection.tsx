@@ -86,51 +86,39 @@ export default function ItinerarySectionAlt7() {
 
   const events = [
     {
-      time: "2:00 PM",
-      title: "Welcome Drinks",
-      description: "Templo de Santo Domingo de Guzmán",
-      icon: "https://wpocean.com/html/tf/sukun/assets/images/icon/1.svg",
+      time: "4:00 p. m.",
+      title: "Ceremonia",
+      description: "Iglesia Tricities, 221 S Benton St, Kennewick",
+      icon: "/images/ceremony.svg",
     },
     {
-      time: "3:00 PM",
-      title: "Ceremony",
-      description: "Templo de Santo Domingo de Guzmán",
-      icon: "https://wpocean.com/html/tf/sukun/assets/images/icon/2.svg",
+      time: "6:00 p. m.",
+      title: "Recepción",
+      description: "Inicio de la celebración",
+      icon: "/images/reception.png",
     },
     {
-      time: "5:00 PM",
-      title: "Party Photos",
-      description: "En la explanada del Templo Santo",
-      icon: "https://wpocean.com/html/tf/sukun/assets/images/icon/3.svg",
+      time: "7:00 p. m.",
+      title: "Cena y brindis",
+      description: "Disfrutemos juntos",
+      icon: "/images/cena-brindis.svg",
     },
     {
-      time: "7:00 PM",
-      title: "Dinner",
-      description: "Paraje Ojo de Agua, carretera al Tule km 13",
-      icon: "https://wpocean.com/html/tf/sukun/assets/images/icon/5.svg",
+      time: "8:00 p. m.",
+      title: "Primer baile",
+      description: "Nuestro primer baile",
+      icon: "/images/first-dance.svg",
     },
     {
-      time: "9:00 PM",
-      title: "Cake Cutting",
-      description: "Paraje Ojo de Agua, carretera al Tule km 13",
-      icon: "https://wpocean.com/html/tf/sukun/assets/images/icon/6.svg",
-    },
-    {
-      time: "10:00 PM",
-      title: "First Dance",
-      description: "y con los padres",
-      icon: "https://wpocean.com/html/tf/sukun/assets/images/icon/7.svg",
-    },
-    {
-      time: "11:00 PM",
-      title: "Depart",
-      description: "Calle Reforma, esquina con calle Constitución",
-      icon: "https://wpocean.com/html/tf/sukun/assets/images/icon/1.svg",
+      time: "9:00 p. m.",
+      title: "Despedida",
+      description: "Fin de la celebración",
+      icon: "/images/depart.svg",
     },
   ];
 
   return (
-    <section className="bg-white py-16 md:py-20 px-4">
+    <section className="bg-white py-10 px-4">
       <motion.div
         className="max-w-6xl mx-auto"
         initial="hidden"
@@ -153,10 +141,10 @@ export default function ItinerarySectionAlt7() {
             />
           </div>
           <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
-            OUR SCHEDULE
+            NUESTRO HORARIO
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
-            Wedding Timeline
+            Itinerario de la Boda
           </h2>
         </motion.div>
 

@@ -103,13 +103,23 @@ export default function HeroSection() {
 
         {/* Title */}
         <motion.h2 
-          className="mb-6 font-elegant text-white text-base tracking-[0.3em] uppercase font-light drop-shadow-lg"
+          className="mb-3 font-elegant text-white text-base tracking-[0.3em] uppercase font-light drop-shadow-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           ¡NOS CASAMOS!
         </motion.h2>
+
+        {/* Biblical Quote */}
+        <motion.p 
+          className="mb-6 font-elegant text-white/90 text-base md:text-lg font-light drop-shadow-lg tracking-wide italic max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          Mi casa y yo serviremos a Dios. – Josué 24:15
+        </motion.p>
 
         {/* Names */}
         <motion.div 
@@ -171,12 +181,22 @@ export default function HeroSection() {
 
         {/* Location */}
         <motion.p 
-          className="text-white/90 text-base font-light drop-shadow-lg mb-8"
+          className="font-elegant text-white/90 text-2xl md:text-3xl font-light drop-shadow-lg tracking-wide mb-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
         >
           Iglesia Tricities, 221 S Benton St, Kennewick
+        </motion.p>
+
+        {/* Time */}
+        <motion.p 
+          className="font-elegant text-white/90 text-xl md:text-2xl font-light drop-shadow-lg tracking-wide mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.1 }}
+        >
+          4:00 p. m. – 9:00 p. m.
         </motion.p>
 
         {/* Bottom Ornament */}

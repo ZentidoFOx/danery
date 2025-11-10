@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ExternalLink } from "lucide-react";
 
 export default function ReceptionSectionAlt3() {
   // Refs para GSAP
@@ -102,7 +103,7 @@ export default function ReceptionSectionAlt3() {
   });
 
   return (
-    <section className="bg-white py-16 md:py-20 px-4 relative overflow-hidden">
+    <section className="bg-white py-10 px-4 relative overflow-hidden">
       {/* Falling decorative elements - like rain */}
       {[...Array(6)].map((_, i) => (
         <motion.div
@@ -201,19 +202,19 @@ export default function ReceptionSectionAlt3() {
             />
           </div>
           <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
-            OUR WEDDING
+            NUESTRA BODA
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
-            When & Where
+            Cuándo & Dónde
           </h2>
         </motion.div>
 
         {/* Contenedor principal con timeline vertical */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-0 md:gap-16 relative">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-16 relative">
           {/* Timeline line (hidden on mobile) */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-wedding-navy-medium/20 via-wedding-brown-warm/40 to-wedding-navy-medium/20 -translate-x-1/2"></div>
 
-          {/* Ceremonia Religiosa */}
+          {/* Ceremonia Civil - Ubicación */}
           <motion.div 
             variants={itemVariants} 
             className="flex-1 text-center md:text-right mb-12 md:mb-0 relative"
@@ -232,18 +233,8 @@ export default function ReceptionSectionAlt3() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Ceremonia Religiosa
+                Ceremonia Civil
               </motion.h2>
-
-              <motion.p 
-                className="text-wedding-navy-dark text-3xl sm:text-4xl font-light mb-6"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                animate={{ opacity: [1, 0.8, 1] }}
-                transition={{ duration: 0.6, delay: 0.2, opacity: { duration: 2, repeat: Infinity } }}
-              >
-                4:00 PM
-              </motion.p>
 
               <motion.h3 
                 className="font-script text-wedding-brown-warm text-3xl sm:text-4xl md:text-5xl mb-5 leading-tight"
@@ -267,15 +258,16 @@ export default function ReceptionSectionAlt3() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Ver Ubicación
+                Ver mapa completo
               </motion.a>
             </div>
           </motion.div>
 
-          {/* Recepción */}
+          {/* Mapa de Ubicación */}
           <motion.div 
             variants={itemVariants} 
             className="flex-1 text-center md:text-left relative"
+            style={{ height: '300px' }}
           >
             {/* Timeline dot */}
             <motion.div 
@@ -284,49 +276,46 @@ export default function ReceptionSectionAlt3() {
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             ></motion.div>
             
-            <div className="bg-gradient-to-bl from-white to-wedding-navy-medium/5 p-8 rounded-2xl border border-wedding-beige-light/15 shadow-lg shadow-wedding-navy-medium/10">
+            <div className="bg-gradient-to-bl from-white to-wedding-navy-medium/5 p-4 rounded-2xl border border-wedding-beige-light/15 shadow-lg shadow-wedding-navy-medium/10 h-full flex flex-col">
               <motion.h2 
-                className="text-wedding-brown-warm text-sm sm:text-base tracking-[0.4em] uppercase font-light mb-4"
+                className="text-wedding-brown-warm text-sm sm:text-base tracking-[0.4em] uppercase font-light mb-3"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Recepción
+                Cómo Llegar
               </motion.h2>
 
-              <motion.p 
-                className="text-wedding-navy-dark text-3xl sm:text-4xl font-light mb-6"
-                initial={{ opacity: 0, scale: 0.8 }}
+              <motion.div 
+                className="w-full flex-1 rounded-lg overflow-hidden border-2 border-wedding-beige-light/20 relative"
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                animate={{ opacity: [1, 0.8, 1] }}
-                transition={{ duration: 0.6, delay: 0.2, opacity: { duration: 2, repeat: Infinity, delay: 0.5 } }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
-                6:00 PM
-              </motion.p>
-
-              <motion.h3 
-                className="font-script text-wedding-brown-warm text-3xl sm:text-4xl md:text-5xl mb-5 leading-tight"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                Iglesia Tricidades
-              </motion.h3>
-
-              <p className="text-wedding-navy-dark text-base sm:text-lg font-light mb-8 leading-relaxed">
-                221 S Benton St, Kennewick
-              </p>
-
-              <motion.a
-                href="https://maps.google.com/?q=Iglesia+Tricidades+221+S+Benton+St+Kennewick"
-                rel="noopener noreferrer"
-                className="inline-block w-full md:w-auto text-center bg-wedding-navy-medium hover:bg-wedding-navy-dark text-white text-sm sm:text-base tracking-[0.2em] uppercase px-12 py-4 transition-all duration-300 shadow-md shadow-wedding-navy-medium/30 hover:shadow-lg hover:shadow-wedding-navy-medium/40"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Ver Ubicación
-              </motion.a>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.6753448372846!2d-119.13937!3d46.20819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54990c5f5c8b3e75%3A0x8e4e8e8e8e8e8e8e!2s221%20S%20Benton%20St%2C%20Kennewick%2C%20WA%2099336!5e0!3m2!1sen!2sus!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación de la ceremonia"
+                ></iframe>
+                
+                {/* Icono de enlace en la esquina superior derecha */}
+                <motion.a
+                  href="https://www.google.com/maps/dir/?api=1&destination=221+S+Benton+St,+Kennewick,+WA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-3 right-3 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-wedding-navy-medium transition-all duration-300 z-10 group"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="Abrir en Google Maps"
+                >
+                  <ExternalLink size={18} className="text-wedding-navy-medium group-hover:text-white" />
+                </motion.a>
+              </motion.div>
             </div>
           </motion.div>
         </div>

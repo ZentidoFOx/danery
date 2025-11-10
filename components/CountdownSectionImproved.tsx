@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 export default function CountdownSectionImproved() {
   const [timeLeft, setTimeLeft] = useState({
@@ -106,24 +105,16 @@ export default function CountdownSectionImproved() {
                 delay: index * 0.2,
               }}
             >
-              <div className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 flex flex-col items-center justify-center min-w-[80px] md:min-w-[140px]">
-                <Image
-                  src="https://wpocean.com/html/tf/habibi/assets/images/date-bg.png"
-                  alt="Background"
-                  fill
-                  className="object-cover"
-                />
-                <div className="relative z-10 flex flex-col items-center -mt-2" style={{ marginLeft: '2.5rem' }}>
-                  <span 
-                    className="text-4xl md:text-7xl font-serif text-wedding-navy-medium leading-none mb-1 md:mb-2 drop-shadow-sm"
-                    key={item.value}
-                  >
-                    {String(item.value).padStart(2, "0")}
-                  </span>
-                  <p className="text-sm md:text-lg text-wedding-brown-warm font-sans capitalize">
-                    {item.label}
-                  </p>
-                </div>
+              <div className="flex flex-col items-center justify-center">
+                <span 
+                  className="text-5xl md:text-7xl font-serif text-wedding-navy-medium leading-none mb-2 md:mb-3 drop-shadow-sm"
+                  key={item.value}
+                >
+                  {String(item.value).padStart(2, "0")}
+                </span>
+                <p className="text-sm md:text-lg text-wedding-brown-warm font-sans capitalize tracking-wider">
+                  {item.label}
+                </p>
               </div>
             </motion.div>
           ))}

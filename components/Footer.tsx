@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Heart, Code } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -18,15 +19,24 @@ export default function Footer() {
           <p className="text-wedding-brown-warm font-script text-2xl md:text-3xl mb-2">
             ¡Gracias por ser parte de nuestra historia!
           </p>
-          <div className="flex items-center justify-center gap-2 text-wedding-navy-dark/60 text-sm">
-            <motion.div
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Heart size={16} className="text-wedding-brown-warm fill-wedding-brown-warm" />
-            </motion.div>
-            <p className="font-light">Danery & Jesús</p>
-          </div>
+          <motion.div 
+            className="flex items-center justify-center"
+            whileHover={{ scale: 1.05 }}
+            animate={{ rotate: [0, 2, -2, 0] }}
+            transition={{ 
+              rotate: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+              scale: { duration: 0.3 }
+            }}
+          >
+            <div className="relative w-48 h-48 md:w-64 md:h-64">
+              <Image
+                src="/images/sello.png"
+                alt="Sello Danery & Jesús"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Divider */}

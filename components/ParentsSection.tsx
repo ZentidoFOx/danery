@@ -247,7 +247,7 @@ export default function ParentsSectionAlt5() {
         {/* Título decorativo */}
         <motion.div 
           variants={itemVariants}
-          className="mb-12 md:mb-16 flex flex-col items-center text-center"
+          className="mb-2 flex flex-col items-center text-center"
         >
           <div className="relative w-40 h-28 md:w-56 md:h-36 lg:w-72 lg:h-44 mb-5">
             <Image

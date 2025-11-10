@@ -8,8 +8,8 @@ import gsap from "gsap";
 export default function DressCodeSectionAlt4() {
   // Refs para GSAP
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const formalRef = useRef<HTMLParagraphElement>(null);
-  const noKidsRef = useRef<HTMLParagraphElement>(null);
+  const dressCodeRef = useRef<HTMLParagraphElement>(null);
+  const paletteRef = useRef<HTMLParagraphElement>(null);
   const heartRef = useRef<SVGSVGElement>(null);
 
   // GSAP Animations
@@ -27,9 +27,9 @@ export default function DressCodeSectionAlt4() {
         });
       }
 
-      // Efecto de brillo en "Formal"
-      if (formalRef.current) {
-        gsap.to(formalRef.current, {
+      // Efecto de brillo en "Sunday's Best"
+      if (dressCodeRef.current) {
+        gsap.to(dressCodeRef.current, {
           scale: 1.05,
           textShadow: "0 0 15px rgba(44, 44, 44, 0.3)",
           duration: 2,
@@ -39,9 +39,9 @@ export default function DressCodeSectionAlt4() {
         });
       }
 
-      // Efecto de brillo en "No Niños"
-      if (noKidsRef.current) {
-        gsap.to(noKidsRef.current, {
+      // Efecto de brillo en "Paleta"
+      if (paletteRef.current) {
+        gsap.to(paletteRef.current, {
           scale: 1.05,
           textShadow: "0 0 15px rgba(44, 44, 44, 0.3)",
           duration: 2,
@@ -110,10 +110,10 @@ export default function DressCodeSectionAlt4() {
         {/* Header */}
         <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
           <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
-            DRESS CODE
+            CÓDIGO DE VESTIMENTA
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
-            Código de Vestimenta
+            Vestimenta y Paleta
           </h2>
         </motion.div>
 
@@ -122,19 +122,20 @@ export default function DressCodeSectionAlt4() {
           {/* Vestimenta */}
           <motion.div
             variants={itemVariants}
-            className="flex-1 text-center md:text-right max-w-[180px] md:max-w-sm"
+            className="flex-1 text-center md:text-right max-w-[220px] md:max-w-sm"
           >
             <div className="inline-block shadow-md shadow-wedding-navy-medium/5 rounded-2xl p-4 bg-white/50">
               <h3 className="text-wedding-beige-light text-xs md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase font-light mb-2 md:mb-4">
                 Vestimenta
               </h3>
               <motion.p 
-                className="font-script text-wedding-navy-dark text-3xl md:text-6xl lg:text-7xl mb-2 md:mb-4"
+                ref={dressCodeRef}
+                className="font-script text-wedding-navy-dark text-2xl md:text-5xl lg:text-6xl mb-2 md:mb-4 leading-tight"
                 whileHover={{ scale: 1.1, color: "#344A6C" }}
                 animate={{ scale: [1, 1.02, 1] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                Formal
+                Lo Mejor del Domingo
               </motion.p>
               <div className="w-16 md:w-24 h-px bg-wedding-beige-light/30 ml-auto"></div>
             </div>
@@ -166,22 +167,23 @@ export default function DressCodeSectionAlt4() {
             ></motion.div>
           </motion.div>
 
-          {/* No Niños */}
+          {/* Paleta de Colores */}
           <motion.div
             variants={itemVariants}
-            className="flex-1 text-center md:text-left max-w-[180px] md:max-w-sm"
+            className="flex-1 text-center md:text-left max-w-[220px] md:max-w-sm"
           >
             <div className="inline-block shadow-md shadow-wedding-navy-medium/5 rounded-2xl p-4 bg-white/50">
               <h3 className="text-wedding-beige-light text-xs md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase font-light mb-2 md:mb-4">
-                Respetuosamente
+                Paleta de Colores
               </h3>
               <motion.p 
-                className="font-script text-wedding-navy-dark text-3xl md:text-6xl lg:text-7xl mb-2 md:mb-4"
+                ref={paletteRef}
+                className="font-script text-wedding-navy-dark text-2xl md:text-5xl lg:text-6xl mb-2 md:mb-4 leading-tight"
                 whileHover={{ scale: 1.1, color: "#344A6C" }}
                 animate={{ scale: [1, 1.02, 1] }}
                 transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
               >
-                No Niños
+                Paleta Azul Suave
               </motion.p>
               <div className="w-16 md:w-24 h-px bg-wedding-beige-light/30 mr-auto"></div>
             </div>
