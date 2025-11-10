@@ -30,6 +30,9 @@ export default function HeroSection() {
   };
 
   useEffect(() => {
+    // Verificar que estamos en el cliente
+    if (typeof window === 'undefined') return;
+    
     const mobile = window.innerWidth < 768;
     setIsMobile(mobile);
     
