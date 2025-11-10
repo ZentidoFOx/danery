@@ -95,7 +95,7 @@ export default function RegistrySection1() {
             />
           </div>
           <p className="text-[#D4B5A0] text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light mb-2 md:mb-4">M E S A  D E  R E G A L O S</p>
-          <h2 ref={titleRef} className="text-2xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C] mb-2 md:mb-4">Tu Presencia es Nuestro Regalo</h2>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C] mb-2 md:mb-4">Tu Presencia es Nuestro Regalo</h2>
         </motion.div>
 
         {/* Horizontal Card */}
