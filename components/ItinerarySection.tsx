@@ -152,10 +152,10 @@ export default function ItinerarySectionAlt7() {
               unoptimized
             />
           </div>
-          <p className="text-[#D4B5A0] text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
             OUR SCHEDULE
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-black">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
             Wedding Timeline
           </h2>
         </motion.div>
@@ -167,10 +167,31 @@ export default function ItinerarySectionAlt7() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="flex items-start md:items-center justify-center gap-3 md:gap-10"
+                className="flex items-center gap-3 md:gap-6"
               >
                 {/* Icon */}
-                <div className="flex-shrink-0 w-10 h-10 md:w-16 md:h-16 relative">
+                <motion.div 
+                  className="flex-shrink-0 w-10 h-10 md:w-16 md:h-16 relative"
+                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  animate={{ 
+                    y: [0, -8, 0],
+                    rotate: [0, 5, -5, 0]
+                  }}
+                  transition={{
+                    y: {
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.3
+                    },
+                    rotate: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.3
+                    }
+                  }}
+                >
                   <Image
                     src={event.icon}
                     alt={event.title}
@@ -178,33 +199,101 @@ export default function ItinerarySectionAlt7() {
                     className="object-contain opacity-50"
                     unoptimized
                   />
-                </div>
+                </motion.div>
 
                 {/* Time */}
-                <div className="flex-shrink-0 w-20 md:w-28 pt-0 md:pt-1">
-                  <p className="text-base md:text-xl text-[#6B7C68] font-light">
+                <div className="flex-shrink-0 w-20 md:w-28">
+                  <p className="text-base md:text-xl text-wedding-brown-warm font-light">
                     {event.time}
                   </p>
                 </div>
 
                 {/* Decorative vertical divider with heart */}
-                <div className="flex-shrink-0 flex flex-col items-center h-full self-stretch py-0 md:py-1">
-                  <div className="w-px h-4 md:h-8 bg-[#D4B5A0]/30"></div>
-                  <svg className="w-3 h-3 md:w-4 md:h-4 text-[#D4B5A0]/60 fill-current flex-shrink-0" viewBox="0 0 24 24">
+                <div className="flex-shrink-0 flex flex-col items-center h-full self-stretch">
+                  <motion.div 
+                    className="h-4 md:h-8 bg-gradient-to-b from-transparent via-wedding-brown-warm/30 to-wedding-brown-warm/60"
+                    style={{ width: '1px' }}
+                    animate={{ 
+                      scaleY: [1, 1.2, 1],
+                      opacity: [0.5, 0.8, 0.5]
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.4
+                    }}
+                  ></motion.div>
+                  <motion.svg 
+                    className="w-3 h-3 md:w-4 md:h-4 text-wedding-beige-light/60 fill-current" 
+                    viewBox="0 0 24 24"
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.4
+                    }}
+                  >
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
-                  <div className="w-px flex-1 min-h-[25px] md:min-h-[40px] bg-[#D4B5A0]/30"></div>
+                  </motion.svg>
+                  <motion.div 
+                    className="flex-1 min-h-[25px] md:min-h-[40px] bg-gradient-to-b from-wedding-brown-warm/60 via-wedding-brown-warm/40 to-transparent"
+                    style={{ width: '1px' }}
+                    animate={{ 
+                      scaleY: [1, 1.2, 1],
+                      opacity: [0.5, 0.8, 0.5]
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.4 + 0.3
+                    }}
+                  ></motion.div>
                 </div>
 
                 {/* Content with description */}
-                <div className="flex-1 pt-0 md:pt-1 text-left">
-                  <h3 className="text-lg md:text-3xl font-script text-[#2C2C2C] mb-1 md:mb-2">
+                <motion.div 
+                  className="flex-1 text-left"
+                  whileHover={{ x: 10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.h3 
+                    className="text-2xl md:text-3xl font-script text-wedding-navy-dark mb-1 md:mb-2"
+                    animate={{ 
+                      opacity: [0.8, 1, 0.8]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.5
+                    }}
+                  >
                     {event.title}
-                  </h3>
-                  <p className="text-sm md:text-lg text-[#6B7C68]/70 font-light leading-snug">
+                  </motion.h3>
+                  <motion.p 
+                    className="text-base md:text-lg text-wedding-brown-warm/70 font-light leading-snug"
+                    initial={{ opacity: 0.6 }}
+                    whileHover={{ opacity: 1 }}
+                    animate={{ 
+                      x: [0, 3, 0]
+                    }}
+                    transition={{
+                      x: {
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.5 + 0.5
+                      }
+                    }}
+                  >
                     {event.description}
-                  </p>
-                </div>
+                  </motion.p>
+                </motion.div>
               </motion.div>
             ))}
           </div>

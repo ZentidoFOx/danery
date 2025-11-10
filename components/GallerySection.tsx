@@ -116,10 +116,10 @@ export default function GallerySection() {
   return (
     <section className="bg-white py-10 relative overflow-hidden">
       {/* Corner frames */}
-      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-[#5a6f4c]/10 rounded-tl-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-[#5a6f4c]/10 rounded-tr-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-[#5a6f4c]/10 rounded-bl-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-[#5a6f4c]/10 rounded-br-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-wedding-navy-medium/15 rounded-tl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-wedding-navy-medium/15 rounded-tr-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-wedding-navy-medium/15 rounded-bl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-wedding-navy-medium/15 rounded-br-3xl"></div>
 
       {/* Floating decorations */}
       <motion.div
@@ -156,13 +156,13 @@ export default function GallerySection() {
               unoptimized
             />
           </div>
-          <p className="text-[#D4B5A0] text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">G A L E R Í A</p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C]">Nuestros Momentos</h2>
+          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">G A L E R Í A</p>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">Nuestros Momentos</h2>
         </motion.div>
 
         {/* Slider */}
         <motion.div variants={itemVariants} className="relative md:max-w-7xl md:mx-auto md:px-4">
-          <div className="relative h-[400px] md:h-[500px] lg:h-[600px] md:rounded-3xl overflow-hidden md:border-2 border-[#5a6f4c]/15 bg-gradient-to-br from-white to-[#F5F1E8]/20">
+          <div className="relative h-[400px] md:h-[500px] lg:h-[600px] md:rounded-3xl overflow-hidden md:border-2 border-wedding-navy-medium/15 bg-gradient-to-br from-white to-wedding-white-soft/20 shadow-2xl shadow-wedding-navy-medium/15">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -200,25 +200,43 @@ export default function GallerySection() {
             </AnimatePresence>
 
             {/* Navigation Buttons */}
-            <button
+            <motion.button
               onClick={() => paginate(-1)}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.2, rotate: -10 }}
+              whileTap={{ scale: 0.9 }}
+              animate={{ x: [-2, 2, -2] }}
+              transition={{ x: { duration: 2, repeat: Infinity } }}
             >
-              <ChevronLeft size={24} className="text-[#5a6f4c]" />
-            </button>
-            <button
+              <ChevronLeft size={24} className="text-wedding-brown-warm" />
+            </motion.button>
+            <motion.button
               onClick={() => paginate(1)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.2, rotate: 10 }}
+              whileTap={{ scale: 0.9 }}
+              animate={{ x: [2, -2, 2] }}
+              transition={{ x: { duration: 2, repeat: Infinity } }}
             >
-              <ChevronRight size={24} className="text-[#5a6f4c]" />
-            </button>
+              <ChevronRight size={24} className="text-wedding-brown-warm" />
+            </motion.button>
 
             {/* Counter */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
-              <p className="text-[#5a6f4c] text-sm font-light">
+            <motion.div 
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              key={currentIndex}
+            >
+              <motion.p 
+                className="text-wedding-brown-warm text-sm font-light"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 0.3 }}
+                key={currentIndex}
+              >
                 {currentIndex + 1} / {images.length}
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </div>
 
           {/* Dots Indicator */}
@@ -232,8 +250,8 @@ export default function GallerySection() {
                 }}
                 className={`transition-all duration-300 rounded-full ${
                   index === currentIndex
-                    ? "w-8 h-2 bg-[#5a6f4c]"
-                    : "w-2 h-2 bg-[#5a6f4c]/30 hover:bg-[#5a6f4c]/50"
+                    ? "w-8 h-2 bg-wedding-brown-warm"
+                    : "w-2 h-2 bg-wedding-brown-warm/30 hover:bg-wedding-brown-warm/50"
                 }`}
               />
             ))}
@@ -251,8 +269,8 @@ export default function GallerySection() {
               }}
               className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300 ${
                 index === currentIndex
-                  ? "border-[#5a6f4c] scale-105"
-                  : "border-[#5a6f4c]/20 hover:border-[#5a6f4c]/50"
+                  ? "border-wedding-brown-warm scale-105 shadow-lg shadow-wedding-navy-medium/20"
+                  : "border-wedding-navy-medium/20 hover:border-wedding-brown-warm/50 shadow-md shadow-wedding-navy-medium/10"
               }`}
             >
               <Image
@@ -262,7 +280,7 @@ export default function GallerySection() {
                 className="object-cover"
               />
               {index === currentIndex && (
-                <div className="absolute inset-0 bg-[#5a6f4c]/20 flex items-center justify-center">
+                <div className="absolute inset-0 bg-wedding-brown-warm/20 flex items-center justify-center">
                   <Heart size={20} className="text-white fill-white" />
                 </div>
               )}

@@ -109,10 +109,10 @@ export default function DressCodeSectionAlt4() {
       >
         {/* Header */}
         <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-          <p className="text-[#D4B5A0] text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
             DRESS CODE
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-black">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
             Código de Vestimenta
           </h2>
         </motion.div>
@@ -124,14 +124,19 @@ export default function DressCodeSectionAlt4() {
             variants={itemVariants}
             className="flex-1 text-center md:text-right max-w-[180px] md:max-w-sm"
           >
-            <div className="inline-block">
-              <h3 className="text-[#D4B5A0] text-xs md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase font-light mb-2 md:mb-4">
+            <div className="inline-block shadow-md shadow-wedding-navy-medium/5 rounded-2xl p-4 bg-white/50">
+              <h3 className="text-wedding-beige-light text-xs md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase font-light mb-2 md:mb-4">
                 Vestimenta
               </h3>
-              <p className="font-script text-[#2C2C2C] text-3xl md:text-6xl lg:text-7xl mb-2 md:mb-4">
+              <motion.p 
+                className="font-script text-wedding-navy-dark text-3xl md:text-6xl lg:text-7xl mb-2 md:mb-4"
+                whileHover={{ scale: 1.1, color: "#344A6C" }}
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
                 Formal
-              </p>
-              <div className="w-16 md:w-24 h-px bg-[#D4B5A0]/30 ml-auto"></div>
+              </motion.p>
+              <div className="w-16 md:w-24 h-px bg-wedding-beige-light/30 ml-auto"></div>
             </div>
           </motion.div>
 
@@ -140,13 +145,25 @@ export default function DressCodeSectionAlt4() {
             variants={itemVariants}
             className="flex flex-col items-center justify-center gap-2 md:gap-3"
           >
-            <div className="w-px h-12 md:h-20 bg-[#D4B5A0]/30"></div>
-            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-[#D4B5A0]/30 flex items-center justify-center flex-shrink-0">
-              <svg className="w-4 h-4 md:w-6 md:h-6 text-[#D4B5A0]/60 fill-current" viewBox="0 0 24 24">
+            <motion.div 
+              className="w-px h-12 md:h-20 bg-wedding-beige-light/30"
+              animate={{ scaleY: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            ></motion.div>
+            <motion.div 
+              className="w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-wedding-beige-light/30 flex items-center justify-center flex-shrink-0"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <svg className="w-4 h-4 md:w-6 md:h-6 text-wedding-brown-warm fill-current" viewBox="0 0 24 24">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
-            </div>
-            <div className="w-px h-12 md:h-20 bg-[#D4B5A0]/30"></div>
+            </motion.div>
+            <motion.div 
+              className="w-px h-12 md:h-20 bg-wedding-beige-light/30"
+              animate={{ scaleY: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            ></motion.div>
           </motion.div>
 
           {/* No Niños */}
@@ -154,14 +171,19 @@ export default function DressCodeSectionAlt4() {
             variants={itemVariants}
             className="flex-1 text-center md:text-left max-w-[180px] md:max-w-sm"
           >
-            <div className="inline-block">
-              <h3 className="text-[#D4B5A0] text-xs md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase font-light mb-2 md:mb-4">
+            <div className="inline-block shadow-md shadow-wedding-navy-medium/5 rounded-2xl p-4 bg-white/50">
+              <h3 className="text-wedding-beige-light text-xs md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase font-light mb-2 md:mb-4">
                 Respetuosamente
               </h3>
-              <p className="font-script text-[#2C2C2C] text-3xl md:text-6xl lg:text-7xl mb-2 md:mb-4">
+              <motion.p 
+                className="font-script text-wedding-navy-dark text-3xl md:text-6xl lg:text-7xl mb-2 md:mb-4"
+                whileHover={{ scale: 1.1, color: "#344A6C" }}
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+              >
                 No Niños
-              </p>
-              <div className="w-16 md:w-24 h-px bg-[#D4B5A0]/30 mr-auto"></div>
+              </motion.p>
+              <div className="w-16 md:w-24 h-px bg-wedding-beige-light/30 mr-auto"></div>
             </div>
           </motion.div>
         </div>

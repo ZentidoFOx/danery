@@ -81,10 +81,10 @@ export default function RSVPSection3() {
   return (
     <section className="bg-white py-10 px-4 relative overflow-hidden">
       {/* Corner frames */}
-      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-[#5a6f4c]/10 rounded-tl-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-[#5a6f4c]/10 rounded-tr-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-[#5a6f4c]/10 rounded-bl-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-[#5a6f4c]/10 rounded-br-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-wedding-navy-medium/15 rounded-tl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-wedding-navy-medium/15 rounded-tr-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-wedding-navy-medium/15 rounded-bl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-wedding-navy-medium/15 rounded-br-3xl"></div>
 
       <motion.div
         className="max-w-5xl mx-auto relative z-10"
@@ -104,20 +104,25 @@ export default function RSVPSection3() {
               unoptimized
             />
           </div>
-          <p className="text-[#D4B5A0] text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">R S V P</p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C]">Confirma tu Asistencia</h2>
+          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">R S V P</p>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">Confirma tu Asistencia</h2>
         </motion.div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Nombre y Apellido en Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Nombre Card */}
             <motion.div variants={itemVariants} className="relative group">
-              <div className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-[#5a6f4c]/20 flex items-center gap-2 z-10">
-                <User size={16} className="text-[#5a6f4c]" />
-                <span className="text-[#5a6f4c] text-xs uppercase tracking-wider font-light">Nombre</span>
-              </div>
-              <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-[#F5F1E8]/30 border-2 border-[#5a6f4c]/15 rounded-2xl group-hover:border-[#5a6f4c]/30 transition-all">
+              <motion.div 
+                className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-wedding-navy-medium/30 flex items-center gap-2 z-10"
+                initial={{ y: -20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <User size={16} className="text-wedding-navy-medium" />
+                <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Nombre</span>
+              </motion.div>
+              <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-wedding-white-soft/30 border-2 border-wedding-navy-medium/20 rounded-2xl group-hover:border-wedding-navy-medium/50 transition-all shadow-md shadow-wedding-navy-medium/10">
                 <input
                   type="text"
                   name="firstName"
@@ -125,18 +130,24 @@ export default function RSVPSection3() {
                   value={formData.firstName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white border border-[#5a6f4c]/20 rounded-lg text-[#2C2C2C] placeholder-[#8C8C8C] text-sm focus:border-[#5a6f4c]/50 focus:ring-2 focus:ring-[#5a6f4c]/10 outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-wedding-navy-medium/20 rounded-lg text-wedding-navy-dark placeholder-wedding-navy-medium/40 text-sm focus:border-wedding-navy-medium focus:ring-2 focus:ring-wedding-navy-medium/20 outline-none transition-all"
                 />
               </div>
             </motion.div>
 
             {/* Apellido Card */}
             <motion.div variants={itemVariants} className="relative group">
-              <div className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-[#5a6f4c]/20 flex items-center gap-2 z-10">
-                <Users size={16} className="text-[#5a6f4c]" />
-                <span className="text-[#5a6f4c] text-xs uppercase tracking-wider font-light">Apellido</span>
-              </div>
-              <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-[#F5F1E8]/30 border-2 border-[#5a6f4c]/15 rounded-2xl group-hover:border-[#5a6f4c]/30 transition-all">
+              <motion.div 
+                className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-wedding-navy-medium/30 flex items-center gap-2 z-10"
+                initial={{ y: -20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Users size={16} className="text-wedding-navy-medium" />
+                <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Apellido</span>
+              </motion.div>
+              <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-wedding-white-soft/30 border-2 border-wedding-navy-medium/20 rounded-2xl group-hover:border-wedding-navy-medium/50 transition-all shadow-md shadow-wedding-navy-medium/10">
                 <input
                   type="text"
                   name="lastName"
@@ -144,7 +155,7 @@ export default function RSVPSection3() {
                   value={formData.lastName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white border border-[#5a6f4c]/20 rounded-lg text-[#2C2C2C] placeholder-[#8C8C8C] text-sm focus:border-[#5a6f4c]/50 focus:ring-2 focus:ring-[#5a6f4c]/10 outline-none transition-all"
+                  className="w-full px-4 py-3 bg-white border border-wedding-navy-medium/20 rounded-lg text-wedding-navy-dark placeholder-wedding-navy-medium/40 text-sm focus:border-wedding-navy-medium focus:ring-2 focus:ring-wedding-navy-medium/20 outline-none transition-all"
                 />
               </div>
             </motion.div>
@@ -152,19 +163,25 @@ export default function RSVPSection3() {
 
           {/* Asistencia Card */}
           <motion.div variants={itemVariants} className="relative group">
-            <div className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-[#5a6f4c]/20 flex items-center gap-2 z-10">
-              <CheckCircle size={16} className="text-[#5a6f4c]" />
-              <span className="text-[#5a6f4c] text-xs uppercase tracking-wider font-light">Confirmación</span>
-            </div>
-            <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-[#F5F1E8]/30 border-2 border-[#5a6f4c]/15 rounded-2xl group-hover:border-[#5a6f4c]/30 transition-all">
+            <motion.div 
+              className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-wedding-navy-medium/30 flex items-center gap-2 z-10"
+              initial={{ y: -20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <CheckCircle size={16} className="text-wedding-navy-medium" />
+              <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Confirmación</span>
+            </motion.div>
+            <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-wedding-white-soft/30 border-2 border-wedding-navy-medium/20 rounded-2xl group-hover:border-wedding-navy-medium/50 transition-all shadow-md shadow-wedding-navy-medium/10">
               <select
                 name="attending"
                 value={formData.attending}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-white border border-[#5a6f4c]/20 rounded-lg text-[#2C2C2C] text-sm focus:border-[#5a6f4c]/50 focus:ring-2 focus:ring-[#5a6f4c]/10 outline-none appearance-none cursor-pointer transition-all"
+                className="w-full px-4 py-3 bg-white border border-wedding-navy-medium/20 rounded-lg text-wedding-navy-dark text-sm focus:border-wedding-navy-medium focus:ring-2 focus:ring-wedding-navy-medium/20 outline-none appearance-none cursor-pointer transition-all"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%235a6f4c' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                  backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23344A6C' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
                   backgroundPosition: "right 0.75rem center",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "1.5em 1.5em",
@@ -182,7 +199,7 @@ export default function RSVPSection3() {
           <motion.div variants={itemVariants} className="pt-4">
             <motion.button
               type="submit"
-              className="w-full bg-[#5a6f4c] hover:bg-[#4a5f3c] text-white text-sm tracking-[0.2em] uppercase py-4 rounded-xl transition-all duration-300 font-light shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+              className="w-full bg-wedding-navy-medium hover:bg-wedding-navy-dark text-white text-sm tracking-[0.2em] uppercase py-4 rounded-xl transition-all duration-300 font-light shadow-lg shadow-wedding-navy-medium/30 hover:shadow-xl hover:shadow-wedding-navy-medium/40 flex items-center justify-center gap-2"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

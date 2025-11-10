@@ -97,10 +97,10 @@ export default function ParentsSectionAlt5() {
   return (
     <section className="bg-white py-12 md:py-16 px-4 relative overflow-hidden">
       {/* Elegant corner frames */}
-      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-[#5a6f4c]/10 rounded-tl-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-[#5a6f4c]/10 rounded-tr-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-[#5a6f4c]/10 rounded-bl-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-[#5a6f4c]/10 rounded-br-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-wedding-navy-medium/15 rounded-tl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-wedding-navy-medium/15 rounded-tr-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-wedding-navy-medium/15 rounded-bl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-wedding-navy-medium/15 rounded-br-3xl"></div>
 
       {/* Strategic floating decorations */}
       <motion.div
@@ -258,10 +258,10 @@ export default function ParentsSectionAlt5() {
               unoptimized
             />
           </div>
-          <p className="text-[#D4B5A0] text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
             CON LA BENDICIÓN
           </p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-black">
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
             de Dios y nuestros padres
           </h2>
         </motion.div>
@@ -273,9 +273,13 @@ export default function ParentsSectionAlt5() {
             variants={leftVariants} 
             className="flex-1 max-w-md text-center relative group"
           >
-            <div ref={(el) => { cardRefs.current[0] = el; }} className="h-full relative border-2 border-[#5a6f4c]/15 rounded-3xl p-8 bg-gradient-to-b from-white via-white to-[#F5F1E8]/20 hover:border-[#5a6f4c]/30 transition-all duration-500 hover:shadow-xl">
+            <div ref={(el) => { cardRefs.current[0] = el; }} className="h-full relative border-2 border-wedding-navy-medium/15 rounded-3xl p-8 bg-gradient-to-b from-white via-white to-wedding-white-soft/20 hover:border-wedding-brown-warm/30 transition-all duration-500 shadow-lg shadow-wedding-navy-medium/10 hover:shadow-2xl hover:shadow-wedding-navy-medium/20">
               {/* Corner SVG decorations */}
-              <div className="absolute top-4 left-4 w-6 h-6 opacity-30 group-hover:opacity-50 transition-opacity">
+              <motion.div 
+                className="absolute top-4 left-4 w-6 h-6 opacity-30 group-hover:opacity-50 transition-opacity"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
                 <Image
                   src="https://wpocean.com/html/tf/sukun/assets/images/slider/ishape-1.svg"
                   alt=""
@@ -283,7 +287,7 @@ export default function ParentsSectionAlt5() {
                   className="object-contain"
                   unoptimized
                 />
-              </div>
+              </motion.div>
               <div className="absolute top-4 right-4 w-6 h-6 opacity-30 group-hover:opacity-50 transition-opacity">
                 <Image
                   src="https://wpocean.com/html/tf/sukun/assets/images/slider/ishape-2.svg"
@@ -312,13 +316,22 @@ export default function ParentsSectionAlt5() {
                 />
               </div>
 
-              <h3 className="font-script text-[#5a6f4c] text-3xl sm:text-4xl mb-6">
+              <h3 className="font-script text-wedding-brown-warm text-3xl sm:text-4xl mb-6">
                 Padres de la novia
               </h3>
 
               <div className="my-6 flex items-center justify-center gap-2">
-                <div className="w-14 h-px bg-[#5a6f4c]/25"></div>
-                <div className="relative w-4 h-4 opacity-35">
+                <motion.div 
+                  className="w-14 h-px bg-wedding-beige-light/30"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                ></motion.div>
+                <motion.div 
+                  className="relative w-4 h-4 opacity-35"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                >
                   <Image
                     src="https://wpocean.com/html/tf/sukun/assets/images/slider/ishape-3.svg"
                     alt=""
@@ -326,17 +339,34 @@ export default function ParentsSectionAlt5() {
                     className="object-contain"
                     unoptimized
                   />
-                </div>
-                <div className="w-14 h-px bg-[#5a6f4c]/25"></div>
+                </motion.div>
+                <motion.div 
+                  className="w-14 h-px bg-wedding-beige-light/30"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                ></motion.div>
               </div>
 
               <div className="space-y-4">
-                <p className="text-[#2C2C2C] text-lg sm:text-xl font-normal">
+                <motion.p 
+                  className="text-wedding-navy-dark text-lg sm:text-xl font-normal"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  whileHover={{ scale: 1.05, color: "#344A6C" }}
+                >
                   Celina Bautista Méndez
-                </p>
-                <p className="text-[#2C2C2C] text-lg sm:text-xl font-normal">
+                </motion.p>
+                <motion.p 
+                  className="text-wedding-navy-dark text-lg sm:text-xl font-normal"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  whileHover={{ scale: 1.05, color: "#344A6C" }}
+                >
                   Luis Alberto García Díaz
-                </p>
+                </motion.p>
               </div>
             </div>
           </motion.div>
@@ -346,9 +376,13 @@ export default function ParentsSectionAlt5() {
             variants={rightVariants} 
             className="flex-1 max-w-md text-center relative group"
           >
-            <div ref={(el) => { cardRefs.current[1] = el; }} className="h-full relative border-2 border-[#5a6f4c]/15 rounded-3xl p-8 bg-gradient-to-b from-white via-white to-[#F5F1E8]/20 hover:border-[#5a6f4c]/30 transition-all duration-500 hover:shadow-xl">
+            <div ref={(el) => { cardRefs.current[1] = el; }} className="h-full relative border-2 border-wedding-navy-medium/15 rounded-3xl p-8 bg-gradient-to-b from-white via-white to-wedding-white-soft/20 hover:border-wedding-brown-warm/30 transition-all duration-500 shadow-lg shadow-wedding-navy-medium/10 hover:shadow-2xl hover:shadow-wedding-navy-medium/20">
               {/* Corner SVG decorations */}
-              <div className="absolute top-4 left-4 w-6 h-6 opacity-30 group-hover:opacity-50 transition-opacity">
+              <motion.div 
+                className="absolute top-4 left-4 w-6 h-6 opacity-30 group-hover:opacity-50 transition-opacity"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
                 <Image
                   src="https://wpocean.com/html/tf/sukun/assets/images/slider/ishape-5.svg"
                   alt=""
@@ -356,7 +390,7 @@ export default function ParentsSectionAlt5() {
                   className="object-contain"
                   unoptimized
                 />
-              </div>
+              </motion.div>
               <div className="absolute top-4 right-4 w-6 h-6 opacity-30 group-hover:opacity-50 transition-opacity">
                 <Image
                   src="https://wpocean.com/html/tf/sukun/assets/images/slider/ishape-3.svg"
@@ -385,13 +419,22 @@ export default function ParentsSectionAlt5() {
                 />
               </div>
 
-              <h3 className="font-script text-[#5a6f4c] text-3xl sm:text-4xl mb-6">
+              <h3 className="font-script text-wedding-brown-warm text-3xl sm:text-4xl mb-6">
                 Padres del novio
               </h3>
 
               <div className="my-6 flex items-center justify-center gap-2">
-                <div className="w-14 h-px bg-[#5a6f4c]/25"></div>
-                <div className="relative w-4 h-4 opacity-35">
+                <motion.div 
+                  className="w-14 h-px bg-wedding-beige-light/30"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                ></motion.div>
+                <motion.div 
+                  className="relative w-4 h-4 opacity-35"
+                  animate={{ rotate: [0, -360] }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                >
                   <Image
                     src="https://wpocean.com/html/tf/sukun/assets/images/slider/ishape-4.svg"
                     alt=""
@@ -399,17 +442,34 @@ export default function ParentsSectionAlt5() {
                     className="object-contain"
                     unoptimized
                   />
-                </div>
-                <div className="w-14 h-px bg-[#5a6f4c]/25"></div>
+                </motion.div>
+                <motion.div 
+                  className="w-14 h-px bg-wedding-beige-light/30"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                ></motion.div>
               </div>
 
               <div className="space-y-4">
-                <p className="text-[#2C2C2C] text-lg sm:text-xl font-normal">
+                <motion.p 
+                  className="text-wedding-navy-dark text-lg sm:text-xl font-normal"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  whileHover={{ scale: 1.05, color: "#344A6C" }}
+                >
                   Alicia Maribel Carreño Aquino
-                </p>
-                <p className="text-[#2C2C2C] text-lg sm:text-xl font-normal">
+                </motion.p>
+                <motion.p 
+                  className="text-wedding-navy-dark text-lg sm:text-xl font-normal"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  whileHover={{ scale: 1.05, color: "#344A6C" }}
+                >
                   Orlando Aragón Rodríguez
-                </p>
+                </motion.p>
               </div>
             </div>
           </motion.div>

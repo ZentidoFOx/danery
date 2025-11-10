@@ -200,10 +200,10 @@ export default function ReceptionSectionAlt3() {
               unoptimized
             />
           </div>
-          <p className="text-[#D4B5A0] text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
             OUR WEDDING
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-black">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
             When & Where
           </h2>
         </motion.div>
@@ -211,7 +211,7 @@ export default function ReceptionSectionAlt3() {
         {/* Contenedor principal con timeline vertical */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-0 md:gap-16 relative">
           {/* Timeline line (hidden on mobile) */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#5a6f4c]/20 via-[#5a6f4c]/40 to-[#5a6f4c]/20 -translate-x-1/2"></div>
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-wedding-navy-medium/20 via-wedding-brown-warm/40 to-wedding-navy-medium/20 -translate-x-1/2"></div>
 
           {/* Ceremonia Religiosa */}
           <motion.div 
@@ -219,22 +219,43 @@ export default function ReceptionSectionAlt3() {
             className="flex-1 text-center md:text-right mb-12 md:mb-0 relative"
           >
             {/* Timeline dot */}
-            <div className="hidden md:block absolute top-8 -right-[4.5rem] w-4 h-4 bg-[#5a6f4c] rounded-full border-4 border-white shadow-lg"></div>
+            <motion.div 
+              className="hidden md:block absolute top-8 -right-[4.5rem] w-4 h-4 bg-wedding-brown-warm rounded-full border-4 border-white shadow-lg"
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            ></motion.div>
             
-            <div className="bg-gradient-to-br from-white to-[#5a6f4c]/5 p-8 rounded-2xl border border-[#5a6f4c]/10 shadow-sm">
-              <h2 className="text-[#5a6f4c] text-sm sm:text-base tracking-[0.4em] uppercase font-light mb-4">
+            <div className="bg-gradient-to-br from-white to-wedding-navy-medium/5 p-8 rounded-2xl border border-wedding-beige-light/15 shadow-lg shadow-wedding-navy-medium/10">
+              <motion.h2 
+                className="text-wedding-brown-warm text-sm sm:text-base tracking-[0.4em] uppercase font-light mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
                 Ceremonia Religiosa
-              </h2>
+              </motion.h2>
 
-              <p className="text-[#2C2C2C] text-3xl sm:text-4xl font-light mb-6">
+              <motion.p 
+                className="text-wedding-navy-dark text-3xl sm:text-4xl font-light mb-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: [1, 0.8, 1] }}
+                transition={{ duration: 0.6, delay: 0.2, opacity: { duration: 2, repeat: Infinity } }}
+              >
                 4:00 PM
-              </p>
+              </motion.p>
 
-              <h3 className="font-script text-[#5a6f4c] text-3xl sm:text-4xl md:text-5xl mb-5 leading-tight">
+              <motion.h3 
+                className="font-script text-wedding-brown-warm text-3xl sm:text-4xl md:text-5xl mb-5 leading-tight"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                whileHover={{ scale: 1.05 }}
+              >
                 Iglesia Tricities
-              </h3>
+              </motion.h3>
 
-              <p className="text-[#2C2C2C] text-base sm:text-lg font-light mb-8 leading-relaxed">
+              <p className="text-wedding-navy-dark text-base sm:text-lg font-light mb-8 leading-relaxed">
                 221 S Benton St, Kennewick
               </p>
 
@@ -242,7 +263,7 @@ export default function ReceptionSectionAlt3() {
                 href="https://maps.google.com/?q=Iglesia+Tricities+221+S+Benton+St+Kennewick"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block w-full md:w-auto text-center bg-[#5a6f4c] hover:bg-[#4a5f3c] text-white text-sm sm:text-base tracking-[0.2em] uppercase px-12 py-4 transition-all duration-300"
+                className="inline-block w-full md:w-auto text-center bg-wedding-navy-medium hover:bg-wedding-navy-dark text-white text-sm sm:text-base tracking-[0.2em] uppercase px-12 py-4 transition-all duration-300 shadow-md shadow-wedding-navy-medium/30 hover:shadow-lg hover:shadow-wedding-navy-medium/40"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -257,30 +278,50 @@ export default function ReceptionSectionAlt3() {
             className="flex-1 text-center md:text-left relative"
           >
             {/* Timeline dot */}
-            <div className="hidden md:block absolute top-8 -left-[4.5rem] w-4 h-4 bg-[#5a6f4c] rounded-full border-4 border-white shadow-lg"></div>
+            <motion.div 
+              className="hidden md:block absolute top-8 -left-[4.5rem] w-4 h-4 bg-wedding-brown-warm rounded-full border-4 border-white shadow-lg"
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            ></motion.div>
             
-            <div className="bg-gradient-to-bl from-white to-[#5a6f4c]/5 p-8 rounded-2xl border border-[#5a6f4c]/10 shadow-sm">
-              <h2 className="text-[#5a6f4c] text-sm sm:text-base tracking-[0.4em] uppercase font-light mb-4">
+            <div className="bg-gradient-to-bl from-white to-wedding-navy-medium/5 p-8 rounded-2xl border border-wedding-beige-light/15 shadow-lg shadow-wedding-navy-medium/10">
+              <motion.h2 
+                className="text-wedding-brown-warm text-sm sm:text-base tracking-[0.4em] uppercase font-light mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
                 Recepción
-              </h2>
+              </motion.h2>
 
-              <p className="text-[#2C2C2C] text-3xl sm:text-4xl font-light mb-6">
+              <motion.p 
+                className="text-wedding-navy-dark text-3xl sm:text-4xl font-light mb-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: [1, 0.8, 1] }}
+                transition={{ duration: 0.6, delay: 0.2, opacity: { duration: 2, repeat: Infinity, delay: 0.5 } }}
+              >
                 6:00 PM
-              </p>
+              </motion.p>
 
-              <h3 className="font-script text-[#5a6f4c] text-3xl sm:text-4xl md:text-5xl mb-5 leading-tight">
-                Iglesia Tricities
-              </h3>
+              <motion.h3 
+                className="font-script text-wedding-brown-warm text-3xl sm:text-4xl md:text-5xl mb-5 leading-tight"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                Iglesia Tricidades
+              </motion.h3>
 
-              <p className="text-[#2C2C2C] text-base sm:text-lg font-light mb-8 leading-relaxed">
+              <p className="text-wedding-navy-dark text-base sm:text-lg font-light mb-8 leading-relaxed">
                 221 S Benton St, Kennewick
               </p>
 
               <motion.a
-                href="https://maps.google.com/?q=Iglesia+Tricities+221+S+Benton+St+Kennewick"
-                target="_blank"
+                href="https://maps.google.com/?q=Iglesia+Tricidades+221+S+Benton+St+Kennewick"
                 rel="noopener noreferrer"
-                className="inline-block w-full md:w-auto text-center bg-[#5a6f4c] hover:bg-[#4a5f3c] text-white text-sm sm:text-base tracking-[0.2em] uppercase px-12 py-4 transition-all duration-300"
+                className="inline-block w-full md:w-auto text-center bg-wedding-navy-medium hover:bg-wedding-navy-dark text-white text-sm sm:text-base tracking-[0.2em] uppercase px-12 py-4 transition-all duration-300 shadow-md shadow-wedding-navy-medium/30 hover:shadow-lg hover:shadow-wedding-navy-medium/40"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
