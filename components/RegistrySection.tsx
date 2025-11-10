@@ -95,91 +95,227 @@ export default function RegistrySection1() {
             />
           </div>
           <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light mb-2 md:mb-4">M E S A  D E  R E G A L O S</p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium mb-2 md:mb-4">Tu Presencia es Nuestro Regalo</h2>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium mb-3 md:mb-6">Tu Presencia es Nuestro Regalo</h2>
+          <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
+            Nuestro mayor tesoro es celebrar este día junto a ustedes.<br className="hidden md:block" />
+            Si deseas hacernos un regalo, les agradecemos de corazón una contribución a nuestra nueva vida juntos.
+          </p>
         </motion.div>
 
-        {/* Horizontal Card */}
-        <motion.div variants={itemVariants} className="max-w-4xl mx-auto mb-6 md:mb-8">
-          <div className="border-2 border-wedding-navy-medium/15 rounded-2xl md:rounded-3xl p-4 md:p-10 bg-gradient-to-br from-white via-white to-wedding-white-soft/30 shadow-xl shadow-wedding-navy-medium/15">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center">
-              {/* Left: QR Code */}
-              <div className="flex flex-col items-center">
-                <motion.div
-                  whileHover={{ scale: 1.08, rotate: 5 }}
-                  animate={{ 
-                    y: [0, -10, 0],
-                    boxShadow: ["0 10px 20px rgba(52, 74, 108, 0.2)", "0 20px 40px rgba(52, 74, 108, 0.3)", "0 10px 20px rgba(52, 74, 108, 0.2)"]
-                  }}
-                  transition={{ duration: 0.3, y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
-                  className="relative w-48 h-48 md:w-64 md:h-64 rounded-xl md:rounded-2xl overflow-hidden border-2 md:border-4 border-wedding-brown-warm/20 shadow-xl shadow-wedding-navy-medium/20 md:shadow-2xl mb-3 md:mb-4"
-                >
-                  <Image
-                    src="https://cash.app/qr/$Carlitos554?size=288&margin=0&bg=000000&logoColor=ffffff"
-                    alt="Cash App QR Code"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                </motion.div>
-                <div className="flex items-center gap-2 text-wedding-brown-warm">
-                  <QrCode size={16} className="md:w-5 md:h-5" />
-                  <p className="text-xs md:text-sm font-light">Escanea para enviar</p>
+        {/* Payment Methods Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-6 md:mb-8">
+          {/* Cash App */}
+          <motion.div variants={itemVariants}>
+            <div className="border-2 border-wedding-navy-medium/15 rounded-2xl p-6 bg-gradient-to-br from-white via-white to-wedding-white-soft/30 shadow-xl shadow-wedding-navy-medium/15 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-[#00D632] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-2xl">$</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-script text-wedding-navy-dark">Cash App</h3>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-wedding-brown-warm text-xs font-light">USA</p>
+                    <Image
+                      src="https://flagcdn.com/w40/us.png"
+                      alt="USA Flag"
+                      width={16}
+                      height={12}
+                      className="object-contain"
+                      unoptimized
+                    />
+                  </div>
                 </div>
               </div>
 
-              {/* Right: Info */}
-              <div className="space-y-3 md:space-y-6">
-                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-6">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-[#00D632] rounded-lg md:rounded-xl flex items-center justify-center">
-                    <span className="text-white font-bold text-lg md:text-xl">$</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl md:text-3xl font-script text-wedding-navy-dark">Cash App</h3>
-                    <p className="text-wedding-brown-warm text-xs md:text-sm font-light">Envío rápido y seguro</p>
+              {/* QR Code */}
+              <motion.div
+                className="relative w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden border-2 border-wedding-brown-warm/20 shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Image
+                  src="/images/qr.png"
+                  alt="QR Code Cash App"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+
+              <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-3">
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Cashtag</p>
+                <div className="flex items-center justify-between">
+                  <p className="text-wedding-navy-dark font-light text-lg">$Carlitos554</p>
+                  <motion.button
+                    onClick={() => copyToClipboard("$Carlitos554", "cashapp")}
+                    className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    {copiedField === "cashapp" ? (
+                      <Check size={16} className="text-green-600" />
+                    ) : (
+                      <Copy size={16} className="text-wedding-brown-warm" />
+                    )}
+                  </motion.button>
+                </div>
+              </div>
+
+              <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Titular</p>
+                <p className="text-wedding-navy-dark font-light text-sm">Carlos Salvador Borquez Garcia</p>
+              </div>
+
+              <motion.a
+                href="https://cash.app/$Carlitos554"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full bg-[#00D632] hover:bg-[#00C02D] text-white text-sm tracking-wide uppercase py-3 rounded-xl transition-all duration-300 font-light shadow-lg mt-auto"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <ExternalLink size={16} />
+                Abrir Cash App
+              </motion.a>
+            </div>
+          </motion.div>
+
+          {/* Yape - Perú */}
+          <motion.div variants={itemVariants}>
+            <div className="border-2 border-wedding-navy-medium/15 rounded-2xl p-6 bg-gradient-to-br from-white via-white to-wedding-white-soft/30 shadow-xl shadow-wedding-navy-medium/15 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-[#752F8A] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-xl">Y</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-script text-wedding-navy-dark">Yape</h3>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-wedding-brown-warm text-xs font-light">Perú</p>
+                    <Image
+                      src="https://flagcdn.com/w40/pe.png"
+                      alt="Peru Flag"
+                      width={16}
+                      height={12}
+                      className="object-contain"
+                      unoptimized
+                    />
                   </div>
                 </div>
+              </div>
 
-                <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 border border-wedding-beige-light/15 shadow-sm shadow-wedding-navy-medium/5">
-                  <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1 md:mb-2">Cashtag</p>
-                  <div className="flex items-center justify-between">
-                    <p className="text-wedding-navy-dark font-light text-lg md:text-xl">$Carlitos554</p>
-                    <motion.button
-                      onClick={() => copyToClipboard("$Carlitos554", "cashapp")}
-                      className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors"
-                      whileHover={{ scale: 1.1, rotate: 10 }}
-                      whileTap={{ scale: 0.9 }}
-                      animate={copiedField === "cashapp" ? { rotate: [0, -10, 10, -10, 0] } : {}}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {copiedField === "cashapp" ? (
-                        <Check size={18} className="text-green-600" />
-                      ) : (
-                        <Copy size={18} className="text-wedding-brown-warm" />
-                      )}
-                    </motion.button>
-                  </div>
+              {/* QR Code */}
+              <motion.div
+                className="relative w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden border-2 border-wedding-brown-warm/20 shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+              >
+                <Image
+                  src="/images/qr.png"
+                  alt="QR Code Yape"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+
+              <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-3">
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Número</p>
+                <div className="flex items-center justify-between">
+                  <p className="text-wedding-navy-dark font-light text-lg">+51 999 999 999</p>
+                  <motion.button
+                    onClick={() => copyToClipboard("+51 999 999 999", "yape")}
+                    className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    {copiedField === "yape" ? (
+                      <Check size={16} className="text-green-600" />
+                    ) : (
+                      <Copy size={16} className="text-wedding-brown-warm" />
+                    )}
+                  </motion.button>
                 </div>
+              </div>
 
-                <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 border border-wedding-beige-light/15 shadow-sm shadow-wedding-navy-medium/5">
-                  <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1 md:mb-2">Titular</p>
-                  <p className="text-wedding-navy-dark font-light text-sm md:text-base">Carlos Salvador Borquez Garcia</p>
-                </div>
+              <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Titular</p>
+                <p className="text-wedding-navy-dark font-light text-sm">Nombre Apellido</p>
+              </div>
 
-                <motion.a
-                  href="https://cash.app/$Carlitos554"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-[#00D632] hover:bg-[#00C02D] text-white text-xs md:text-sm tracking-[0.15em] md:tracking-[0.2em] uppercase py-3 md:py-4 rounded-lg md:rounded-xl transition-all duration-300 font-light shadow-lg shadow-wedding-navy-medium/20"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <ExternalLink size={18} />
-                  Abrir Cash App
-                </motion.a>
+              <div className="flex items-center justify-center gap-2 w-full bg-[#752F8A] text-white text-sm tracking-wide uppercase py-3 rounded-xl font-light shadow-lg mt-auto">
+                Transferencia Yape
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          {/* PIX - Brasil */}
+          <motion.div variants={itemVariants}>
+            <div className="border-2 border-wedding-navy-medium/15 rounded-2xl p-6 bg-gradient-to-br from-white via-white to-wedding-white-soft/30 shadow-xl shadow-wedding-navy-medium/15 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-[#32BCAD] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-xl">PIX</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-script text-wedding-navy-dark">PIX</h3>
+                  <div className="flex items-center gap-1.5">
+                    <p className="text-wedding-brown-warm text-xs font-light">Brasil</p>
+                    <Image
+                      src="https://flagcdn.com/w40/br.png"
+                      alt="Brazil Flag"
+                      width={16}
+                      height={12}
+                      className="object-contain"
+                      unoptimized
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* QR Code */}
+              <motion.div
+                className="relative w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden border-2 border-wedding-brown-warm/20 shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+              >
+                <Image
+                  src="/images/qr.png"
+                  alt="QR Code PIX"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+
+              <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-3">
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Chave PIX</p>
+                <div className="flex items-center justify-between">
+                  <p className="text-wedding-navy-dark font-light text-sm break-all">email@example.com</p>
+                  <motion.button
+                    onClick={() => copyToClipboard("email@example.com", "pix")}
+                    className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors flex-shrink-0"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    {copiedField === "pix" ? (
+                      <Check size={16} className="text-green-600" />
+                    ) : (
+                      <Copy size={16} className="text-wedding-brown-warm" />
+                    )}
+                  </motion.button>
+                </div>
+              </div>
+
+              <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Titular</p>
+                <p className="text-wedding-navy-dark font-light text-sm">Nombre Apellido</p>
+              </div>
+
+              <div className="flex items-center justify-center gap-2 w-full bg-[#32BCAD] text-white text-sm tracking-wide uppercase py-3 rounded-xl font-light shadow-lg mt-auto">
+                Transferencia PIX
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Bottom message */}
         <motion.div variants={itemVariants} className="text-center">
@@ -199,7 +335,7 @@ export default function RegistrySection1() {
               </motion.div>
             </div>
             <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light">
-              Tu presencia y buenos deseos son lo más importante para nosotros
+              Gracias por tu generosidad y por ser parte de esta nueva etapa.
             </p>
           </motion.div>
         </motion.div>
