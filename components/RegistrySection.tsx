@@ -84,8 +84,8 @@ export default function RegistrySection1() {
         variants={containerVariants}
       >
         {/* Title */}
-        <motion.div variants={itemVariants} className="mb-10 md:mb-12 flex flex-col items-center text-center">
-          <div className="relative w-40 h-28 md:w-56 md:h-36 lg:w-72 lg:h-44 mb-5">
+        <motion.div variants={itemVariants} className="mb-6 md:mb-12 flex flex-col items-center text-center">
+          <div className="relative w-32 h-20 md:w-56 md:h-36 lg:w-72 lg:h-44 mb-3 md:mb-5">
             <Image
               src="https://wpocean.com/html/tf/sukun/assets/images/preview/title-2.png"
               alt="Decoración"
@@ -94,20 +94,20 @@ export default function RegistrySection1() {
               unoptimized
             />
           </div>
-          <p className="text-[#D4B5A0] text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">M E S A  D E  R E G A L O S</p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C] mb-4">Tu Presencia es Nuestro Regalo</h2>
+          <p className="text-[#D4B5A0] text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light mb-2 md:mb-4">M E S A  D E  R E G A L O S</p>
+          <h2 ref={titleRef} className="text-2xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C] mb-2 md:mb-4">Tu Presencia es Nuestro Regalo</h2>
         </motion.div>
 
         {/* Horizontal Card */}
-        <motion.div variants={itemVariants} className="max-w-4xl mx-auto mb-8">
-          <div className="border-2 border-[#5a6f4c]/15 rounded-3xl p-8 md:p-10 bg-gradient-to-br from-white via-white to-[#F5F1E8]/30">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <motion.div variants={itemVariants} className="max-w-4xl mx-auto mb-6 md:mb-8">
+          <div className="border-2 border-[#5a6f4c]/15 rounded-2xl md:rounded-3xl p-4 md:p-10 bg-gradient-to-br from-white via-white to-[#F5F1E8]/30">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center">
               {/* Left: QR Code */}
               <div className="flex flex-col items-center">
                 <motion.div
                   whileHover={{ scale: 1.05, rotate: 5 }}
                   transition={{ duration: 0.3 }}
-                  className="relative w-64 h-64 rounded-2xl overflow-hidden border-4 border-[#5a6f4c]/20 shadow-2xl mb-4"
+                  className="relative w-48 h-48 md:w-64 md:h-64 rounded-xl md:rounded-2xl overflow-hidden border-2 md:border-4 border-[#5a6f4c]/20 shadow-xl md:shadow-2xl mb-3 md:mb-4"
                 >
                   <Image
                     src="https://cash.app/qr/$Carlitos554?size=288&margin=0&bg=000000&logoColor=ffffff"
@@ -118,27 +118,27 @@ export default function RegistrySection1() {
                   />
                 </motion.div>
                 <div className="flex items-center gap-2 text-[#5a6f4c]">
-                  <QrCode size={20} />
-                  <p className="text-sm font-light">Escanea para enviar</p>
+                  <QrCode size={16} className="md:w-5 md:h-5" />
+                  <p className="text-xs md:text-sm font-light">Escanea para enviar</p>
                 </div>
               </div>
 
               {/* Right: Info */}
-              <div className="space-y-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-[#00D632] rounded-xl flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">$</span>
+              <div className="space-y-3 md:space-y-6">
+                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-6">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-[#00D632] rounded-lg md:rounded-xl flex items-center justify-center">
+                    <span className="text-white font-bold text-lg md:text-xl">$</span>
                   </div>
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-script text-[#2C2C2C]">Cash App</h3>
-                    <p className="text-[#5a6f4c] text-sm font-light">Envío rápido y seguro</p>
+                    <h3 className="text-xl md:text-3xl font-script text-[#2C2C2C]">Cash App</h3>
+                    <p className="text-[#5a6f4c] text-xs md:text-sm font-light">Envío rápido y seguro</p>
                   </div>
                 </div>
 
-                <div className="bg-white/50 rounded-xl p-4 border border-[#5a6f4c]/10">
-                  <p className="text-[#5a6f4c] text-xs uppercase tracking-wider mb-2">Cashtag</p>
+                <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 border border-[#5a6f4c]/10">
+                  <p className="text-[#5a6f4c] text-xs uppercase tracking-wider mb-1 md:mb-2">Cashtag</p>
                   <div className="flex items-center justify-between">
-                    <p className="text-[#2C2C2C] font-light text-xl">$Carlitos554</p>
+                    <p className="text-[#2C2C2C] font-light text-lg md:text-xl">$Carlitos554</p>
                     <button
                       onClick={() => copyToClipboard("$Carlitos554", "cashapp")}
                       className="p-2 hover:bg-[#5a6f4c]/10 rounded-lg transition-colors"
@@ -152,16 +152,16 @@ export default function RegistrySection1() {
                   </div>
                 </div>
 
-                <div className="bg-white/50 rounded-xl p-4 border border-[#5a6f4c]/10">
-                  <p className="text-[#5a6f4c] text-xs uppercase tracking-wider mb-2">Titular</p>
-                  <p className="text-[#2C2C2C] font-light">Carlos Salvador Borquez Garcia</p>
+                <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 border border-[#5a6f4c]/10">
+                  <p className="text-[#5a6f4c] text-xs uppercase tracking-wider mb-1 md:mb-2">Titular</p>
+                  <p className="text-[#2C2C2C] font-light text-sm md:text-base">Carlos Salvador Borquez Garcia</p>
                 </div>
 
                 <motion.a
                   href="https://cash.app/$Carlitos554"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-[#00D632] hover:bg-[#00C02D] text-white text-sm tracking-[0.2em] uppercase py-4 rounded-xl transition-all duration-300 font-light shadow-lg"
+                  className="flex items-center justify-center gap-2 w-full bg-[#00D632] hover:bg-[#00C02D] text-white text-xs md:text-sm tracking-[0.15em] md:tracking-[0.2em] uppercase py-3 md:py-4 rounded-lg md:rounded-xl transition-all duration-300 font-light shadow-lg"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
