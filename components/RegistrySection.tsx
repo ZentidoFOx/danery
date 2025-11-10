@@ -71,10 +71,10 @@ export default function RegistrySection1() {
   return (
     <section className="bg-white py-10 px-4 relative overflow-hidden">
       {/* Corner frames */}
-      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-[#5a6f4c]/10 rounded-tl-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-[#5a6f4c]/10 rounded-tr-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-[#5a6f4c]/10 rounded-bl-3xl"></div>
-      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-[#5a6f4c]/10 rounded-br-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-wedding-navy-medium/15 rounded-tl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-wedding-navy-medium/15 rounded-tr-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-wedding-navy-medium/15 rounded-bl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-wedding-navy-medium/15 rounded-br-3xl"></div>
 
       <motion.div
         className="max-w-6xl mx-auto relative z-10"
@@ -94,20 +94,24 @@ export default function RegistrySection1() {
               unoptimized
             />
           </div>
-          <p className="text-[#D4B5A0] text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light mb-2 md:mb-4">M E S A  D E  R E G A L O S</p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C] mb-2 md:mb-4">Tu Presencia es Nuestro Regalo</h2>
+          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light mb-2 md:mb-4">M E S A  D E  R E G A L O S</p>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium mb-2 md:mb-4">Tu Presencia es Nuestro Regalo</h2>
         </motion.div>
 
         {/* Horizontal Card */}
         <motion.div variants={itemVariants} className="max-w-4xl mx-auto mb-6 md:mb-8">
-          <div className="border-2 border-[#5a6f4c]/15 rounded-2xl md:rounded-3xl p-4 md:p-10 bg-gradient-to-br from-white via-white to-[#F5F1E8]/30">
+          <div className="border-2 border-wedding-navy-medium/15 rounded-2xl md:rounded-3xl p-4 md:p-10 bg-gradient-to-br from-white via-white to-wedding-white-soft/30 shadow-xl shadow-wedding-navy-medium/15">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center">
               {/* Left: QR Code */}
               <div className="flex flex-col items-center">
                 <motion.div
-                  whileHover={{ scale: 1.05, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative w-48 h-48 md:w-64 md:h-64 rounded-xl md:rounded-2xl overflow-hidden border-2 md:border-4 border-[#5a6f4c]/20 shadow-xl md:shadow-2xl mb-3 md:mb-4"
+                  whileHover={{ scale: 1.08, rotate: 5 }}
+                  animate={{ 
+                    y: [0, -10, 0],
+                    boxShadow: ["0 10px 20px rgba(52, 74, 108, 0.2)", "0 20px 40px rgba(52, 74, 108, 0.3)", "0 10px 20px rgba(52, 74, 108, 0.2)"]
+                  }}
+                  transition={{ duration: 0.3, y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
+                  className="relative w-48 h-48 md:w-64 md:h-64 rounded-xl md:rounded-2xl overflow-hidden border-2 md:border-4 border-wedding-brown-warm/20 shadow-xl shadow-wedding-navy-medium/20 md:shadow-2xl mb-3 md:mb-4"
                 >
                   <Image
                     src="https://cash.app/qr/$Carlitos554?size=288&margin=0&bg=000000&logoColor=ffffff"
@@ -117,7 +121,7 @@ export default function RegistrySection1() {
                     unoptimized
                   />
                 </motion.div>
-                <div className="flex items-center gap-2 text-[#5a6f4c]">
+                <div className="flex items-center gap-2 text-wedding-brown-warm">
                   <QrCode size={16} className="md:w-5 md:h-5" />
                   <p className="text-xs md:text-sm font-light">Escanea para enviar</p>
                 </div>
@@ -130,38 +134,42 @@ export default function RegistrySection1() {
                     <span className="text-white font-bold text-lg md:text-xl">$</span>
                   </div>
                   <div>
-                    <h3 className="text-xl md:text-3xl font-script text-[#2C2C2C]">Cash App</h3>
-                    <p className="text-[#5a6f4c] text-xs md:text-sm font-light">Envío rápido y seguro</p>
+                    <h3 className="text-xl md:text-3xl font-script text-wedding-navy-dark">Cash App</h3>
+                    <p className="text-wedding-brown-warm text-xs md:text-sm font-light">Envío rápido y seguro</p>
                   </div>
                 </div>
 
-                <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 border border-[#5a6f4c]/10">
-                  <p className="text-[#5a6f4c] text-xs uppercase tracking-wider mb-1 md:mb-2">Cashtag</p>
+                <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 border border-wedding-beige-light/15 shadow-sm shadow-wedding-navy-medium/5">
+                  <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1 md:mb-2">Cashtag</p>
                   <div className="flex items-center justify-between">
-                    <p className="text-[#2C2C2C] font-light text-lg md:text-xl">$Carlitos554</p>
-                    <button
+                    <p className="text-wedding-navy-dark font-light text-lg md:text-xl">$Carlitos554</p>
+                    <motion.button
                       onClick={() => copyToClipboard("$Carlitos554", "cashapp")}
-                      className="p-2 hover:bg-[#5a6f4c]/10 rounded-lg transition-colors"
+                      className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors"
+                      whileHover={{ scale: 1.1, rotate: 10 }}
+                      whileTap={{ scale: 0.9 }}
+                      animate={copiedField === "cashapp" ? { rotate: [0, -10, 10, -10, 0] } : {}}
+                      transition={{ duration: 0.5 }}
                     >
                       {copiedField === "cashapp" ? (
                         <Check size={18} className="text-green-600" />
                       ) : (
-                        <Copy size={18} className="text-[#5a6f4c]" />
+                        <Copy size={18} className="text-wedding-brown-warm" />
                       )}
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
 
-                <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 border border-[#5a6f4c]/10">
-                  <p className="text-[#5a6f4c] text-xs uppercase tracking-wider mb-1 md:mb-2">Titular</p>
-                  <p className="text-[#2C2C2C] font-light text-sm md:text-base">Carlos Salvador Borquez Garcia</p>
+                <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 border border-wedding-beige-light/15 shadow-sm shadow-wedding-navy-medium/5">
+                  <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1 md:mb-2">Titular</p>
+                  <p className="text-wedding-navy-dark font-light text-sm md:text-base">Carlos Salvador Borquez Garcia</p>
                 </div>
 
                 <motion.a
                   href="https://cash.app/$Carlitos554"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-[#00D632] hover:bg-[#00C02D] text-white text-xs md:text-sm tracking-[0.15em] md:tracking-[0.2em] uppercase py-3 md:py-4 rounded-lg md:rounded-xl transition-all duration-300 font-light shadow-lg"
+                  className="flex items-center justify-center gap-2 w-full bg-[#00D632] hover:bg-[#00C02D] text-white text-xs md:text-sm tracking-[0.15em] md:tracking-[0.2em] uppercase py-3 md:py-4 rounded-lg md:rounded-xl transition-all duration-300 font-light shadow-lg shadow-wedding-navy-medium/20"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -175,16 +183,25 @@ export default function RegistrySection1() {
 
         {/* Bottom message */}
         <motion.div variants={itemVariants} className="text-center">
-          <div className="bg-gradient-to-r from-[#5a6f4c]/5 via-[#5a6f4c]/10 to-[#5a6f4c]/5 rounded-3xl px-8 py-6 border border-[#5a6f4c]/10 max-w-2xl mx-auto">
+          <motion.div 
+            className="bg-gradient-to-r from-wedding-navy-medium/5 via-wedding-beige-light/10 to-wedding-navy-medium/5 rounded-3xl px-8 py-6 border border-wedding-beige-light/15 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="flex items-center justify-center gap-3 mb-3">
-              <Gift size={24} className="text-[#5a6f4c]" />
-              <p className="text-[#5a6f4c] font-script text-2xl md:text-3xl">¡Gracias por tu generosidad!</p>
-              <Sparkles size={24} className="text-[#5a6f4c]" />
+              <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+                <Gift size={24} className="text-wedding-brown-warm" />
+              </motion.div>
+              <p className="text-wedding-brown-warm font-script text-2xl md:text-3xl">¡Gracias por tu generosidad!</p>
+              <motion.div animate={{ rotate: [0, -10, 10, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}>
+                <Sparkles size={24} className="text-wedding-brown-warm" />
+              </motion.div>
             </div>
-            <p className="text-[#2C2C2C]/70 text-sm md:text-base font-light">
+            <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light">
               Tu presencia y buenos deseos son lo más importante para nosotros
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>

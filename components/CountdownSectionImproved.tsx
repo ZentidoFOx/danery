@@ -69,20 +69,20 @@ export default function CountdownSectionImproved() {
           transition={{ duration: 0.6 }}
         >
           {/* Subtítulo */}
-          <p className="text-[#D4B5A0] text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
             CUENTA REGRESIVA
           </p>
           
           {/* Título */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium mb-6">
             Nuestro Gran Día
           </h2>
           
           {/* Línea decorativa */}
           <div className="flex items-center justify-center gap-3">
-            <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-[#D4B5A0]/40"></div>
-            <div className="w-2 h-2 bg-[#D4B5A0] rounded-full"></div>
-            <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-[#D4B5A0]/40"></div>
+            <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-wedding-beige-light/40"></div>
+            <div className="w-2 h-2 bg-wedding-brown-warm rounded-full"></div>
+            <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-wedding-beige-light/40"></div>
           </div>
         </motion.div>
 
@@ -100,28 +100,27 @@ export default function CountdownSectionImproved() {
                 y: [0, -15, 0],
               }}
               transition={{
-                duration: 2.5 + index * 0.3,
+                duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: index * 0.4,
+                delay: index * 0.2,
               }}
             >
-              <div className="w-32 h-32 md:w-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-hidden">
+              <div className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 flex flex-col items-center justify-center min-w-[80px] md:min-w-[140px]">
                 <Image
                   src="https://wpocean.com/html/tf/habibi/assets/images/date-bg.png"
                   alt="Background"
                   fill
                   className="object-cover"
-                  unoptimized
                 />
                 <div className="relative z-10 flex flex-col items-center -mt-2" style={{ marginLeft: '2.5rem' }}>
                   <span 
-                    className="text-4xl md:text-7xl font-serif text-[#5A6F4C] leading-none mb-1 md:mb-2 drop-shadow-sm"
+                    className="text-4xl md:text-7xl font-serif text-wedding-navy-medium leading-none mb-1 md:mb-2 drop-shadow-sm"
                     key={item.value}
                   >
                     {String(item.value).padStart(2, "0")}
                   </span>
-                  <p className="text-sm md:text-lg text-[#6B7C68] font-sans capitalize">
+                  <p className="text-sm md:text-lg text-wedding-brown-warm font-sans capitalize">
                     {item.label}
                   </p>
                 </div>

@@ -5,7 +5,7 @@ import { Heart, Code } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white py-8 px-4 border-t border-[#5a6f4c]/10">
+    <footer className="bg-white py-8 px-4 border-t border-wedding-beige-light/15">
       <div className="max-w-4xl mx-auto">
         {/* Main Message */}
         <motion.div
@@ -15,17 +15,27 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-center mb-6"
         >
-          <p className="text-[#5a6f4c] font-script text-2xl md:text-3xl mb-2">
+          <p className="text-wedding-brown-warm font-script text-2xl md:text-3xl mb-2">
             ¡Gracias por ser parte de nuestra historia!
           </p>
-          <div className="flex items-center justify-center gap-2 text-[#2C2C2C]/60 text-sm">
-            <Heart size={16} className="text-[#5a6f4c] fill-[#5a6f4c]" />
+          <div className="flex items-center justify-center gap-2 text-wedding-navy-dark/60 text-sm">
+            <motion.div
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Heart size={16} className="text-wedding-brown-warm fill-wedding-brown-warm" />
+            </motion.div>
             <p className="font-light">Danery & Jesús</p>
           </div>
         </motion.div>
 
         {/* Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#5a6f4c]/20 to-transparent mb-6"></div>
+        <motion.div 
+          className="h-px w-full bg-gradient-to-r from-transparent via-wedding-beige-light/30 to-transparent mb-6"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 1 }}
+        ></motion.div>
 
         {/* Bottom: Copyright & Developer */}
         <motion.div
@@ -35,7 +45,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm"
         >
-          <p className="text-[#2C2C2C]/60 font-light">
+          <p className="text-wedding-navy-dark/60 font-light">
             © 2025 Todos los derechos reservados
           </p>
 
@@ -48,14 +58,18 @@ export default function Footer() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#5a6f4c]/5 to-[#5a6f4c]/10 hover:from-[#5a6f4c]/10 hover:to-[#5a6f4c]/20 rounded-full border border-[#5a6f4c]/20 transition-all duration-300">
-              <div className="w-6 h-6 bg-[#5a6f4c] rounded-full flex items-center justify-center">
+            <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-wedding-brown-warm/5 to-wedding-beige-light/10 hover:from-wedding-brown-warm/10 hover:to-wedding-beige-light/20 rounded-full border border-wedding-brown-warm/20 transition-all duration-300">
+              <motion.div 
+                className="w-6 h-6 bg-wedding-brown-warm rounded-full flex items-center justify-center"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              >
                 <Code size={12} className="text-white" />
-              </div>
+              </motion.div>
               <div className="flex items-baseline gap-1">
-                <span className="text-[#2C2C2C]/60 text-xs font-light">Developed by</span>
-                <span className="text-[#5a6f4c] text-sm font-semibold tracking-tight group-hover:tracking-wide transition-all">Turin</span>
-                <span className="text-[#5a6f4c]/70 text-xs">.dev</span>
+                <span className="text-wedding-navy-dark/60 text-xs font-light">Developed by</span>
+                <span className="text-wedding-brown-warm text-sm font-semibold tracking-tight group-hover:tracking-wide transition-all">Turin</span>
+                <span className="text-wedding-brown-warm/70 text-xs">.dev</span>
               </div>
             </div>
           </motion.a>

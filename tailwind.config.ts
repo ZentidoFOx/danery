@@ -15,11 +15,11 @@ const config: Config = {
       },
       colors: {
         wedding: {
-          cream: '#F5F1E8',
-          gold: '#D4AF37',
-          sage: '#C4B5A0',
-          sepia: '#B8A588',
-          dark: '#4A4A4A',
+          'navy-dark': '#1E2A39',
+          'navy-medium': '#344A6C',
+          'brown-warm': '#8B5A38',
+          'beige-light': '#D1B99A',
+          'white-soft': '#F5F3EE',
         }
       },
       backgroundImage: {

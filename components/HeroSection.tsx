@@ -6,7 +6,7 @@ import confetti from "canvas-confetti";
 import { imageConfig, getImageUrl } from "@/lib/imageConfig";
 import { motion } from "framer-motion";
 
-const CONFETTI_COLORS = ['#8C5A38', '#C7B299', '#F4F1EB', '#3A4E6A'];
+const CONFETTI_COLORS = ['#8B5A38', '#D1B99A', '#F5F3EE', '#344A6C'];
 
 export default function HeroSection() {
   const [isMobile, setIsMobile] = useState(false);
@@ -74,7 +74,7 @@ export default function HeroSection() {
             backgroundSize: 'cover',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#5a6f4c]/85 via-[#5a6f4c]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-wedding-navy-dark/85 via-wedding-navy-medium/50 to-transparent" />
       </div>
 
       {/* Content */}
