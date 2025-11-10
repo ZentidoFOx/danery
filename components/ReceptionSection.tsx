@@ -88,7 +88,7 @@ export default function ReceptionSectionAlt3() {
   // Falling animation for decorations
   const fallingVariants = (delay: number, duration: number) => ({
     animate: {
-      y: [-50, window.innerHeight + 50],
+      y: [-50, typeof window !== 'undefined' ? window.innerHeight + 50 : 1000],
       x: [0, Math.random() * 40 - 20],
       rotate: [0, 360],
       opacity: [0, 0.3, 0.3, 0],
@@ -113,7 +113,7 @@ export default function ReceptionSectionAlt3() {
             top: -50,
           }}
           animate={{
-            y: [0, window.innerHeight + 100],
+            y: [0, typeof window !== 'undefined' ? window.innerHeight + 100 : 1000],
             x: [0, Math.random() * 40 - 20],
             rotate: [0, 360],
             opacity: [0, 0.25, 0.25, 0],
