@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function CountdownSectionImproved() {
@@ -12,6 +13,18 @@ export default function CountdownSectionImproved() {
   });
 
   const [mounted, setMounted] = useState(false);
+
+  // Variantes de animación tipo ola de mar continua
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3,
+      },
+    },
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -40,9 +53,21 @@ export default function CountdownSectionImproved() {
 
   return (
     <section className="bg-white py-2 px-4 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto text-center relative z-10">
+      <motion.div 
+        className="max-w-6xl mx-auto text-center relative z-10"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={containerVariants}
+      >
         {/* Header con título */}
-        <div className="mb-12 md:mb-16">
+        <motion.div 
+          className="mb-12 md:mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+        >
           {/* Subtítulo */}
           <p className="text-[#D4B5A0] text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
             CUENTA REGRESIVA
@@ -59,7 +84,7 @@ export default function CountdownSectionImproved() {
             <div className="w-2 h-2 bg-[#D4B5A0] rounded-full"></div>
             <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-[#D4B5A0]/40"></div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="flex flex-wrap justify-center gap-6 md:gap-12">
           {[
@@ -68,7 +93,19 @@ export default function CountdownSectionImproved() {
             { value: timeLeft.minutes, label: "Minutos" },
             { value: timeLeft.seconds, label: "Segundos" },
           ].map((item, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <motion.div 
+              key={index} 
+              className="flex flex-col items-center"
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 2.5 + index * 0.3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: index * 0.4,
+              }}
+            >
               <div className="w-32 h-32 md:w-52 md:h-52 rounded-full flex flex-col items-center justify-center relative overflow-hidden">
                 <Image
                   src="https://wpocean.com/html/tf/habibi/assets/images/date-bg.png"
@@ -89,10 +126,10 @@ export default function CountdownSectionImproved() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
