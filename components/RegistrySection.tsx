@@ -1,9 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Gift } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import gsap from "gsap";
+import { Gift, ExternalLink, Copy, Check, Sparkles, QrCode } from "lucide-react";
 
-export default function RegistrySection() {
+// DISEÑO 1: CARD HORIZONTAL CON QR A LA IZQUIERDA
+export default function RegistrySection1() {
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const cornerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      cornerRefs.current.forEach((corner, index) => {
+        if (corner) {
+          gsap.from(corner, {
+            scale: 0,
+            opacity: 0,
+            duration: 1,
+            delay: index * 0.1,
+            ease: "back.out(1.7)",
+          });
+        }
+      });
+
+      if (titleRef.current) {
+        gsap.to(titleRef.current, {
+          scale: 1.02,
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -11,7 +48,7 @@ export default function RegistrySection() {
       y: 0,
       transition: {
         duration: 0.8,
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
@@ -25,106 +62,127 @@ export default function RegistrySection() {
     },
   };
 
+  const copyToClipboard = (text: string, field: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
+
   return (
-    <section className="bg-[#6B7C5E] py-16 md:py-20 px-4 text-[#F4F1EB]">
+    <section className="bg-white py-10 px-4 relative overflow-hidden">
+      {/* Corner frames */}
+      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-[#5a6f4c]/10 rounded-tl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-[#5a6f4c]/10 rounded-tr-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-[#5a6f4c]/10 rounded-bl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-[#5a6f4c]/10 rounded-br-3xl"></div>
+
       <motion.div
-        className="max-w-2xl mx-auto"
+        className="max-w-6xl mx-auto relative z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        {/* Título */}
-        <motion.div variants={itemVariants} className="text-center mb-8">
-          <h2 className="text-[#F4F1EB] text-base sm:text-lg tracking-[0.2em] uppercase font-light mb-2">
-            Sugerencia
-          </h2>
-          <p className="font-script text-[#F4F1EB] text-4xl sm:text-5xl md:text-6xl">
-            de Regalos
-          </p>
+        {/* Title */}
+        <motion.div variants={itemVariants} className="mb-10 md:mb-12 flex flex-col items-center text-center">
+          <div className="relative w-40 h-28 md:w-56 md:h-36 lg:w-72 lg:h-44 mb-5">
+            <Image
+              src="https://wpocean.com/html/tf/sukun/assets/images/preview/title-2.png"
+              alt="Decoración"
+              fill
+              className="object-contain"
+              unoptimized
+            />
+          </div>
+          <p className="text-[#D4B5A0] text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">M E S A  D E  R E G A L O S</p>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C] mb-4">Tu Presencia es Nuestro Regalo</h2>
         </motion.div>
 
-        {/* Texto descriptivo */}
-        <motion.div variants={itemVariants} className="text-center mb-10">
-          <p className="text-[#F4F1EB] text-sm sm:text-base font-light leading-relaxed">
-            Si tu deseo es hacernos algún presente,<br />
-            te compartimos nuestras sugerencias:
-          </p>
-        </motion.div>
+        {/* Horizontal Card */}
+        <motion.div variants={itemVariants} className="max-w-4xl mx-auto mb-8">
+          <div className="border-2 border-[#5a6f4c]/15 rounded-3xl p-8 md:p-10 bg-gradient-to-br from-white via-white to-[#F5F1E8]/30">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              {/* Left: QR Code */}
+              <div className="flex flex-col items-center">
+                <motion.div
+                  whileHover={{ scale: 1.05, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative w-64 h-64 rounded-2xl overflow-hidden border-4 border-[#5a6f4c]/20 shadow-2xl mb-4"
+                >
+                  <Image
+                    src="https://cash.app/qr/$Carlitos554?size=288&margin=0&bg=000000&logoColor=ffffff"
+                    alt="Cash App QR Code"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                </motion.div>
+                <div className="flex items-center gap-2 text-[#5a6f4c]">
+                  <QrCode size={20} />
+                  <p className="text-sm font-light">Escanea para enviar</p>
+                </div>
+              </div>
 
-        {/* Línea decorativa */}
-        <motion.div variants={itemVariants} className="mb-12">
-          <div className="h-px w-20 mx-auto bg-[#F4F1EB]/40" />
-        </motion.div>
+              {/* Right: Info */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-[#00D632] rounded-xl flex items-center justify-center">
+                    <span className="text-white font-bold text-xl">$</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-script text-[#2C2C2C]">Cash App</h3>
+                    <p className="text-[#5a6f4c] text-sm font-light">Envío rápido y seguro</p>
+                  </div>
+                </div>
 
-        {/* Liverpool */}
-        <motion.div variants={itemVariants} className="mb-12">
-          <h3 className="text-[#F4F1EB] text-3xl sm:text-4xl font-light mb-3">
-            Liverpool
-          </h3>
-          <p className="text-[#F4F1EB]/80 text-sm sm:text-base font-light mb-6">
-            No. Evento: 51247798
-          </p>
+                <div className="bg-white/50 rounded-xl p-4 border border-[#5a6f4c]/10">
+                  <p className="text-[#5a6f4c] text-xs uppercase tracking-wider mb-2">Cashtag</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-[#2C2C2C] font-light text-xl">$Carlitos554</p>
+                    <button
+                      onClick={() => copyToClipboard("$Carlitos554", "cashapp")}
+                      className="p-2 hover:bg-[#5a6f4c]/10 rounded-lg transition-colors"
+                    >
+                      {copiedField === "cashapp" ? (
+                        <Check size={18} className="text-green-600" />
+                      ) : (
+                        <Copy size={18} className="text-[#5a6f4c]" />
+                      )}
+                    </button>
+                  </div>
+                </div>
 
-          {/* Botón */}
-          <a
-            href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51247798"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-[#F4F1EB] text-[#6B7C5E] text-sm tracking-[0.2em] uppercase px-10 py-3 mb-6 hover:bg-[#E8E5DC] transition-colors duration-300"
-          >
-            Ver Mesa de Regalos
-          </a>
+                <div className="bg-white/50 rounded-xl p-4 border border-[#5a6f4c]/10">
+                  <p className="text-[#5a6f4c] text-xs uppercase tracking-wider mb-2">Titular</p>
+                  <p className="text-[#2C2C2C] font-light">Carlos Salvador Borquez Garcia</p>
+                </div>
 
-          {/* Texto adicional */}
-          <p className="text-[#F4F1EB] text-xs sm:text-sm font-light mb-4">
-            Visita nuestra lista de regalos
-          </p>
-
-          {/* Logos de tiendas */}
-          <div className="flex justify-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-[#1F2A38] flex items-center justify-center">
-              <span className="text-white text-xs font-semibold">WS</span>
-            </div>
-            <div className="w-12 h-12 bg-[#1F2A38] flex items-center justify-center">
-              <span className="text-white text-xs font-semibold">PB</span>
-            </div>
-            <div className="w-12 h-12 bg-[#8C8C8C] flex items-center justify-center">
-              <span className="text-white text-xs font-semibold">WE</span>
+                <motion.a
+                  href="https://cash.app/$Carlitos554"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full bg-[#00D632] hover:bg-[#00C02D] text-white text-sm tracking-[0.2em] uppercase py-4 rounded-xl transition-all duration-300 font-light shadow-lg"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <ExternalLink size={18} />
+                  Abrir Cash App
+                </motion.a>
+              </div>
             </div>
           </div>
-
-          <p className="text-[#F4F1EB]/70 text-xs font-light">
-            Dentro de la mesa de regalos Liverpool
-          </p>
         </motion.div>
 
-        {/* Línea separadora */}
-        <motion.div variants={itemVariants} className="my-12">
-          <div className="h-px w-full bg-[#F4F1EB]/20" />
-        </motion.div>
-
-        {/* Transferencia */}
+        {/* Bottom message */}
         <motion.div variants={itemVariants} className="text-center">
-          <h3 className="text-[#F4F1EB] text-3xl sm:text-4xl font-light mb-6">
-            Transferencia
-          </h3>
-          
-          <div className="flex justify-center mb-4">
-            <div className="bg-white px-6 py-3 rounded">
-              <span className="text-[#6B7C5E] text-lg font-semibold">Citibanamex</span>
+          <div className="bg-gradient-to-r from-[#5a6f4c]/5 via-[#5a6f4c]/10 to-[#5a6f4c]/5 rounded-3xl px-8 py-6 border border-[#5a6f4c]/10 max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <Gift size={24} className="text-[#5a6f4c]" />
+              <p className="text-[#5a6f4c] font-script text-2xl md:text-3xl">¡Gracias por tu generosidad!</p>
+              <Sparkles size={24} className="text-[#5a6f4c]" />
             </div>
-          </div>
-
-          <div className="text-left max-w-sm mx-auto space-y-2 text-sm">
-            <p className="text-[#F4F1EB]/90">
-              <span className="font-semibold">Cuenta:</span> 1234567890
-            </p>
-            <p className="text-[#F4F1EB]/90">
-              <span className="font-semibold">CLABE:</span> 012345678901234567
-            </p>
-            <p className="text-[#F4F1EB]/90">
-              <span className="font-semibold">Titular:</span> Nombre de los novios
+            <p className="text-[#2C2C2C]/70 text-sm md:text-base font-light">
+              Tu presencia y buenos deseos son lo más importante para nosotros
             </p>
           </div>
         </motion.div>

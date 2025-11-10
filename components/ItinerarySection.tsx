@@ -145,7 +145,7 @@ export default function ItinerarySectionAlt7() {
         >
           <div className="relative w-40 h-28 md:w-56 md:h-36 lg:w-72 lg:h-44 mb-5">
             <Image
-              src="https://wpocean.com/html/tf/sukun/assets/images/preview/title-2.png"
+              src="https://wpolive.com/html/bohu-live/assets/images/preview/title-1.png"
               alt="Decoración"
               fill
               className="object-contain"

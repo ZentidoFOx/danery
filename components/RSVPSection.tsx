@@ -1,17 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import gsap from "gsap";
+import { Heart, User, Users, CheckCircle } from "lucide-react";
 
-export default function RSVPSection() {
+// DISEÑO 3: Cards Horizontales con Iconos
+export default function RSVPSection3() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     attending: "",
-    companions: "",
-    vanService: "",
-    dietary: "",
-    phone: "",
   });
+
+  const cornerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      cornerRefs.current.forEach((corner, index) => {
+        if (corner) {
+          gsap.from(corner, {
+            scale: 0,
+            opacity: 0,
+            duration: 1,
+            delay: index * 0.1,
+            ease: "back.out(1.7)",
+          });
+        }
+      });
+
+      if (titleRef.current) {
+        gsap.to(titleRef.current, {
+          scale: 1.02,
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -20,7 +52,7 @@ export default function RSVPSection() {
       y: 0,
       transition: {
         duration: 0.8,
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
       },
     },
   };
@@ -30,17 +62,16 @@ export default function RSVPSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.6 },
     },
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    // Aquí puedes agregar la lógica para enviar el formulario
+    alert(`¡Gracias ${formData.firstName}! Tu respuesta ha sido registrada.`);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -48,132 +79,116 @@ export default function RSVPSection() {
   };
 
   return (
-    <section className="bg-[#F4F1EB] py-16 md:py-20 px-4">
+    <section className="bg-white py-10 px-4 relative overflow-hidden">
+      {/* Corner frames */}
+      <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-[#5a6f4c]/10 rounded-tl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-[#5a6f4c]/10 rounded-tr-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[2] = el; }} className="absolute bottom-6 left-6 w-28 h-28 border-b-2 border-l-2 border-[#5a6f4c]/10 rounded-bl-3xl"></div>
+      <div ref={(el) => { cornerRefs.current[3] = el; }} className="absolute bottom-6 right-6 w-28 h-28 border-b-2 border-r-2 border-[#5a6f4c]/10 rounded-br-3xl"></div>
+
       <motion.div
-        className="max-w-lg mx-auto"
+        className="max-w-5xl mx-auto relative z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        {/* Mensaje de bienvenida */}
-        <motion.div variants={itemVariants} className="text-center mb-8">
-          <p className="text-[#1F2A38] text-base sm:text-lg font-light leading-relaxed mb-2">
-            ¡Queremos compartir este momento tan esperado contigo!
-          </p>
-          <p className="text-[#1F2A38] text-base sm:text-lg font-semibold">
-            Por favor ayúdanos confirmando tu asistencia.
-          </p>
+        {/* Title */}
+        <motion.div variants={itemVariants} className="mb-10 md:mb-12 flex flex-col items-center text-center">
+          <div className="relative w-40 h-28 md:w-56 md:h-36 lg:w-72 lg:h-44 mb-5">
+            <Image
+              src="https://wpocean.com/html/tf/sukun/assets/images/preview/title-2.png"
+              alt="Decoración"
+              fill
+              className="object-contain"
+              unoptimized
+            />
+          </div>
+          <p className="text-[#D4B5A0] text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">R S V P</p>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-[#2C2C2C]">Confirma tu Asistencia</h2>
         </motion.div>
 
-        {/* Línea decorativa */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <div className="h-px w-20 mx-auto bg-[#C7B299]/50" />
-        </motion.div>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Nombre y Apellido en Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Nombre Card */}
+            <motion.div variants={itemVariants} className="relative group">
+              <div className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-[#5a6f4c]/20 flex items-center gap-2 z-10">
+                <User size={16} className="text-[#5a6f4c]" />
+                <span className="text-[#5a6f4c] text-xs uppercase tracking-wider font-light">Nombre</span>
+              </div>
+              <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-[#F5F1E8]/30 border-2 border-[#5a6f4c]/15 rounded-2xl group-hover:border-[#5a6f4c]/30 transition-all">
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="Tu nombre"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-white border border-[#5a6f4c]/20 rounded-lg text-[#2C2C2C] placeholder-[#8C8C8C] text-sm focus:border-[#5a6f4c]/50 focus:ring-2 focus:ring-[#5a6f4c]/10 outline-none transition-all"
+                />
+              </div>
+            </motion.div>
 
-        {/* Formulario */}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Nombre del invitado */}
-          <motion.div variants={itemVariants}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Nombre y Apellidos del Invitado"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 bg-white text-[#1F2A38] placeholder-[#8C8C8C] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none"
-            />
+            {/* Apellido Card */}
+            <motion.div variants={itemVariants} className="relative group">
+              <div className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-[#5a6f4c]/20 flex items-center gap-2 z-10">
+                <Users size={16} className="text-[#5a6f4c]" />
+                <span className="text-[#5a6f4c] text-xs uppercase tracking-wider font-light">Apellido</span>
+              </div>
+              <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-[#F5F1E8]/30 border-2 border-[#5a6f4c]/15 rounded-2xl group-hover:border-[#5a6f4c]/30 transition-all">
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Tu apellido"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-white border border-[#5a6f4c]/20 rounded-lg text-[#2C2C2C] placeholder-[#8C8C8C] text-sm focus:border-[#5a6f4c]/50 focus:ring-2 focus:ring-[#5a6f4c]/10 outline-none transition-all"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Asistencia Card */}
+          <motion.div variants={itemVariants} className="relative group">
+            <div className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-[#5a6f4c]/20 flex items-center gap-2 z-10">
+              <CheckCircle size={16} className="text-[#5a6f4c]" />
+              <span className="text-[#5a6f4c] text-xs uppercase tracking-wider font-light">Confirmación</span>
+            </div>
+            <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-[#F5F1E8]/30 border-2 border-[#5a6f4c]/15 rounded-2xl group-hover:border-[#5a6f4c]/30 transition-all">
+              <select
+                name="attending"
+                value={formData.attending}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 bg-white border border-[#5a6f4c]/20 rounded-lg text-[#2C2C2C] text-sm focus:border-[#5a6f4c]/50 focus:ring-2 focus:ring-[#5a6f4c]/10 outline-none appearance-none cursor-pointer transition-all"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%235a6f4c' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                  backgroundPosition: "right 0.75rem center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "1.5em 1.5em",
+                  paddingRight: "2.5rem",
+                }}
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="si">Sí, asistiré</option>
+                <option value="no">No podré asistir</option>
+              </select>
+            </div>
           </motion.div>
 
-          {/* ¿Asistirás? */}
-          <motion.div variants={itemVariants}>
-            <select
-              name="attending"
-              value={formData.attending}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 bg-white text-[#1F2A38] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none appearance-none cursor-pointer"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                backgroundPosition: "right 0.5rem center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "1.5em 1.5em",
-                paddingRight: "2.5rem",
-              }}
-            >
-              <option value="">- ¿Asistirás? -</option>
-              <option value="si">Sí, asistiré</option>
-              <option value="no">No podré asistir</option>
-            </select>
-          </motion.div>
-
-          {/* Acompañantes */}
-          <motion.div variants={itemVariants}>
-            <input
-              type="text"
-              name="companions"
-              placeholder="Nombre(s) y Apellidos de Acompañante(s)"
-              value={formData.companions}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-white text-[#1F2A38] placeholder-[#8C8C8C] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none"
-            />
-          </motion.div>
-
-          {/* Servicio de van */}
-          <motion.div variants={itemVariants}>
-            <select
-              name="vanService"
-              value={formData.vanService}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-white text-[#1F2A38] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none appearance-none cursor-pointer"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                backgroundPosition: "right 0.5rem center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "1.5em 1.5em",
-                paddingRight: "2.5rem",
-              }}
-            >
-              <option value="">- ¿Requerirás el servicio de van para tu llegada? -</option>
-              <option value="si">Sí, lo requiero</option>
-              <option value="no">No, gracias</option>
-            </select>
-          </motion.div>
-
-          {/* Restricciones alimentarias */}
-          <motion.div variants={itemVariants}>
-            <input
-              type="text"
-              name="dietary"
-              placeholder="Indicar restricción alimentaria (opcional)"
-              value={formData.dietary}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-white text-[#1F2A38] placeholder-[#8C8C8C] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none"
-            />
-          </motion.div>
-
-          {/* Número telefónico */}
-          <motion.div variants={itemVariants}>
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Número Telefónico"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 bg-white text-[#1F2A38] placeholder-[#8C8C8C] text-sm border-none focus:ring-2 focus:ring-[#C7B299] outline-none"
-            />
-          </motion.div>
-
-          {/* Botón de envío */}
+          {/* Submit Button */}
           <motion.div variants={itemVariants} className="pt-4">
-            <button
+            <motion.button
               type="submit"
-              className="w-full bg-[#6B7C5E] hover:bg-[#5A6A4F] text-white text-sm tracking-[0.2em] uppercase py-4 transition-all duration-300"
+              className="w-full bg-[#5a6f4c] hover:bg-[#4a5f3c] text-white text-sm tracking-[0.2em] uppercase py-4 rounded-xl transition-all duration-300 font-light shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
+              <Heart size={18} className="fill-white" />
               Confirmar Asistencia
-            </button>
+            </motion.button>
           </motion.div>
         </form>
       </motion.div>

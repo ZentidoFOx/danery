@@ -7,6 +7,7 @@ import DressCodeSection from "@/components/DressCodeSection";
 import RSVPSection from "@/components/RSVPSection";
 import GallerySection from "@/components/GallerySection";
 import RegistrySection from "@/components/RegistrySection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -17,10 +18,10 @@ export default function Home() {
       <ReceptionSection />
       <ItinerarySection />
       <DressCodeSection />
-      {/* <RSVPSection />
+      <RSVPSection />
       <GallerySection />
-      <RegistrySection /> */}
-    
+      <RegistrySection />
+      <Footer />
     </main>
   );
 }
