@@ -130,7 +130,7 @@ export default function DressCodeSectionAlt4() {
               </h3>
               <motion.p 
                 ref={dressCodeRef}
-                className="font-script text-wedding-navy-dark text-2xl md:text-5xl lg:text-6xl mb-2 md:mb-4 leading-tight"
+                className="font-script text-wedding-navy-medium text-2xl md:text-5xl lg:text-6xl mb-2 md:mb-4 leading-tight"
                 whileHover={{ scale: 1.1, color: "#344A6C" }}
                 animate={{ scale: [1, 1.02, 1] }}
                 transition={{ duration: 3, repeat: Infinity }}
@@ -178,7 +178,7 @@ export default function DressCodeSectionAlt4() {
               </h3>
               <motion.p 
                 ref={paletteRef}
-                className="font-script text-wedding-navy-dark text-2xl md:text-5xl lg:text-6xl mb-2 md:mb-4 leading-tight"
+                className="font-script text-wedding-navy-medium text-2xl md:text-5xl lg:text-6xl mb-2 md:mb-4 leading-tight"
                 whileHover={{ scale: 1.1, color: "#344A6C" }}
                 animate={{ scale: [1, 1.02, 1] }}
                 transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}

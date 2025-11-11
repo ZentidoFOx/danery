@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { Heart, User, Users, CheckCircle } from "lucide-react";
+import { Heart, User, Users, CheckCircle, Video, Clock } from "lucide-react";
 
 // DISEÑO 3: Cards Horizontales con Iconos
 export default function RSVPSection3() {
@@ -208,6 +208,119 @@ export default function RSVPSection3() {
             </motion.button>
           </motion.div>
         </form>
+
+        {/* Online Guests Section */}
+        <motion.div 
+          variants={itemVariants}
+          className="mt-12 border-2 border-wedding-navy-medium/20 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-wedding-beige-light/5 via-white to-wedding-navy-medium/5 shadow-lg"
+        >
+          <div className="text-center mb-6">
+            <motion.div
+              className="inline-flex items-center gap-2 mb-4"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Video size={24} className="text-wedding-navy-medium" />
+              <h3 className="text-2xl md:text-3xl font-script text-wedding-navy-medium">
+                Invitados Online
+              </h3>
+            </motion.div>
+            <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light mb-6 max-w-2xl mx-auto">
+              Para quienes no puedan acompañarnos presencialmente, podrán unirse vía Google Meet ese día.
+            </p>
+          </div>
+
+          {/* Google Meet Link */}
+          <motion.a
+            href="https://meet.google.com/your-meeting-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 w-full max-w-md mx-auto bg-wedding-navy-medium hover:bg-wedding-navy-dark text-white text-sm md:text-base tracking-wide uppercase px-6 py-4 rounded-xl transition-all duration-300 font-light shadow-lg mb-8"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Video size={20} />
+            Unión a Google Meet
+          </motion.a>
+
+          {/* Time Zones */}
+          <div className="bg-white/50 rounded-2xl p-6 border border-wedding-beige-light/30">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Clock size={18} className="text-wedding-brown-warm" />
+              <h4 className="text-wedding-brown-warm text-sm md:text-base tracking-wider uppercase font-light">
+                Horarios de la Ceremonia
+              </h4>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {/* Los Angeles */}
+              <motion.div 
+                className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
+                whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
+              >
+                <p className="text-wedding-navy-medium text-xs uppercase tracking-wider mb-1 font-light">Los Ángeles</p>
+                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">4:00 PM</p>
+              </motion.div>
+
+              {/* Peru */}
+              <motion.div 
+                className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
+                whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
+              >
+                <div className="flex items-center justify-center gap-1.5 mb-1">
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Perú</p>
+                  <Image
+                    src="https://flagcdn.com/w40/pe.png"
+                    alt="Peru Flag"
+                    width={16}
+                    height={12}
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
+                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">6:00 PM</p>
+              </motion.div>
+
+              {/* Brasil */}
+              <motion.div 
+                className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
+                whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
+              >
+                <div className="flex items-center justify-center gap-1.5 mb-1">
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Brasil</p>
+                  <Image
+                    src="https://flagcdn.com/w40/br.png"
+                    alt="Brazil Flag"
+                    width={16}
+                    height={12}
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
+                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">8:00 PM</p>
+              </motion.div>
+
+              {/* Bolivia */}
+              <motion.div 
+                className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
+                whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
+              >
+                <div className="flex items-center justify-center gap-1.5 mb-1">
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Bolivia</p>
+                  <Image
+                    src="https://flagcdn.com/w40/bo.png"
+                    alt="Bolivia Flag"
+                    width={16}
+                    height={12}
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
+                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">7:00 PM</p>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

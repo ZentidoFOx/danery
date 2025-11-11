@@ -249,21 +249,7 @@ export default function ParentsSectionAlt5() {
           variants={itemVariants}
           className="mb-2 flex flex-col items-center text-center"
         >
-          <div className="relative w-40 h-28 md:w-56 md:h-36 lg:w-72 lg:h-44 mb-5">
-            <Image
-              src="https://wpolive.com/html/bohu-live/assets/images/preview/title-1.png"
-              alt="Decoración"
-              fill
-              className="object-contain"
-              unoptimized
-            />
-          </div>
-          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
-            CON LA BENDICIÓN
-          </p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
-            de Dios y nuestros padres
-          </h2>
+         
         </motion.div>
 
         {/* Parents section with ornate cards */}
