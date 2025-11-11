@@ -101,6 +101,16 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
+        {/* Biblical Quote */}
+        <motion.p 
+          className="mb-6 font-elegant text-white/90 text-base md:text-lg font-light drop-shadow-lg tracking-wide italic max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          Mi casa y yo serviremos a Dios. – Josué 24:15
+        </motion.p>
+        
         {/* Title */}
         <motion.h2 
           className="mb-3 font-elegant text-white text-base tracking-[0.3em] uppercase font-light drop-shadow-lg"
@@ -111,15 +121,6 @@ export default function HeroSection() {
           ¡NOS CASAMOS!
         </motion.h2>
 
-        {/* Biblical Quote */}
-        <motion.p 
-          className="mb-6 font-elegant text-white/90 text-base md:text-lg font-light drop-shadow-lg tracking-wide italic max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          Mi casa y yo serviremos a Dios. – Josué 24:15
-        </motion.p>
 
         {/* Names */}
         <motion.div 

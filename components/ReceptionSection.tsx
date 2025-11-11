@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, MapPin } from "lucide-react";
 
 export default function ReceptionSectionAlt3() {
   // Refs para GSAP
@@ -254,11 +254,12 @@ export default function ReceptionSectionAlt3() {
                 href="https://maps.google.com/?q=Iglesia+Tricities+221+S+Benton+St+Kennewick"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block w-full md:w-auto text-center bg-wedding-navy-medium hover:bg-wedding-navy-dark text-white text-sm sm:text-base tracking-[0.2em] uppercase px-12 py-4 transition-all duration-300 shadow-md shadow-wedding-navy-medium/30 hover:shadow-lg hover:shadow-wedding-navy-medium/40"
+                className="inline-flex items-center justify-center gap-2 w-full md:w-auto text-center bg-wedding-navy-medium hover:bg-wedding-navy-dark text-white text-sm sm:text-base tracking-[0.2em] uppercase px-12 py-4 transition-all duration-300 shadow-md shadow-wedding-navy-medium/30 hover:shadow-lg hover:shadow-wedding-navy-medium/40"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Ver mapa completo
+                <MapPin size={18} />
+                Como llegar
               </motion.a>
             </div>
           </motion.div>
