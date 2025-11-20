@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
@@ -14,14 +14,14 @@ export default function GallerySection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   // Array de imágenes
-  const images = [
+  const images = useMemo(() => [
     "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200",
     "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200",
     "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200",
     "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200",
     "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200",
     "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200",
-  ];
+  ], []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -94,7 +94,7 @@ export default function GallerySection() {
     return Math.abs(offset) * velocity;
   };
 
-  const paginate = (newDirection: number) => {
+  const paginate = useCallback((newDirection: number) => {
     setDirection(newDirection);
     setCurrentIndex((prevIndex) => {
       let nextIndex = prevIndex + newDirection;
@@ -102,7 +102,7 @@ export default function GallerySection() {
       if (nextIndex >= images.length) nextIndex = 0;
       return nextIndex;
     });
-  };
+  }, [images.length]);
 
   // Auto-play
   useEffect(() => {
@@ -111,7 +111,7 @@ export default function GallerySection() {
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, [currentIndex, paginate]);
 
   return (
     <section className="bg-white py-10 relative overflow-hidden">

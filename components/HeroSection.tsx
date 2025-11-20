@@ -5,10 +5,12 @@ import { Heart, Sparkle, Star } from "lucide-react";
 import confetti from "canvas-confetti";
 import { imageConfig, getImageUrl } from "@/lib/imageConfig";
 import { motion } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 
 const CONFETTI_COLORS = ['#8B5A38', '#D1B99A', '#F5F3EE', '#344A6C'];
 
 export default function HeroSection() {
+  const { t } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
   const [heroImage, setHeroImage] = useState('');
 
@@ -80,7 +82,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
         {/* Top Ornament */}
-        <motion.div 
+        <motion.div
           className="mb-6 flex items-center gap-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,36 +104,36 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Biblical Quote */}
-        <motion.p 
+        <motion.p
           className="mb-6 font-elegant text-white/90 text-base md:text-lg font-light drop-shadow-lg tracking-wide italic max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          Mi casa y yo serviremos a Dios. – Josué 24:15
+          {t.hero.biblicalQuote}
         </motion.p>
-        
+
         {/* Title */}
-        <motion.h2 
+        <motion.h2
           className="mb-3 font-elegant text-white text-base tracking-[0.3em] uppercase font-light drop-shadow-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          ¡NOS CASAMOS!
+          {t.hero.getting_married}
         </motion.h2>
 
 
         {/* Names */}
-        <motion.div 
+        <motion.div
           className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <motion.h1 
+          <motion.h1
             className="font-script text-white text-7xl md:text-9xl leading-tight drop-shadow-2xl"
-            animate={{ 
+            animate={{
               filter: [
                 "drop-shadow(0 0 10px rgba(255,255,255,0.3))",
                 "drop-shadow(0 0 20px rgba(255,255,255,0.6))",
@@ -142,8 +144,8 @@ export default function HeroSection() {
           >
             Salvador
           </motion.h1>
-          
-          <motion.div 
+
+          <motion.div
             className="my-4 flex items-center justify-center gap-3"
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -152,10 +154,10 @@ export default function HeroSection() {
             <Heart size={30} className="text-white fill-white/60" />
             <div className="h-px w-12 bg-white/50" />
           </motion.div>
-          
-          <motion.h1 
+
+          <motion.h1
             className="font-script text-white text-7xl md:text-9xl leading-tight drop-shadow-2xl"
-            animate={{ 
+            animate={{
               filter: [
                 "drop-shadow(0 0 10px rgba(255,255,255,0.3))",
                 "drop-shadow(0 0 20px rgba(255,255,255,0.6))",
@@ -169,39 +171,39 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Date */}
-        <motion.div 
+        <motion.div
           className="mb-4 backdrop-blur-md bg-white/15 rounded-2xl px-10 py-3 border-2 border-white/40"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <p className="font-elegant text-white text-xl tracking-wider font-light drop-shadow-lg">
-            07 de Diciembre 2025
+            {t.hero.date}
           </p>
         </motion.div>
 
         {/* Location */}
-        <motion.p 
+        <motion.p
           className="font-elegant text-white/90 text-2xl md:text-3xl font-light drop-shadow-lg tracking-wide mb-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
         >
-          Iglesia Tricities, 221 S Benton St, Kennewick
+          {t.hero.location}
         </motion.p>
 
         {/* Time */}
-        <motion.p 
+        <motion.p
           className="font-elegant text-white/90 text-xl md:text-2xl font-light drop-shadow-lg tracking-wide mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.1 }}
         >
-          4:00 p. m. – 9:00 p. m.
+          {t.hero.time}
         </motion.p>
 
         {/* Bottom Ornament */}
-        <motion.div 
+        <motion.div
           className="flex items-center gap-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

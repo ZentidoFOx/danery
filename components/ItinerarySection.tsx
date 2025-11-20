@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useLanguage } from "./LanguageContext";
 
 export default function ItinerarySectionAlt7() {
+  const { t } = useLanguage();
   // Refs para GSAP
   const titleRef = useRef<HTMLHeadingElement>(null);
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -75,44 +77,35 @@ export default function ItinerarySectionAlt7() {
     },
   };
 
-  const leftSlideVariants = {
-    hidden: { opacity: 0, x: -60 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.7 },
-    },
-  };
-
   const events = [
     {
-      time: "4:00 p. m.",
-      title: "Ceremonia",
-      description: "Iglesia Tricities, 221 S Benton St, Kennewick",
+      time: t.itinerary.ceremony_time,
+      title: t.itinerary.ceremony_title,
+      description: t.itinerary.ceremony_desc,
       icon: "/images/ceremony.svg",
     },
     {
-      time: "6:00 p. m.",
-      title: "Recepción",
-      description: "Inicio de la celebración",
+      time: t.itinerary.reception_time,
+      title: t.itinerary.reception_title,
+      description: t.itinerary.reception_desc,
       icon: "/images/reception.png",
     },
     {
-      time: "7:00 p. m.",
-      title: "Cena y brindis",
-      description: "Disfrutemos juntos",
+      time: t.itinerary.dinner_time,
+      title: t.itinerary.dinner_title,
+      description: t.itinerary.dinner_desc,
       icon: "/images/cena-brindis.svg",
     },
     {
-      time: "8:00 p. m.",
-      title: "Primer baile",
-      description: "Nuestro primer baile",
+      time: t.itinerary.dance_time,
+      title: t.itinerary.dance_title,
+      description: t.itinerary.dance_desc,
       icon: "/images/first-dance.svg",
     },
     {
-      time: "9:00 p. m.",
-      title: "Despedida",
-      description: "Fin de la celebración",
+      time: t.itinerary.farewell_time,
+      title: t.itinerary.farewell_title,
+      description: t.itinerary.farewell_desc,
       icon: "/images/depart.svg",
     },
   ];
@@ -127,7 +120,7 @@ export default function ItinerarySectionAlt7() {
         variants={containerVariants}
       >
         {/* Título decorativo */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="mb-16 md:mb-20 flex flex-col items-center text-center"
         >
@@ -141,10 +134,10 @@ export default function ItinerarySectionAlt7() {
             />
           </div>
           <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
-            NUESTRO HORARIO
+            {t.itinerary.title_small}
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
-            Itinerario de la Boda
+            {t.itinerary.title_large}
           </h2>
         </motion.div>
 
@@ -158,10 +151,10 @@ export default function ItinerarySectionAlt7() {
                 className="flex items-center gap-3 md:gap-6"
               >
                 {/* Icon */}
-                <motion.div 
+                <motion.div
                   className="flex-shrink-0 w-10 h-10 md:w-16 md:h-16 relative"
                   whileHover={{ scale: 1.2, rotate: 10 }}
-                  animate={{ 
+                  animate={{
                     y: [0, -8, 0],
                     rotate: [0, 5, -5, 0]
                   }}
@@ -198,10 +191,10 @@ export default function ItinerarySectionAlt7() {
 
                 {/* Decorative vertical divider with heart */}
                 <div className="flex-shrink-0 flex flex-col items-center h-full self-stretch">
-                  <motion.div 
+                  <motion.div
                     className="h-4 md:h-8 bg-gradient-to-b from-transparent via-wedding-brown-warm/30 to-wedding-brown-warm/60"
                     style={{ width: '1px' }}
-                    animate={{ 
+                    animate={{
                       scaleY: [1, 1.2, 1],
                       opacity: [0.5, 0.8, 0.5]
                     }}
@@ -212,10 +205,10 @@ export default function ItinerarySectionAlt7() {
                       delay: index * 0.4
                     }}
                   ></motion.div>
-                  <motion.svg 
-                    className="w-3 h-3 md:w-4 md:h-4 text-wedding-beige-light/60 fill-current" 
+                  <motion.svg
+                    className="w-3 h-3 md:w-4 md:h-4 text-wedding-beige-light/60 fill-current"
                     viewBox="0 0 24 24"
-                    animate={{ 
+                    animate={{
                       scale: [1, 1.2, 1],
                     }}
                     transition={{
@@ -225,12 +218,12 @@ export default function ItinerarySectionAlt7() {
                       delay: index * 0.4
                     }}
                   >
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                   </motion.svg>
-                  <motion.div 
+                  <motion.div
                     className="flex-1 min-h-[25px] md:min-h-[40px] bg-gradient-to-b from-wedding-brown-warm/60 via-wedding-brown-warm/40 to-transparent"
                     style={{ width: '1px' }}
-                    animate={{ 
+                    animate={{
                       scaleY: [1, 1.2, 1],
                       opacity: [0.5, 0.8, 0.5]
                     }}
@@ -244,14 +237,14 @@ export default function ItinerarySectionAlt7() {
                 </div>
 
                 {/* Content with description */}
-                <motion.div 
+                <motion.div
                   className="flex-1 text-left"
                   whileHover={{ x: 10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <motion.h3 
+                  <motion.h3
                     className="text-2xl md:text-3xl font-script text-wedding-navy-dark mb-1 md:mb-2"
-                    animate={{ 
+                    animate={{
                       opacity: [0.8, 1, 0.8]
                     }}
                     transition={{
@@ -263,11 +256,11 @@ export default function ItinerarySectionAlt7() {
                   >
                     {event.title}
                   </motion.h3>
-                  <motion.p 
+                  <motion.p
                     className="text-base md:text-lg text-wedding-brown-warm/70 font-light leading-snug"
                     initial={{ opacity: 0.6 }}
                     whileHover={{ opacity: 1 }}
-                    animate={{ 
+                    animate={{
                       x: [0, 3, 0]
                     }}
                     transition={{

@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 
 export default function CountdownSectionImproved() {
+  const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -52,48 +54,42 @@ export default function CountdownSectionImproved() {
 
   return (
     <section className="bg-white py-2 px-4 relative overflow-hidden">
-      <motion.div 
+      <motion.div
         className="max-w-6xl mx-auto text-center relative z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={containerVariants}
       >
-        {/* Header con título */}
-        <motion.div 
-          className="mb-12 md:mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-        >
+        {/* Header con título - Sin animación de entrada para evitar estilos inline */}
+        <div className="mb-12 md:mb-16">
           {/* Subtítulo */}
           <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
-            CUENTA REGRESIVA
+            {t.countdown.title_small}
           </p>
-          
+
           {/* Título */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium mb-6">
-            Nuestro Gran Día
+            {t.countdown.title_large}
           </h2>
-          
+
           {/* Línea decorativa */}
           <div className="flex items-center justify-center gap-3">
             <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-wedding-beige-light/40"></div>
             <div className="w-2 h-2 bg-wedding-brown-warm rounded-full"></div>
             <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-wedding-beige-light/40"></div>
           </div>
-        </motion.div>
+        </div>
 
         <div className="flex flex-wrap justify-center gap-6 md:gap-12">
           {[
-            { value: timeLeft.days, label: "Días" },
-            { value: timeLeft.hours, label: "Horas" },
-            { value: timeLeft.minutes, label: "Minutos" },
-            { value: timeLeft.seconds, label: "Segundos" },
+            { value: timeLeft.days, label: t.countdown.days },
+            { value: timeLeft.hours, label: t.countdown.hours },
+            { value: timeLeft.minutes, label: t.countdown.minutes },
+            { value: timeLeft.seconds, label: t.countdown.seconds },
           ].map((item, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               className="flex flex-col items-center"
               animate={{
                 y: [0, -15, 0],
@@ -106,7 +102,7 @@ export default function CountdownSectionImproved() {
               }}
             >
               <div className="flex flex-col items-center justify-center">
-                <span 
+                <span
                   className="text-5xl md:text-7xl font-serif text-wedding-navy-medium leading-none mb-2 md:mb-3 drop-shadow-sm"
                   key={item.value}
                 >
@@ -119,6 +115,7 @@ export default function CountdownSectionImproved() {
             </motion.div>
           ))}
         </div>
+
       </motion.div>
     </section>
   );

@@ -5,9 +5,11 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { Gift, ExternalLink, Copy, Check, Sparkles, QrCode } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
 
 // DISEÑO 1: CARD HORIZONTAL CON QR A LA IZQUIERDA
 export default function RegistrySection1() {
+  const { t } = useLanguage();
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const cornerRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -94,11 +96,11 @@ export default function RegistrySection1() {
               unoptimized
             />
           </div>
-          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light mb-2 md:mb-4">M E S A  D E  R E G A L O S</p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium mb-3 md:mb-6">Tu Presencia es Nuestro Regalo</h2>
+          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light mb-2 md:mb-4">{t.registry.title_small}</p>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium mb-3 md:mb-6">{t.registry.title_large}</h2>
           <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
-            Nuestro mayor tesoro es celebrar este día junto a ustedes.<br className="hidden md:block" />
-            Si deseas hacernos un regalo, les agradecemos de corazón una contribución a nuestra nueva vida juntos.
+            {t.registry.description_1}<br className="hidden md:block" />
+            {t.registry.description_2}
           </p>
         </motion.div>
 
@@ -114,7 +116,7 @@ export default function RegistrySection1() {
                 <div>
                   <h3 className="text-2xl font-script text-wedding-navy-dark">Cash App</h3>
                   <div className="flex items-center gap-1.5">
-                    <p className="text-wedding-brown-warm text-xs font-light">USA</p>
+                    <p className="text-wedding-brown-warm text-xs font-light">{t.registry.usa}</p>
                     <Image
                       src="https://flagcdn.com/w40/us.png"
                       alt="USA Flag"
@@ -135,10 +137,10 @@ export default function RegistrySection1() {
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Image
-                  src="/images/qr.png"
+                  src="/images/cashappqr.png"
                   alt="QR Code Cash App"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </motion.div>
 
@@ -162,7 +164,7 @@ export default function RegistrySection1() {
               </div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Titular</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">{t.registry.holder}</p>
                 <p className="text-wedding-navy-dark font-light text-sm">Carlos Salvador Borquez Garcia</p>
               </div>
 
@@ -175,7 +177,7 @@ export default function RegistrySection1() {
                 whileTap={{ scale: 0.98 }}
               >
                 <ExternalLink size={16} />
-                Abrir Cash App
+                {t.registry.open_app}
               </motion.a>
             </div>
           </motion.div>
@@ -190,7 +192,7 @@ export default function RegistrySection1() {
                 <div>
                   <h3 className="text-2xl font-script text-wedding-navy-dark">Yape</h3>
                   <div className="flex items-center gap-1.5">
-                    <p className="text-wedding-brown-warm text-xs font-light">Perú</p>
+                    <p className="text-wedding-brown-warm text-xs font-light">{t.registry.peru}</p>
                     <Image
                       src="https://flagcdn.com/w40/pe.png"
                       alt="Peru Flag"
@@ -211,19 +213,19 @@ export default function RegistrySection1() {
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
               >
                 <Image
-                  src="/images/qr.png"
+                  src="/images/yape-qr.jpg"
                   alt="QR Code Yape"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </motion.div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-3">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Número</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">{t.registry.number}</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-wedding-navy-dark font-light text-lg">+51 999 999 999</p>
+                  <p className="text-wedding-navy-dark font-light text-lg">985 316 666</p>
                   <motion.button
-                    onClick={() => copyToClipboard("+51 999 999 999", "yape")}
+                    onClick={() => copyToClipboard("985316666", "yape")}
                     className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -238,12 +240,12 @@ export default function RegistrySection1() {
               </div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Titular</p>
-                <p className="text-wedding-navy-dark font-light text-sm">Nombre Apellido</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">{t.registry.holder}</p>
+                <p className="text-wedding-navy-dark font-light text-sm">Danery Alessandra Ccahuana Centeno</p>
               </div>
 
               <div className="flex items-center justify-center gap-2 w-full bg-[#752F8A] text-white text-sm tracking-wide uppercase py-3 rounded-xl font-light shadow-lg mt-auto">
-                Transferencia Yape
+                {t.registry.transfer} Yape
               </div>
             </div>
           </motion.div>
@@ -253,12 +255,12 @@ export default function RegistrySection1() {
             <div className="border-2 border-wedding-navy-medium/15 rounded-2xl p-6 bg-gradient-to-br from-white via-white to-wedding-white-soft/30 shadow-xl shadow-wedding-navy-medium/15 h-full flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-[#32BCAD] rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-xl">PIX</span>
+                  <span className="text-white font-bold text-xl">Pix</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-script text-wedding-navy-dark">PIX</h3>
+                  <h3 className="text-2xl font-script text-wedding-navy-dark">Pix</h3>
                   <div className="flex items-center gap-1.5">
-                    <p className="text-wedding-brown-warm text-xs font-light">Brasil</p>
+                    <p className="text-wedding-brown-warm text-xs font-light">{t.registry.brazil}</p>
                     <Image
                       src="https://flagcdn.com/w40/br.png"
                       alt="Brazil Flag"
@@ -271,27 +273,13 @@ export default function RegistrySection1() {
                 </div>
               </div>
 
-              {/* QR Code */}
-              <motion.div
-                className="relative w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden border-2 border-wedding-brown-warm/20 shadow-lg"
-                whileHover={{ scale: 1.05 }}
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-              >
-                <Image
-                  src="/images/qr.png"
-                  alt="QR Code PIX"
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-3">
                 <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Chave PIX</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-wedding-navy-dark font-light text-sm break-all">email@example.com</p>
+                  <p className="text-wedding-navy-dark font-light text-sm break-all">daneryalessandra1@gmail.com</p>
                   <motion.button
-                    onClick={() => copyToClipboard("email@example.com", "pix")}
+                    onClick={() => copyToClipboard("daneryalessandra1@gmail.com", "pix")}
                     className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors flex-shrink-0"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -306,12 +294,12 @@ export default function RegistrySection1() {
               </div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Titular</p>
-                <p className="text-wedding-navy-dark font-light text-sm">Nombre Apellido</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">{t.registry.holder}</p>
+                <p className="text-wedding-navy-dark font-light text-sm">Danery Alessandra Ccahuana Centeno</p>
               </div>
 
               <div className="flex items-center justify-center gap-2 w-full bg-[#32BCAD] text-white text-sm tracking-wide uppercase py-3 rounded-xl font-light shadow-lg mt-auto">
-                Transferencia PIX
+                {t.registry.transfer} PIX
               </div>
             </div>
           </motion.div>
@@ -319,7 +307,7 @@ export default function RegistrySection1() {
 
         {/* Bottom message */}
         <motion.div variants={itemVariants} className="text-center">
-          <motion.div 
+          <motion.div
             className="bg-gradient-to-r from-wedding-navy-medium/5 via-wedding-beige-light/10 to-wedding-navy-medium/5 rounded-3xl px-8 py-6 border border-wedding-beige-light/15 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -329,13 +317,13 @@ export default function RegistrySection1() {
               <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
                 <Gift size={24} className="text-wedding-brown-warm" />
               </motion.div>
-              <p className="text-wedding-brown-warm font-script text-2xl md:text-3xl">¡Gracias por tu generosidad!</p>
+              <p className="text-wedding-brown-warm font-script text-2xl md:text-3xl">{t.registry.thank_you}</p>
               <motion.div animate={{ rotate: [0, -10, 10, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}>
                 <Sparkles size={24} className="text-wedding-brown-warm" />
               </motion.div>
             </div>
             <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light">
-              Gracias por tu generosidad y por ser parte de esta nueva etapa.
+              {t.registry.thanks_msg}
             </p>
           </motion.div>
         </motion.div>

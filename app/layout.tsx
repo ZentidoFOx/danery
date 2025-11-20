@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Great_Vibes, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { Providers } from "@/components/Providers";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -22,17 +23,18 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: '#6B8E6F',
+};
+
 export const metadata: Metadata = {
   title: "Salvador y Danery - Invitación de Boda",
   description: "Te invitamos a celebrar nuestra boda - 18 de Noviembre del 2023",
   keywords: ["boda", "invitación", "Salvador", "Danery", "Oaxaca"],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
-  themeColor: '#6B8E6F',
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.svg',
@@ -61,7 +63,9 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/images/vertical.png" media="(max-width: 767px)" />
       </head>
       <body className="antialiased">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

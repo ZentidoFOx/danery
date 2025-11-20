@@ -5,9 +5,11 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { Heart, User, Users, CheckCircle, Video, Clock } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
 
 // DISEÑO 3: Cards Horizontales con Iconos
 export default function RSVPSection3() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -68,7 +70,7 @@ export default function RSVPSection3() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`¡Gracias ${formData.firstName}! Tu respuesta ha sido registrada.`);
+    alert(t.rsvp.alert_msg.replace("{name}", formData.firstName));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -79,7 +81,7 @@ export default function RSVPSection3() {
   };
 
   return (
-    <section className="bg-white py-10 px-4 relative overflow-hidden">
+    <section id="rsvp-section" className="bg-white py-10 px-4 relative overflow-hidden">
       {/* Corner frames */}
       <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-wedding-navy-medium/15 rounded-tl-3xl"></div>
       <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-wedding-navy-medium/15 rounded-tr-3xl"></div>
@@ -104,15 +106,15 @@ export default function RSVPSection3() {
               unoptimized
             />
           </div>
-          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">R S V P</p>
-          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">Confirma tu Asistencia</h2>
+          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">{t.rsvp.title_small}</p>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">{t.rsvp.title_large}</h2>
         </motion.div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Nombre Card */}
             <motion.div variants={itemVariants} className="relative group">
-              <motion.div 
+              <motion.div
                 className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-wedding-navy-medium/30 flex items-center gap-2 z-10"
                 initial={{ y: -20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -120,13 +122,13 @@ export default function RSVPSection3() {
                 whileHover={{ scale: 1.05 }}
               >
                 <User size={16} className="text-wedding-navy-medium" />
-                <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Nombre</span>
+                <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.name_label}</span>
               </motion.div>
               <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-wedding-white-soft/30 border-2 border-wedding-navy-medium/20 rounded-2xl group-hover:border-wedding-navy-medium/50 transition-all shadow-md shadow-wedding-navy-medium/10">
                 <input
                   type="text"
                   name="firstName"
-                  placeholder="Tu nombre"
+                  placeholder={t.rsvp.name_placeholder}
                   value={formData.firstName}
                   onChange={handleChange}
                   required
@@ -137,7 +139,7 @@ export default function RSVPSection3() {
 
             {/* Apellido Card */}
             <motion.div variants={itemVariants} className="relative group">
-              <motion.div 
+              <motion.div
                 className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-wedding-navy-medium/30 flex items-center gap-2 z-10"
                 initial={{ y: -20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -145,13 +147,13 @@ export default function RSVPSection3() {
                 whileHover={{ scale: 1.05 }}
               >
                 <Users size={16} className="text-wedding-navy-medium" />
-                <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Apellido</span>
+                <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.lastname_label}</span>
               </motion.div>
               <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-wedding-white-soft/30 border-2 border-wedding-navy-medium/20 rounded-2xl group-hover:border-wedding-navy-medium/50 transition-all shadow-md shadow-wedding-navy-medium/10">
                 <input
                   type="text"
                   name="lastName"
-                  placeholder="Tu apellido"
+                  placeholder={t.rsvp.lastname_placeholder}
                   value={formData.lastName}
                   onChange={handleChange}
                   required
@@ -163,7 +165,7 @@ export default function RSVPSection3() {
 
           {/* Asistencia Card */}
           <motion.div variants={itemVariants} className="relative group">
-            <motion.div 
+            <motion.div
               className="absolute -top-4 left-6 bg-white px-4 py-2 rounded-full border-2 border-wedding-navy-medium/30 flex items-center gap-2 z-10"
               initial={{ y: -20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -171,7 +173,7 @@ export default function RSVPSection3() {
               whileHover={{ scale: 1.05 }}
             >
               <CheckCircle size={16} className="text-wedding-navy-medium" />
-              <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Confirmación</span>
+              <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.attendance_label}</span>
             </motion.div>
             <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-wedding-white-soft/30 border-2 border-wedding-navy-medium/20 rounded-2xl group-hover:border-wedding-navy-medium/50 transition-all shadow-md shadow-wedding-navy-medium/10">
               <select
@@ -188,9 +190,9 @@ export default function RSVPSection3() {
                   paddingRight: "2.5rem",
                 }}
               >
-                <option value="">Selecciona una opción</option>
-                <option value="si">Sí, asistiré</option>
-                <option value="no">No podré asistir</option>
+                <option value="">{t.rsvp.select_option}</option>
+                <option value="si">{t.rsvp.yes_option}</option>
+                <option value="no">{t.rsvp.no_option}</option>
               </select>
             </div>
           </motion.div>
@@ -204,13 +206,13 @@ export default function RSVPSection3() {
               whileTap={{ scale: 0.98 }}
             >
               <Heart size={18} className="fill-white" />
-              Confirmar Asistencia
+              {t.rsvp.submit_btn}
             </motion.button>
           </motion.div>
         </form>
 
         {/* Online Guests Section */}
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="mt-12 border-2 border-wedding-navy-medium/20 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-wedding-beige-light/5 via-white to-wedding-navy-medium/5 shadow-lg"
         >
@@ -222,11 +224,11 @@ export default function RSVPSection3() {
             >
               <Video size={24} className="text-wedding-navy-medium" />
               <h3 className="text-2xl md:text-3xl font-script text-wedding-navy-medium">
-                Invitados Online
+                {t.rsvp.online_title}
               </h3>
             </motion.div>
             <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light mb-6 max-w-2xl mx-auto">
-              Para quienes no puedan acompañarnos presencialmente, podrán unirse vía Google Meet ese día.
+              {t.rsvp.online_desc}
             </p>
           </div>
 
@@ -240,7 +242,7 @@ export default function RSVPSection3() {
             whileTap={{ scale: 0.98 }}
           >
             <Video size={20} />
-            Unión a Google Meet
+            {t.rsvp.online_btn}
           </motion.a>
 
           {/* Time Zones */}
@@ -248,27 +250,27 @@ export default function RSVPSection3() {
             <div className="flex items-center justify-center gap-2 mb-4">
               <Clock size={18} className="text-wedding-brown-warm" />
               <h4 className="text-wedding-brown-warm text-sm md:text-base tracking-wider uppercase font-light">
-                Horarios de la Ceremonia
+                {t.rsvp.timezones_title}
               </h4>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {/* Los Angeles */}
-              <motion.div 
+              <motion.div
                 className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
                 whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
               >
-                <p className="text-wedding-navy-medium text-xs uppercase tracking-wider mb-1 font-light">Los Ángeles</p>
+                <p className="text-wedding-navy-medium text-xs uppercase tracking-wider mb-1 font-light">{t.rsvp.los_angeles}</p>
                 <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">4:00 PM</p>
               </motion.div>
 
               {/* Peru */}
-              <motion.div 
+              <motion.div
                 className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
                 whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
               >
                 <div className="flex items-center justify-center gap-1.5 mb-1">
-                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Perú</p>
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.peru}</p>
                   <Image
                     src="https://flagcdn.com/w40/pe.png"
                     alt="Peru Flag"
@@ -282,12 +284,12 @@ export default function RSVPSection3() {
               </motion.div>
 
               {/* Brasil */}
-              <motion.div 
+              <motion.div
                 className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
                 whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
               >
                 <div className="flex items-center justify-center gap-1.5 mb-1">
-                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Brasil</p>
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.brazil}</p>
                   <Image
                     src="https://flagcdn.com/w40/br.png"
                     alt="Brazil Flag"
@@ -301,12 +303,12 @@ export default function RSVPSection3() {
               </motion.div>
 
               {/* Bolivia */}
-              <motion.div 
+              <motion.div
                 className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
                 whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
               >
                 <div className="flex items-center justify-center gap-1.5 mb-1">
-                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">Bolivia</p>
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.bolivia}</p>
                   <Image
                     src="https://flagcdn.com/w40/bo.png"
                     alt="Bolivia Flag"
