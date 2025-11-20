@@ -78,7 +78,7 @@ export default function DressCodeSection() {
   };
 
   return (
-    <section className="bg-white py-16 md:py-20 px-4">
+    <section className="bg-white py-4 px-4">
       <motion.div
         className="max-w-5xl mx-auto"
         initial="hidden"

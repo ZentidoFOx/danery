@@ -71,7 +71,7 @@ export default function RegistrySection1() {
   };
 
   return (
-    <section className="bg-white py-10 px-4 relative overflow-hidden">
+    <section className="bg-white py-0 px-4 relative overflow-hidden">
       {/* Corner frames */}
       <div ref={(el) => { cornerRefs.current[0] = el; }} className="absolute top-6 left-6 w-28 h-28 border-t-2 border-l-2 border-wedding-navy-medium/15 rounded-tl-3xl"></div>
       <div ref={(el) => { cornerRefs.current[1] = el; }} className="absolute top-6 right-6 w-28 h-28 border-t-2 border-r-2 border-wedding-navy-medium/15 rounded-tr-3xl"></div>

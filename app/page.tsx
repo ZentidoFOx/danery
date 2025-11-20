@@ -22,8 +22,8 @@ export default function Home() {
             <ItinerarySection />
             <DressCodeSection />
             {/* <GallerySection /> */}
-            <RegistrySection />
             <RSVPSection />
+            <RegistrySection />
             <Footer />
             <FloatingRSVP />
         </main>
