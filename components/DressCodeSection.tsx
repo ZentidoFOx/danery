@@ -87,13 +87,12 @@ export default function DressCodeSection() {
         variants={containerVariants}
       >
         {/* Header */}
-        <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
+        <motion.div variants={itemVariants} className="text-center mb-0 md:mb-16">
           <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
             {t.dressCode.title_small}
+
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
-            {t.dressCode.title_large}
-          </h2>
+
         </motion.div>
 
         {/* Horizontal layout con divider central */}

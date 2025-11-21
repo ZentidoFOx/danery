@@ -121,7 +121,7 @@ export const translations: Record<Language, Translations> = {
             and: "&",
             date: "07 de Diciembre 2025",
             location: "Iglesia Tricities, 221 S Benton St, Kennewick",
-            time: "4:00 p. m. – 9:00 p. m.",
+            time: "4:00 p. m. – 8:00 p. m.",
         },
         countdown: {
             title_small: "CUENTA REGRESIVA",
@@ -163,7 +163,7 @@ export const translations: Record<Language, Translations> = {
             farewell_desc: "Fin de la celebración",
         },
         dressCode: {
-            title_small: "CÓDIGO DE VESTIMENTA",
+            title_small: "Código de Vestimenta",
             title_large: "Detalles de Estilo",
             attire: "Vestimenta",
             attire_name: "Sunday's Best.",
@@ -224,7 +224,7 @@ export const translations: Record<Language, Translations> = {
             and: "&",
             date: "December 07, 2025",
             location: "Tricities Church, 221 S Benton St, Kennewick",
-            time: "4:00 p.m. – 9:00 p.m.",
+            time: "4:00 p.m. – 8:00 p.m.",
         },
         countdown: {
             title_small: "COUNTDOWN",

@@ -45,7 +45,7 @@ export default function FloatingRSVP() {
     };
 
     // Only show if scrolled enough AND RSVP section is NOT visible
-    const isVisible = showButton && !isRSVPVisible;
+    const isVisible = false; // showButton && !isRSVPVisible;
 
     return (
         <AnimatePresence>

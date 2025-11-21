@@ -208,7 +208,7 @@ export default function ReceptionSectionAlt3() {
             {t.reception.title_small}
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
-            {t.reception.title_large}
+            {t.reception.title_small}
           </h2>
         </motion.div>
 
@@ -230,14 +230,14 @@ export default function ReceptionSectionAlt3() {
             ></motion.div>
 
             <div className="bg-gradient-to-br from-white to-wedding-navy-medium/5 p-8 rounded-2xl border border-wedding-beige-light/15 shadow-lg shadow-wedding-navy-medium/10">
-              <motion.h2
+              {/* <motion.h2
                 className="text-wedding-brown-warm text-sm sm:text-base tracking-[0.4em] uppercase font-light mb-4"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 {t.reception.civil_ceremony}
-              </motion.h2>
+              </motion.h2> */}
 
               <motion.h3
                 className="font-script text-wedding-brown-warm text-3xl sm:text-4xl md:text-5xl mb-5 leading-tight"

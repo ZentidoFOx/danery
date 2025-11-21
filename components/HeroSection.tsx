@@ -12,7 +12,6 @@ const CONFETTI_COLORS = ['#8B5A38', '#D1B99A', '#F5F3EE', '#344A6C'];
 export default function HeroSection() {
   const { t } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
-  const [heroImage, setHeroImage] = useState('');
 
   const handleConfetti = useCallback(() => {
     confetti({
@@ -26,13 +25,11 @@ export default function HeroSection() {
   useEffect(() => {
     const mobile = window.innerWidth < 768;
     setIsMobile(mobile);
-    setHeroImage(mobile ? imageConfig.hero.vertical : imageConfig.hero.horizontal);
 
     const handleResize = () => {
       const newMobile = window.innerWidth < 768;
       if (newMobile !== isMobile) {
         setIsMobile(newMobile);
-        setHeroImage(newMobile ? imageConfig.hero.vertical : imageConfig.hero.horizontal);
       }
     };
 
@@ -65,17 +62,9 @@ export default function HeroSection() {
   }, [isMobile]);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden cursor-pointer" onClick={handleConfetti}>
-      {/* Background Image */}
+    <section className="relative h-screen w-full overflow-hidden cursor-pointer bg-wedding-navy-dark" onClick={handleConfetti}>
+      {/* Background Gradient */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: heroImage ? `url('${heroImage}')` : 'none',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-          }}
-        />
         <div className="absolute inset-0 bg-gradient-to-t from-wedding-navy-dark/85 via-wedding-navy-medium/50 to-transparent" />
       </div>
 
