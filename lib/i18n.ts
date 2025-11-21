@@ -135,7 +135,7 @@ export const translations: Record<Language, Translations> = {
             apple_calendar: "Apple Calendar",
         },
         reception: {
-            title_small: "DONDE & CUANDO",
+            title_small: "Donde & Cuando",
             title_large: "Celebración",
             civil_ceremony: "Ceremonia Civil",
             church_name: "Iglesia Tricities",
@@ -238,7 +238,7 @@ export const translations: Record<Language, Translations> = {
             apple_calendar: "Apple Calendar",
         },
         reception: {
-            title_small: "WHERE & WHEN",
+            title_small: "Where & When",
             title_large: "Celebration",
             civil_ceremony: "Civil Ceremony",
             church_name: "Tricities Church",
@@ -341,7 +341,7 @@ export const translations: Record<Language, Translations> = {
             apple_calendar: "Apple Calendar",
         },
         reception: {
-            title_small: "ONDE & QUANDO",
+            title_small: "Onde & Quando",
             title_large: "Celebração",
             civil_ceremony: "Cerimônia Civil",
             church_name: "Igreja Tricities",
