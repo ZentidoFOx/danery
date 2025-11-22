@@ -214,13 +214,15 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Cloud Bottom */}
+      {/* Cloud Bottom Overlay */}
       <div
-        className="absolute bottom-0 left-0 right-0 w-full pointer-events-none z-10 h-32"
+        className="absolute bottom-0 left-0 right-0 w-full pointer-events-none z-20 h-32 md:h-48"
         style={{
           backgroundImage: `url('${getImageUrl(imageConfig.clouds.bottom, imageConfig.fallback.clouds)}')`,
           backgroundPosition: 'bottom center',
           backgroundSize: 'cover',
+          maskImage: 'linear-gradient(to top, black, #ffffff)',
+          WebkitMaskImage: 'linear-gradient(to top, black, #ffffff)',
         }}
       />
     </section>
