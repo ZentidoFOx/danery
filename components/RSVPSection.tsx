@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { Heart, User, Users, CheckCircle, Video, Clock } from "lucide-react";
+import { Heart, User, Users, CheckCircle, Video, Clock, Frown } from "lucide-react";
 import { useLanguage } from "./LanguageContext";
 import ConfirmationModal from "./ConfirmationModal";
 
@@ -221,25 +221,67 @@ export default function RSVPSection3() {
                 <CheckCircle size={16} className="text-wedding-navy-medium" />
                 <span className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.attendance_label}</span>
               </motion.div>
-              <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-wedding-white-soft/30 border-2 border-wedding-navy-medium/20 rounded-2xl group-hover:border-wedding-navy-medium/50 transition-all shadow-md shadow-wedding-navy-medium/10">
-                <select
+              <div className="pt-6 pb-4 px-6 bg-gradient-to-br from-white to-wedding-white-soft/30 border-2 border-wedding-navy-medium/20 rounded-2xl shadow-md shadow-wedding-navy-medium/10">
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, attending: 'si' })}
+                    className={`relative p-4 rounded-xl border-2 transition-all duration-300 flex flex-col items-center justify-center gap-3 group ${formData.attending === 'si'
+                      ? 'bg-wedding-navy-medium border-wedding-navy-medium text-white shadow-lg scale-[1.02]'
+                      : 'bg-white border-wedding-navy-medium/20 text-wedding-navy-dark hover:border-wedding-navy-medium/50 hover:bg-wedding-navy-medium/5'
+                      }`}
+                  >
+                    <div className={`p-3 rounded-full transition-colors ${formData.attending === 'si' ? 'bg-white/20' : 'bg-wedding-navy-medium/10 group-hover:bg-wedding-navy-medium/20'
+                      }`}>
+                      <CheckCircle size={24} className={formData.attending === 'si' ? 'text-white' : 'text-wedding-navy-medium'} />
+                    </div>
+                    <span className="font-poppins text-sm font-medium tracking-wide text-center">{t.rsvp.yes_option}</span>
+
+                    {formData.attending === 'si' && (
+                      <motion.div
+                        layoutId="check"
+                        className="absolute top-2 right-2 w-5 h-5 bg-white rounded-full flex items-center justify-center"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                      >
+                        <CheckCircle size={14} className="text-wedding-navy-medium" />
+                      </motion.div>
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, attending: 'no' })}
+                    className={`relative p-4 rounded-xl border-2 transition-all duration-300 flex flex-col items-center justify-center gap-3 group ${formData.attending === 'no'
+                      ? 'bg-wedding-brown-warm border-wedding-brown-warm text-white shadow-lg scale-[1.02]'
+                      : 'bg-white border-wedding-navy-medium/20 text-wedding-navy-dark hover:border-wedding-navy-medium/50 hover:bg-wedding-navy-medium/5'
+                      }`}
+                  >
+                    <div className={`p-3 rounded-full transition-colors ${formData.attending === 'no' ? 'bg-white/20' : 'bg-wedding-brown-warm/10 group-hover:bg-wedding-brown-warm/20'
+                      }`}>
+                      <Frown size={24} className={formData.attending === 'no' ? 'text-white' : 'text-wedding-brown-warm'} />
+                    </div>
+                    <span className="font-poppins text-sm font-medium tracking-wide text-center">{t.rsvp.no_option}</span>
+
+                    {formData.attending === 'no' && (
+                      <motion.div
+                        layoutId="check"
+                        className="absolute top-2 right-2 w-5 h-5 bg-white rounded-full flex items-center justify-center"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                      >
+                        <CheckCircle size={14} className="text-wedding-brown-warm" />
+                      </motion.div>
+                    )}
+                  </button>
+                </div>
+                {/* Hidden input for validation if needed, though state handles it */}
+                <input
+                  type="hidden"
                   name="attending"
                   value={formData.attending}
-                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white border border-wedding-navy-medium/20 rounded-lg text-wedding-navy-dark text-sm focus:border-wedding-navy-medium focus:ring-2 focus:ring-wedding-navy-medium/20 outline-none appearance-none cursor-pointer transition-all"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23344A6C' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                    backgroundPosition: "right 0.75rem center",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "1.5em 1.5em",
-                    paddingRight: "2.5rem",
-                  }}
-                >
-                  <option value="">{t.rsvp.select_option}</option>
-                  <option value="si">{t.rsvp.yes_option}</option>
-                  <option value="no">{t.rsvp.no_option}</option>
-                </select>
+                />
               </div>
             </motion.div>
 
@@ -369,8 +411,8 @@ export default function RSVPSection3() {
               </div>
             </div>
           </motion.div>
-        </motion.div>
-      </section>
+        </motion.div >
+      </section >
     </>
   );
 }
