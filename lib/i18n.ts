@@ -111,6 +111,44 @@ export interface Translations {
     floatingRSVP: {
         confirm: string;
     };
+    // Attendance Page
+    attendance: {
+        page_title: string;
+        subtitle: string;
+        total_confirmed: string;
+        will_attend: string;
+        wont_attend: string;
+        filter_all: string;
+        filter_yes: string;
+        filter_no: string;
+        table_number: string;
+        table_name: string;
+        table_lastname: string;
+        table_attendance: string;
+        table_date: string;
+        yes_attending: string;
+        no_attending: string;
+        no_results: string;
+        loading: string;
+        error_loading: string;
+        error_server: string;
+        refresh_button: string;
+        clear_all_button: string;
+        confirm_delete: string;
+        delete_success: string;
+        delete_error: string;
+    };
+    // Confirmation Modal
+    confirmationModal: {
+        title_yes: string;
+        title_no: string;
+        message_yes: string;
+        message_no: string;
+        subtitle_yes: string;
+        subtitle_no: string;
+        livestream_info: string;
+        close_button: string;
+    };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -121,7 +159,7 @@ export const translations: Record<Language, Translations> = {
             and: "&",
             date: "07 de Diciembre 2025",
             location: "Iglesia Tricities, 221 S Benton St, Kennewick",
-            time: "4:00 p. m. – 8:00 p. m.",
+            time: "5:00 p. m. – 9:00 p. m.",
         },
         countdown: {
             title_small: "CUENTA REGRESIVA",
@@ -146,7 +184,7 @@ export const translations: Record<Language, Translations> = {
         itinerary: {
             title_small: "PROGRAMA",
             title_large: "Itinerario del Día",
-            ceremony_time: "4:00 p. m.",
+            ceremony_time: "5:00 p. m.",
             ceremony_title: "Ceremonia",
             ceremony_desc: "Iglesia Tricities, 221 S Benton St, Kennewick",
             reception_time: "6:00 p. m.",
@@ -215,6 +253,42 @@ export const translations: Record<Language, Translations> = {
         },
         floatingRSVP: {
             confirm: "Confirmar Asistencia",
+        },
+        attendance: {
+            page_title: "Lista de Asistencia",
+            subtitle: "Salvador y Danery",
+            total_confirmed: "Total Confirmadas",
+            will_attend: "Asistirán",
+            wont_attend: "No Asistirán",
+            filter_all: "Todos",
+            filter_yes: "Asistirán",
+            filter_no: "No asistirán",
+            table_number: "#",
+            table_name: "Nombre",
+            table_lastname: "Apellido",
+            table_attendance: "Asistencia",
+            table_date: "Fecha",
+            yes_attending: "Sí asistirá",
+            no_attending: "No asistirá",
+            no_results: "No hay confirmaciones con este filtro",
+            loading: "Cargando...",
+            error_loading: "Error al cargar datos",
+            error_server: "Error al conectar con el servidor",
+            refresh_button: "Actualizar Lista",
+            clear_all_button: "Limpiar Todos los Datos",
+            confirm_delete: "¿Estás seguro de que quieres eliminar TODOS los datos de asistencia? Esta acción no se puede deshacer.",
+            delete_success: "Todos los datos han sido eliminados correctamente",
+            delete_error: "Error al eliminar los datos",
+        },
+        confirmationModal: {
+            title_yes: "¡Qué alegría!",
+            title_no: "Te extrañaremos",
+            message_yes: "nos emociona que nos acompañes en este día tan especial.",
+            message_no: "lamentamos que no puedas acompañarnos presencialmente.",
+            subtitle_yes: "¡Nos vemos el 7 de diciembre! 💕",
+            subtitle_no: "Pero puedes unirte a nuestra transmisión en vivo y ser parte de este momento especial. 💕",
+            livestream_info: "Transmisión en vivo disponible el día del evento",
+            close_button: "Cerrar",
         },
     },
     en: {
@@ -319,6 +393,42 @@ export const translations: Record<Language, Translations> = {
         floatingRSVP: {
             confirm: "Confirm Attendance",
         },
+        attendance: {
+            page_title: "Attendance List",
+            subtitle: "Salvador and Danery",
+            total_confirmed: "Total Confirmed",
+            will_attend: "Will Attend",
+            wont_attend: "Won't Attend",
+            filter_all: "All",
+            filter_yes: "Will Attend",
+            filter_no: "Won't Attend",
+            table_number: "#",
+            table_name: "Name",
+            table_lastname: "Last Name",
+            table_attendance: "Attendance",
+            table_date: "Date",
+            yes_attending: "Will attend",
+            no_attending: "Won't attend",
+            no_results: "No confirmations with this filter",
+            loading: "Loading...",
+            error_loading: "Error loading data",
+            error_server: "Error connecting to server",
+            refresh_button: "Refresh List",
+            clear_all_button: "Clear All Data",
+            confirm_delete: "Are you sure you want to delete ALL attendance data? This action cannot be undone.",
+            delete_success: "All data has been successfully deleted",
+            delete_error: "Error deleting data",
+        },
+        confirmationModal: {
+            title_yes: "How wonderful!",
+            title_no: "We'll miss you",
+            message_yes: "we're thrilled that you'll join us on this special day.",
+            message_no: "we're sorry you can't join us in person.",
+            subtitle_yes: "See you on December 7th! 💕",
+            subtitle_no: "But you can join our livestream and be part of this special moment. 💕",
+            livestream_info: "Livestream available on the event day",
+            close_button: "Close",
+        },
     },
     pt: {
         hero: {
@@ -421,6 +531,42 @@ export const translations: Record<Language, Translations> = {
         },
         floatingRSVP: {
             confirm: "Confirmar Presença",
+        },
+        attendance: {
+            page_title: "Lista de Presença",
+            subtitle: "Salvador e Danery",
+            total_confirmed: "Total Confirmadas",
+            will_attend: "Comparecerão",
+            wont_attend: "Não Comparecerão",
+            filter_all: "Todos",
+            filter_yes: "Comparecerão",
+            filter_no: "Não comparecerão",
+            table_number: "#",
+            table_name: "Nome",
+            table_lastname: "Sobrenome",
+            table_attendance: "Presença",
+            table_date: "Data",
+            yes_attending: "Comparecerá",
+            no_attending: "Não comparecerá",
+            no_results: "Não há confirmações com este filtro",
+            loading: "Carregando...",
+            error_loading: "Erro ao carregar dados",
+            error_server: "Erro ao conectar com o servidor",
+            refresh_button: "Atualizar Lista",
+            clear_all_button: "Limpar Todos os Dados",
+            confirm_delete: "Tem certeza de que deseja excluir TODOS os dados de presença? Esta ação não pode ser desfeita.",
+            delete_success: "Todos os dados foram excluídos com sucesso",
+            delete_error: "Erro ao excluir dados",
+        },
+        confirmationModal: {
+            title_yes: "Que alegria!",
+            title_no: "Sentiremos sua falta",
+            message_yes: "estamos emocionados que você nos acompanhe neste dia tão especial.",
+            message_no: "lamentamos que você não possa nos acompanhar pessoalmente.",
+            subtitle_yes: "Nos vemos em 7 de dezembro! 💕",
+            subtitle_no: "Mas você pode se juntar à nossa transmissão ao vivo e fazer parte deste momento especial. 💕",
+            livestream_info: "Transmissão ao vivo disponível no dia do evento",
+            close_button: "Fechar",
         },
     },
 };

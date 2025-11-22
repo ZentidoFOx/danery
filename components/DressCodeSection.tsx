@@ -6,7 +6,8 @@ import gsap from "gsap";
 import { useLanguage } from "./LanguageContext";
 
 export default function DressCodeSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
   // Refs para GSAP
   const dressCodeRef = useRef<HTMLParagraphElement>(null);
   const paletteRef = useRef<HTMLParagraphElement>(null);
@@ -56,6 +57,11 @@ export default function DressCodeSection() {
     return () => ctx.revert();
   }, []);
 
+  // No mostrar esta sección en portugués
+  if (language === 'pt') {
+    return null;
+  }
+
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -87,7 +93,7 @@ export default function DressCodeSection() {
         variants={containerVariants}
       >
         {/* Header */}
-        <motion.div variants={itemVariants} className="text-center mb-0 md:mb-16">
+        <motion.div variants={itemVariants} className="text-center mb-0 md:mb-4">
           <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-poppins font-light mb-4">
             {t.dressCode.title_small}
 
