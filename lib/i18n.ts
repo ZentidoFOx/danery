@@ -336,7 +336,7 @@ export const translations: Record<Language, Translations> = {
             dance_title: "First Dance",
             dance_desc: "Our first dance",
             farewell_time: "8:00 p.m.",
-            farewell_title: "Farewell",
+            farewell_title: "Send off",
             farewell_desc: "End of celebration",
         },
         dressCode: {
