@@ -96,9 +96,9 @@ export default function RegistrySection1() {
               unoptimized
             />
           </div>
-          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light mb-2 md:mb-4">{t.registry.title_small}</p>
+          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-poppins font-light mb-2 md:mb-4">{t.registry.title_small}</p>
           <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium mb-3 md:mb-6">{t.registry.title_large}</h2>
-          <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-wedding-navy-dark/70 text-sm md:text-base font-poppins font-light max-w-3xl mx-auto leading-relaxed">
             {t.registry.description_1}<br className="hidden md:block" />
             {t.registry.description_2}
           </p>
@@ -116,7 +116,7 @@ export default function RegistrySection1() {
                 <div>
                   <h3 className="text-2xl font-script text-wedding-navy-dark">Cash App</h3>
                   <div className="flex items-center gap-1.5">
-                    <p className="text-wedding-brown-warm text-xs font-light">{t.registry.usa}</p>
+                    <p className="text-wedding-brown-warm text-xs font-poppins font-light">{t.registry.usa}</p>
                     <Image
                       src="https://flagcdn.com/w40/us.png"
                       alt="USA Flag"
@@ -145,9 +145,9 @@ export default function RegistrySection1() {
               </motion.div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-3">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Cashtag</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider font-poppins mb-1">Cashtag</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-wedding-navy-dark font-light text-lg">$Carlitos554</p>
+                  <p className="text-wedding-navy-dark font-poppins font-light text-lg">$Carlitos554</p>
                   <motion.button
                     onClick={() => copyToClipboard("$Carlitos554", "cashapp")}
                     className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors"
@@ -164,8 +164,8 @@ export default function RegistrySection1() {
               </div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">{t.registry.holder}</p>
-                <p className="text-wedding-navy-dark font-light text-sm">Carlos Salvador Borquez Garcia</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider font-poppins mb-1">{t.registry.holder}</p>
+                <p className="text-wedding-navy-dark font-poppins font-light text-sm">Carlos Salvador Borquez Garcia</p>
               </div>
 
               <motion.a
@@ -192,7 +192,7 @@ export default function RegistrySection1() {
                 <div>
                   <h3 className="text-2xl font-script text-wedding-navy-dark">Yape</h3>
                   <div className="flex items-center gap-1.5">
-                    <p className="text-wedding-brown-warm text-xs font-light">{t.registry.peru}</p>
+                    <p className="text-wedding-brown-warm text-xs font-poppins font-light">{t.registry.peru}</p>
                     <Image
                       src="https://flagcdn.com/w40/pe.png"
                       alt="Peru Flag"
@@ -221,9 +221,9 @@ export default function RegistrySection1() {
               </motion.div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-3">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">{t.registry.number}</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider font-poppins mb-1">{t.registry.number}</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-wedding-navy-dark font-light text-lg">985 316 666</p>
+                  <p className="text-wedding-navy-dark font-poppins font-light text-lg">985 316 666</p>
                   <motion.button
                     onClick={() => copyToClipboard("985316666", "yape")}
                     className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors"
@@ -240,8 +240,8 @@ export default function RegistrySection1() {
               </div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">{t.registry.holder}</p>
-                <p className="text-wedding-navy-dark font-light text-sm">Danery Alessandra Ccahuana Centeno</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider font-poppins mb-1">{t.registry.holder}</p>
+                <p className="text-wedding-navy-dark font-poppins font-light text-sm">Danery Alessandra Ccahuana Centeno</p>
               </div>
 
               <div className="flex items-center justify-center gap-2 w-full bg-[#752F8A] text-white text-sm tracking-wide uppercase py-3 rounded-xl font-light shadow-lg mt-auto">
@@ -260,7 +260,7 @@ export default function RegistrySection1() {
                 <div>
                   <h3 className="text-2xl font-script text-wedding-navy-dark">Pix</h3>
                   <div className="flex items-center gap-1.5">
-                    <p className="text-wedding-brown-warm text-xs font-light">{t.registry.brazil}</p>
+                    <p className="text-wedding-brown-warm text-xs font-poppins font-light">{t.registry.brazil}</p>
                     <Image
                       src="https://flagcdn.com/w40/br.png"
                       alt="Brazil Flag"
@@ -275,9 +275,9 @@ export default function RegistrySection1() {
 
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-3">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">Chave PIX</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider font-poppins mb-1">Chave PIX</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-wedding-navy-dark font-light text-sm break-all">daneryalessandra1@gmail.com</p>
+                  <p className="text-wedding-navy-dark font-poppins font-light text-sm break-all">daneryalessandra1@gmail.com</p>
                   <motion.button
                     onClick={() => copyToClipboard("daneryalessandra1@gmail.com", "pix")}
                     className="p-2 hover:bg-wedding-brown-warm/10 rounded-lg transition-colors flex-shrink-0"
@@ -294,8 +294,8 @@ export default function RegistrySection1() {
               </div>
 
               <div className="bg-white/50 rounded-xl p-3 border border-wedding-beige-light/15 shadow-sm mb-4">
-                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider mb-1">{t.registry.holder}</p>
-                <p className="text-wedding-navy-dark font-light text-sm">Danery Alessandra Ccahuana Centeno</p>
+                <p className="text-wedding-brown-warm text-xs uppercase tracking-wider font-poppins mb-1">{t.registry.holder}</p>
+                <p className="text-wedding-navy-dark font-poppins font-light text-sm">Danery Alessandra Ccahuana Centeno</p>
               </div>
 
               <div className="flex items-center justify-center gap-2 w-full bg-[#32BCAD] text-white text-sm tracking-wide uppercase py-3 rounded-xl font-light shadow-lg mt-auto">
@@ -322,7 +322,7 @@ export default function RegistrySection1() {
                 <Sparkles size={24} className="text-wedding-brown-warm" />
               </motion.div>
             </div>
-            <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light">
+            <p className="text-wedding-navy-dark/70 text-sm md:text-base font-poppins font-light">
               {t.registry.thanks_msg}
             </p>
           </motion.div>

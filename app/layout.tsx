@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Great_Vibes, Cormorant_Garamond } from "next/font/google";
+import { Playfair_Display, Great_Vibes, Cormorant_Garamond, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 
@@ -20,6 +20,13 @@ const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
   variable: "--font-elegant",
+  display: "swap",
+});
+
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -53,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${playfair.variable} ${greatVibes.variable} ${cormorant.variable}`}>
+    <html lang="es" className={`${playfair.variable} ${greatVibes.variable} ${cormorant.variable} ${poppins.variable}`}>
       <head>
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />

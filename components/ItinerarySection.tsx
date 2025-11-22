@@ -90,18 +90,7 @@ export default function ItinerarySectionAlt7() {
       description: t.itinerary.reception_desc,
       icon: "/images/reception.png",
     },
-    {
-      time: t.itinerary.dinner_time,
-      title: t.itinerary.dinner_title,
-      description: t.itinerary.dinner_desc,
-      icon: "/images/cena-brindis.svg",
-    },
-    {
-      time: t.itinerary.dance_time,
-      title: t.itinerary.dance_title,
-      description: t.itinerary.dance_desc,
-      icon: "/images/first-dance.svg",
-    },
+
     {
       time: t.itinerary.farewell_time,
       title: t.itinerary.farewell_title,
@@ -133,7 +122,7 @@ export default function ItinerarySectionAlt7() {
               unoptimized
             />
           </div>
-          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-poppins font-light mb-4">
             {t.itinerary.title_small}
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
@@ -184,7 +173,7 @@ export default function ItinerarySectionAlt7() {
 
                 {/* Time */}
                 <div className="flex-shrink-0 w-20 md:w-28">
-                  <p className="text-base md:text-xl text-wedding-brown-warm font-light">
+                  <p className="text-base md:text-xl text-wedding-brown-warm font-poppins font-light">
                     {event.time}
                   </p>
                 </div>
@@ -257,7 +246,7 @@ export default function ItinerarySectionAlt7() {
                     {event.title}
                   </motion.h3>
                   <motion.p
-                    className="text-base md:text-lg text-wedding-brown-warm/70 font-light leading-snug"
+                    className="text-base md:text-lg text-wedding-brown-warm/70 font-poppins font-light leading-snug"
                     initial={{ opacity: 0.6 }}
                     whileHover={{ opacity: 1 }}
                     animate={{

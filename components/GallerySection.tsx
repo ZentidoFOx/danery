@@ -156,7 +156,7 @@ export default function GallerySection() {
               unoptimized
             />
           </div>
-          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">G A L E R Í A</p>
+          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.5em] uppercase font-poppins font-light mb-4">G A L E R Í A</p>
           <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">Nuestros Momentos</h2>
         </motion.div>
 
@@ -222,13 +222,13 @@ export default function GallerySection() {
             </motion.button>
 
             {/* Counter */}
-            <motion.div 
+            <motion.div
               className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               key={currentIndex}
             >
-              <motion.p 
+              <motion.p
                 className="text-wedding-brown-warm text-sm font-light"
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 0.3 }}
@@ -248,11 +248,10 @@ export default function GallerySection() {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex
+                className={`transition-all duration-300 rounded-full ${index === currentIndex
                     ? "w-8 h-2 bg-wedding-brown-warm"
                     : "w-2 h-2 bg-wedding-brown-warm/30 hover:bg-wedding-brown-warm/50"
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -267,11 +266,10 @@ export default function GallerySection() {
                 setDirection(index > currentIndex ? 1 : -1);
                 setCurrentIndex(index);
               }}
-              className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300 ${
-                index === currentIndex
+              className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300 ${index === currentIndex
                   ? "border-wedding-brown-warm scale-105 shadow-lg shadow-wedding-navy-medium/20"
                   : "border-wedding-navy-medium/20 hover:border-wedding-brown-warm/50 shadow-md shadow-wedding-navy-medium/10"
-              }`}
+                }`}
             >
               <Image
                 src={image}

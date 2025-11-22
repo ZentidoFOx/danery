@@ -9,7 +9,8 @@ import { useLanguage } from "./LanguageContext";
 
 // DISEÑO 3: Cards Horizontales con Iconos
 export default function RSVPSection3() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -80,6 +81,11 @@ export default function RSVPSection3() {
     });
   };
 
+  // No mostrar la sección RSVP si el idioma es portugués
+  if (language === 'pt') {
+    return null;
+  }
+
   return (
     <section id="rsvp-section" className="bg-white py-10 px-4 relative overflow-hidden">
       {/* Corner frames */}
@@ -106,7 +112,7 @@ export default function RSVPSection3() {
               unoptimized
             />
           </div>
-          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.5em] uppercase font-light mb-4">{t.rsvp.title_small}</p>
+          <p className="text-wedding-beige-light text-xs md:text-sm tracking-[0.5em] uppercase font-poppins font-light mb-4">{t.rsvp.title_small}</p>
           <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">{t.rsvp.title_large}</h2>
         </motion.div>
 
@@ -227,7 +233,7 @@ export default function RSVPSection3() {
                 {t.rsvp.online_title}
               </h3>
             </motion.div>
-            <p className="text-wedding-navy-dark/70 text-sm md:text-base font-light mb-6 max-w-2xl mx-auto">
+            <p className="text-wedding-navy-dark/70 text-sm md:text-base font-poppins font-light mb-6 max-w-2xl mx-auto">
               {t.rsvp.online_desc}
             </p>
           </div>
@@ -260,8 +266,8 @@ export default function RSVPSection3() {
                 className="text-center p-4 bg-gradient-to-br from-white to-wedding-white-soft/30 rounded-xl border border-wedding-navy-medium/10"
                 whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
               >
-                <p className="text-wedding-navy-medium text-xs uppercase tracking-wider mb-1 font-light">{t.rsvp.los_angeles}</p>
-                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">4:00 PM</p>
+                <p className="text-wedding-navy-medium text-xs uppercase tracking-wider mb-1 font-poppins font-light">{t.rsvp.los_angeles}</p>
+                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">4:00 pm</p>
               </motion.div>
 
               {/* Peru */}
@@ -270,7 +276,7 @@ export default function RSVPSection3() {
                 whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
               >
                 <div className="flex items-center justify-center gap-1.5 mb-1">
-                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.peru}</p>
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-poppins font-light">{t.rsvp.peru}</p>
                   <Image
                     src="https://flagcdn.com/w40/pe.png"
                     alt="Peru Flag"
@@ -280,7 +286,7 @@ export default function RSVPSection3() {
                     unoptimized
                   />
                 </div>
-                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">6:00 PM</p>
+                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">6:00 pm</p>
               </motion.div>
 
               {/* Brasil */}
@@ -289,7 +295,7 @@ export default function RSVPSection3() {
                 whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
               >
                 <div className="flex items-center justify-center gap-1.5 mb-1">
-                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.brazil}</p>
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-poppins font-light">{t.rsvp.brazil}</p>
                   <Image
                     src="https://flagcdn.com/w40/br.png"
                     alt="Brazil Flag"
@@ -299,7 +305,7 @@ export default function RSVPSection3() {
                     unoptimized
                   />
                 </div>
-                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">8:00 PM</p>
+                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">8:00 pm</p>
               </motion.div>
 
               {/* Bolivia */}
@@ -308,7 +314,7 @@ export default function RSVPSection3() {
                 whileHover={{ scale: 1.05, borderColor: "rgba(52, 74, 108, 0.3)" }}
               >
                 <div className="flex items-center justify-center gap-1.5 mb-1">
-                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-light">{t.rsvp.bolivia}</p>
+                  <p className="text-wedding-navy-medium text-xs uppercase tracking-wider font-poppins font-light">{t.rsvp.bolivia}</p>
                   <Image
                     src="https://flagcdn.com/w40/bo.png"
                     alt="Bolivia Flag"
@@ -318,7 +324,7 @@ export default function RSVPSection3() {
                     unoptimized
                   />
                 </div>
-                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">7:00 PM</p>
+                <p className="text-wedding-navy-dark text-xl md:text-2xl font-script">7:00 pm</p>
               </motion.div>
             </div>
           </div>

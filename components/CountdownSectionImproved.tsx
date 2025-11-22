@@ -64,7 +64,7 @@ export default function CountdownSectionImproved() {
         {/* Header con título - Sin animación de entrada para evitar estilos inline */}
         <div className="mb-12 md:mb-16">
           {/* Subtítulo */}
-          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-poppins font-light mb-4">
             {t.countdown.title_small}
           </p>
 
@@ -108,7 +108,7 @@ export default function CountdownSectionImproved() {
                 >
                   {String(item.value).padStart(2, "0")}
                 </span>
-                <p className="text-sm md:text-lg text-wedding-brown-warm font-sans capitalize tracking-wider">
+                <p className="text-sm md:text-lg text-wedding-brown-warm font-poppins capitalize tracking-wider">
                   {item.label}
                 </p>
               </div>

@@ -57,7 +57,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm"
         >
-          <p className="text-wedding-navy-dark/60 font-light">
+          <p className="text-wedding-navy-dark/60 font-poppins font-light">
             © 2025 Todos los derechos reservados
           </p>
 

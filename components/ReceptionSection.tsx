@@ -204,8 +204,8 @@ export default function ReceptionSectionAlt3() {
               unoptimized
             />
           </div>
-          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
-            {t.reception.title_small}
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-poppins font-light mb-4">
+            {t.reception.title_large}
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-script text-wedding-navy-medium">
             {t.reception.title_small}
@@ -249,7 +249,7 @@ export default function ReceptionSectionAlt3() {
                 {t.reception.church_name}
               </motion.h3>
 
-              <p className="text-wedding-navy-dark text-base sm:text-lg font-light mb-8 leading-relaxed">
+              <p className="text-wedding-navy-dark text-base sm:text-lg font-poppins font-light mb-8 leading-relaxed">
                 {t.reception.address}
               </p>
 

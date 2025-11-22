@@ -88,7 +88,7 @@ export default function DressCodeSection() {
       >
         {/* Header */}
         <motion.div variants={itemVariants} className="text-center mb-0 md:mb-16">
-          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-light mb-4">
+          <p className="text-wedding-beige-light text-sm md:text-base tracking-[0.4em] uppercase font-poppins font-light mb-4">
             {t.dressCode.title_small}
 
           </p>

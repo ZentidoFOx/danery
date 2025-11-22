@@ -12,6 +12,7 @@ const config: Config = {
         serif: ['var(--font-serif)', 'serif'],
         script: ['var(--font-script)', 'cursive'],
         elegant: ['var(--font-elegant)', 'serif'],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
       },
       colors: {
         wedding: {
