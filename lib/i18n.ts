@@ -159,7 +159,7 @@ export const translations: Record<Language, Translations> = {
             and: "&",
             date: "07 de Diciembre 2025",
             location: "Iglesia Tricities, 221 S Benton St, Kennewick",
-            time: "5:00 p. m. – 9:00 p. m.",
+            time: "4:00 p. m. – 8:00 p. m.",
         },
         countdown: {
             title_small: "CUENTA REGRESIVA",
@@ -184,7 +184,7 @@ export const translations: Record<Language, Translations> = {
         itinerary: {
             title_small: "PROGRAMA",
             title_large: "Itinerario del Día",
-            ceremony_time: "5:00 p. m.",
+            ceremony_time: "4:00 p. m.",
             ceremony_title: "Ceremonia",
             ceremony_desc: "Iglesia Tricities, 221 S Benton St, Kennewick",
             reception_time: "6:00 p. m.",
