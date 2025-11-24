@@ -38,21 +38,76 @@ export const viewport: Viewport = {
   themeColor: '#6B8E6F',
 };
 
-export const metadata: Metadata = {
-  title: "Salvador y Danery - Invitación de Boda",
-  description: "Te invitamos a celebrar nuestra boda - 18 de Noviembre del 2023",
-  keywords: ["boda", "invitación", "Salvador", "Danery", "Oaxaca"],
-  manifest: '/manifest.json',
-  icons: {
-    icon: '/favicon.svg',
-    apple: '/favicon.svg',
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'Salvador y Danery',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  // Read language from cookies (server-side)
+  const { cookies } = await import('next/headers');
+  const cookieStore = await cookies();
+  const language = cookieStore.get('wedding-language')?.value || 'es';
+
+  const metadataConfig = {
+    es: {
+      title: "Salvador y Danery - Invitación de Boda",
+      description: "Te invitamos a celebrar nuestra boda - 07 de Diciembre del 2025",
+      locale: "es_ES",
+      siteName: "Salvador y Danery - Boda",
+      imageAlt: "Salvador y Danery - Invitación de Boda",
+    },
+    en: {
+      title: "Salvador and Danery - Wedding Invitation",
+      description: "We invite you to celebrate our wedding - December 07, 2025",
+      locale: "en_US",
+      siteName: "Salvador and Danery - Wedding",
+      imageAlt: "Salvador and Danery - Wedding Invitation",
+    },
+    pt: {
+      title: "Salvador e Danery - Convite de Casamento",
+      description: "Convidamos você para celebrar nosso casamento - 07 de Dezembro de 2025",
+      locale: "pt_BR",
+      siteName: "Salvador e Danery - Casamento",
+      imageAlt: "Salvador e Danery - Convite de Casamento",
+    },
+  };
+
+  const config = metadataConfig[language as keyof typeof metadataConfig] || metadataConfig.es;
+
+  return {
+    title: config.title,
+    description: config.description,
+    keywords: ["boda", "invitación", "Salvador", "Danery", "wedding", "Kennewick", "casamento"],
+    manifest: '/manifest.json',
+    icons: {
+      icon: '/favicon.svg',
+      apple: '/favicon.svg',
+    },
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: 'default',
+      title: 'Salvador y Danery',
+    },
+    openGraph: {
+      type: 'website',
+      locale: config.locale,
+      url: 'https://salvadordanerywedding.site',
+      siteName: config.siteName,
+      title: config.title,
+      description: config.description,
+      images: [
+        {
+          url: '/images/share.jpg',
+          width: 1200,
+          height: 630,
+          alt: config.imageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: config.title,
+      description: config.description,
+      images: ['/images/share.jpg'],
+    },
+  };
+}
 
 export default function RootLayout({
   children,

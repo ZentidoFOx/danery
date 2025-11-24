@@ -19,24 +19,31 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         const savedLanguage = localStorage.getItem('wedding-language') as Language;
         if (savedLanguage && ['es', 'en', 'pt'].includes(savedLanguage)) {
             setLanguageState(savedLanguage);
+            document.cookie = `wedding-language=${savedLanguage}; path=/; max-age=31536000`;
             return;
         }
 
         // 2. If not saved, try to detect from browser
         // This approximates "where the user connects from" based on their device settings
         const browserLang = navigator.language.toLowerCase();
+        let detectedLang: Language = 'es'; // Default fallback
+
         if (browserLang.startsWith('pt')) {
-            setLanguageState('pt');
+            detectedLang = 'pt';
         } else if (browserLang.startsWith('en')) {
-            setLanguageState('en');
-        } else {
-            setLanguageState('es'); // Default fallback
+            detectedLang = 'en';
         }
+
+        setLanguageState(detectedLang);
+        localStorage.setItem('wedding-language', detectedLang);
+        document.cookie = `wedding-language=${detectedLang}; path=/; max-age=31536000`;
     }, []);
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
         localStorage.setItem('wedding-language', lang);
+        // Also save to cookie for server-side metadata
+        document.cookie = `wedding-language=${lang}; path=/; max-age=31536000`; // 1 year
     };
 
     const value = {
