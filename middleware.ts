@@ -29,10 +29,10 @@ export function middleware(request: NextRequest) {
             return NextResponse.rewrite(new URL(`/${defaultLocale}`, request.url));
         }
 
-        // Para otras rutas sin locale, redirigir al default (opcional)
-        // return NextResponse.redirect(
-        //   new URL(`/${defaultLocale}${pathname}`, request.url)
-        // );
+        // Para otras rutas sin locale (como /asistencia), redirigir al default
+        return NextResponse.redirect(
+            new URL(`/${defaultLocale}${pathname}`, request.url)
+        );
     }
 }
 
