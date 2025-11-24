@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Great_Vibes, Cormorant_Garamond, Poppins } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { Providers } from "@/components/Providers";
 
 const playfair = Playfair_Display({
@@ -38,11 +38,12 @@ export const viewport: Viewport = {
   themeColor: '#6B8E6F',
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  // Read language from cookies (server-side)
-  const { cookies } = await import('next/headers');
-  const cookieStore = await cookies();
-  const language = cookieStore.get('wedding-language')?.value || 'es';
+type Props = {
+  params: { lang: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const language = params.lang || 'en';
 
   const metadataConfig = {
     es: {
@@ -68,7 +69,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 
-  const config = metadataConfig[language as keyof typeof metadataConfig] || metadataConfig.es;
+  const config = metadataConfig[language as keyof typeof metadataConfig] || metadataConfig.en;
 
   return {
     title: config.title,
@@ -111,11 +112,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: { lang: string };
+}) {
   return (
-    <html lang="es" className={`${playfair.variable} ${greatVibes.variable} ${cormorant.variable} ${poppins.variable}`}>
+    <html lang={params.lang} className={`${playfair.variable} ${greatVibes.variable} ${cormorant.variable} ${poppins.variable}`}>
       <head>
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
@@ -125,7 +128,7 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/images/vertical.png" media="(max-width: 767px)" />
       </head>
       <body className="antialiased">
-        <Providers>
+        <Providers lang={params.lang}>
           {children}
         </Providers>
       </body>

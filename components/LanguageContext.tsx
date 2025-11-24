@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Language, Translations, translations } from '@/lib/i18n';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface LanguageContextType {
     language: Language;
@@ -11,39 +12,34 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-    const [language, setLanguageState] = useState<Language>('es');
+export function LanguageProvider({ children, initialLang }: { children: ReactNode; initialLang?: string }) {
+    const [language, setLanguageState] = useState<Language>((initialLang as Language) || 'es');
+    const router = useRouter();
+    const pathname = usePathname();
 
     useEffect(() => {
-        // 1. Try to get from localStorage
-        const savedLanguage = localStorage.getItem('wedding-language') as Language;
-        if (savedLanguage && ['es', 'en', 'pt'].includes(savedLanguage)) {
-            setLanguageState(savedLanguage);
-            document.cookie = `wedding-language=${savedLanguage}; path=/; max-age=31536000`;
-            return;
+        if (initialLang && ['es', 'en', 'pt'].includes(initialLang)) {
+            setLanguageState(initialLang as Language);
         }
-
-        // 2. If not saved, try to detect from browser
-        // This approximates "where the user connects from" based on their device settings
-        const browserLang = navigator.language.toLowerCase();
-        let detectedLang: Language = 'es'; // Default fallback
-
-        if (browserLang.startsWith('pt')) {
-            detectedLang = 'pt';
-        } else if (browserLang.startsWith('en')) {
-            detectedLang = 'en';
-        }
-
-        setLanguageState(detectedLang);
-        localStorage.setItem('wedding-language', detectedLang);
-        document.cookie = `wedding-language=${detectedLang}; path=/; max-age=31536000`;
-    }, []);
+    }, [initialLang]);
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
         localStorage.setItem('wedding-language', lang);
-        // Also save to cookie for server-side metadata
-        document.cookie = `wedding-language=${lang}; path=/; max-age=31536000`; // 1 year
+        document.cookie = `wedding-language=${lang}; path=/; max-age=31536000`;
+
+        // Redirigir a la nueva URL
+        const segments = pathname.split('/');
+        // segments[0] es ""
+        // segments[1] es el idioma actual (es, en, pt)
+        if (['es', 'en', 'pt'].includes(segments[1])) {
+            segments[1] = lang;
+            const newPath = segments.join('/');
+            router.push(newPath);
+        } else {
+            // Si no hay idioma en la ruta, lo agregamos
+            router.push(`/${lang}${pathname === '/' ? '' : pathname}`);
+        }
     };
 
     const value = {
